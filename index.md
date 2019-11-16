@@ -1,4 +1,4 @@
-<html><title>Ge Wang</title>
+<html>
 <body>
 <H1>Ge Wang</H1>
 <hr>
