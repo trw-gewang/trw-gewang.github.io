@@ -1,0 +1,25 @@
+
+cout = function(str) {
+    document.getElementById("myResults").value += str;
+}
+
+cls = function() {
+    document.getElementById("myResults").value = "";
+}
+
+
+myEval = function() {
+    var str;
+    var old = new Date().getTime();
+    cls();
+    try {
+        with (Math) {
+            str = eval(document.getElementById("myScript").value);
+        }
+    } catch(err) {
+        str = err.name+" : "+err.message;
+    }
+    if (str != undefined) {cout(str)};
+    document.getElementById("myTimer").innerHTML = "run time: "+(new Date().getTime()-old)+" ms";   
+}
+
