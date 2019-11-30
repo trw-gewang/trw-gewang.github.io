@@ -9,11 +9,11 @@ Truth Table</button></td><td width=55% align=right><span style="font-size:small"
 function _(x){if (x==1){return 0} else {return 1}}
 
 function print_table(f,g){
-cout(">>TRUTH TABLE<<\n"+"X__Y__Z__F__G__\n");
+cout(">>TRUTH TABLE<<\n"+"X__Y__Z_|_F__G__\n");
 for (var x=0;x<2;x++){
 	for(var y=0;y<2;y++){
 		for(var z=0;z<2;z++){
-			cout(x+"  "+y+"  "+z+"  "+f(x,y,z)+"  "+g(x,y,z)+"\n");
+			cout(x+"  "+y+"  "+z+" | "+f(x,y,z)+"  "+g(x,y,z)+"\n");
 		}
 	}
 }
