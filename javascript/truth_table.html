@@ -1,0 +1,31 @@
+<html><head><title>Javascript</title><link href="https://trw-gewang.github.io/javascript/style.css" rel="stylesheet" type="text/css" />
+<script src="https://trw-gewang.github.io/javascript/jvsc.txt"></script></head><body><table><tr><td width=25%><button onclick="myEval()">
+
+Truth Table</button></td><td width=55% align=right><span style="font-size:small" id="myTimer"></span></td></tr></table>
+<table><tr><td width=25%><textarea id="myResults"></textarea></td><td width=75%>
+
+<textarea id="myScript">
+//USAGE: "_(x)" for NOT x, "+" for OR, and "*" for AND
+function _(x){if (x==1){return 0} else {return 1}}
+
+function print_table(f,g){
+cout(">>TRUTH TABLE<<\n"+"X__Y__Z__F__G__\n");
+for (var x=0;x<2;x++){
+	for(var y=0;y<2;y++){
+		for(var z=0;z<2;z++){
+			cout(x+"  "+y+"  "+z+"  "+f(x,y,z)+"  "+g(x,y,z)+"\n");
+		}
+	}
+}
+}
+
+//original expression
+function f(x,y,z){return _(x)*_(y)*z+_(x)*y*z+x*_(y)*_(z)+x*y*_(z)+x*y*z}
+
+//simplified expression
+function g(x,y,z){return _(x)*z+x*_(y)*_(z)+x*y}
+
+print_table(f,g)
+</textarea>
+
+</td></tr></table></body></html>
