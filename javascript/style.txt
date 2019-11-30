@@ -1,1 +1,0 @@
-td {padding:0px}table {border-collapse:collapse; width:100%}body {background:blue; font-family:Arial}textarea {font-family:Lucida console; font-size:small; color:green; background:black; height:8in; width:100%}
