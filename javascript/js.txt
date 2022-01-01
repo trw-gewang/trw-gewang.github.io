@@ -1,0 +1,130 @@
+pprint = function(str) {
+    document.getElementById("myResults").value += str;
+}
+
+cls = function() {
+    document.getElementById("myResults").value = "";
+}
+
+myEval = function() {
+    var str;
+    var old = new Date().getTime();
+    cls();
+    try {
+        with (Math) {
+            str = eval(document.getElementById("myScript").value);
+        }
+    } catch(err) {
+        str = err.name+" : "+err.message;
+    }
+    if (str != undefined) {pprint(str)};
+    document.getElementById("myTimer").innerHTML = "running time: "+(new Date().getTime()-old)+" ms";   
+}
+
+//a simple linked list
+Node = function(item, next){
+	this._item=item;
+	this._next=next;
+	this.getItem = function(){return this._item}
+}
+
+LinkedList = function(){
+	this._head = null;
+	this._tail = null;
+	this._length = 0;
+	this.getLength = function(){return this._length};
+	this.insertItem = function(item){
+		if (item != "" && typeof item == "string"){
+			var old_head = this._head; 
+			this._head = new Node(item, old_head);
+			this._length += 1;
+		}
+	}
+}
+
+LinkedList.prototype.Traversal = function(){
+	var focus_node = this._head;
+		while(focus_node != null){
+			pprint (focus_node._item+"\n");
+			focus_node = focus_node._next;
+		}
+}
+
+LinkedList.prototype.Append = function(item){
+	if (item != "" && typeof item == "string"){
+		if (this._tail == null){
+			this._tail = new Node(item, null);
+			this._head = this._tail;
+		}else{
+		var old_tail = this._tail;
+		this._tail = new Node(item, null);
+		old_tail._next = this._tail
+		}
+		this._length += 1
+	}
+}
+
+LinkedList.prototype.Find = function(item){
+	var prev_node = this._head;
+		while (prev_node.getItem() != item && prev_node._next!=null) {
+			prev_node = prev_node._next
+		};
+		if (item != "" && prev_node.getItem() == item){
+			pprint ("Found item: "+ item +"\n")
+		}else{
+			pprint (item +" does not exist. \n")
+		}
+}
+
+LinkedList.prototype.Delete = function(item){
+	var prev_node = this._head;
+	var ppre_node = this._head;
+		while (prev_node.getItem() != item && prev_node._next!=null) {
+			ppre_node = prev_node;
+			prev_node = prev_node._next
+		};
+		if (item != "" && prev_node.getItem() == item){
+			if (prev_node==this._head){
+				this._head=prev_node._next
+			}else{
+				ppre_node._next = prev_node._next
+			}
+			this._length-=1;
+		}else{
+			pprint (item +" does not exist. \n")
+		}
+}
+
+//recursive factorial function
+facr= function(i){return (i>0)?i*fac(i-1):1};
+
+//iterative factorial function
+fac= function(n){
+	var i=1, x=1;
+	while (i<n){ 
+		x=x*i;
+		i++;
+	}
+	return (n>0)?x:1;
+};
+
+//recursive fibonacci function
+fibr= function(i){return (i>1)?fib(i-1)+fib(i-2):i};
+
+//iterative fibonacci function
+fib=function(n){
+	var i=1, x=1, y=0;
+	while (i<n){ 
+		x=x+y;
+		y=x-y;
+		i++;
+	}
+	return (i>1)?x:i;
+}
+
+cout = function(str) {
+    document.getElementById("myResults").value += str;
+}
+
+
+
