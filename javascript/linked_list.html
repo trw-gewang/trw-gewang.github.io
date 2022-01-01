@@ -1,0 +1,34 @@
+<html><head><title>Javascript Evaluator</title>
+<style>
+td {padding:0px}
+table {border-collapse:collapse; width:100%}
+body {background:lightyellow; font-family:Arial}
+textarea {font-family:Lucida console; color:black; background:white; height:6in; width:100%}
+</style>
+<script src="js.txt"></script></head>
+
+<body onload="myEval()">
+<table><tr><td width=25%>
+<span style="cursor:pointer; font-size:x-large" onmousedown="myEval()">Javascript Evaluator (Alt+K)</span></td>
+<td width=75% align=right>
+<span style="font-size:small" id="myTimer"></span></td></tr></table>
+
+<table><tr><td width=15%>
+<textarea id="myResults"></textarea></td>
+<td width=85%>
+<textarea id="myScript" onkeyup="if (event.keyCode==75 && event.altKey) myEval()">
+//a simple linked list
+mylist = new LinkedList();
+mylist.Append("foo");
+mylist.Append("moo");
+mylist.Append("goo");
+mylist.Append("hoo");
+mylist.Append("too");
+mylist.Traversal();
+pprint(mylist.getLength()+"\n");
+mylist.Delete("goo");
+mylist.Traversal();
+pprint(mylist.getLength()+"\n");
+
+</textarea></td></tr>
+</table><span style="font-size:x-small">based on Peter Jipsen Online JavaScript Interpreter</span></body></html>
