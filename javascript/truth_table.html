@@ -1,11 +1,11 @@
 <html><head><title>Javascript</title><link href="https://trw-gewang.github.io/javascript/style.css" rel="stylesheet" type="text/css" />
-<script src="https://trw-gewang.github.io/javascript/jvsc.txt"></script></head><body><table><tr><td width=25%><button onclick="myEval()">
-
-Truth Table</button></td><td width=55% align=right><span style="font-size:small" id="myTimer"></span></td></tr></table>
+<script src="https://trw-gewang.github.io/javascript/jvsc.txt"></script></head><body><table><tr><td width=45%>
+<button onclick="myEval()">Run Script</button></td><td width=55% align=right>
+<span style="font-size:small" id="myTimer"></span></td></tr></table>
 <table><tr><td width=25%><textarea id="myResults"></textarea></td><td width=75%>
-
 <textarea id="myScript">
 //USAGE: "_(x)" for NOT x, "+" for OR, and "*" for AND
+
 function _(x){if (x==1){return 0} else {return 1}}
 
 function print_table(f,g){
@@ -27,5 +27,4 @@ function g(x,y,z){return _(x)*z+x*_(y)*_(z)+x*y}
 
 print_table(f,g)
 </textarea>
-
 </td></tr></table></body></html>
