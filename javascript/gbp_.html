@@ -1,0 +1,62 @@
+<html><head><title>Javascript Evaluator</title>
+<style>
+td {padding:0px}
+table {border-collapse:collapse; width:100%}
+body {background:lightyellow; font-family:Arial}
+textarea {font-family:Lucida console; color:black; background:white; height:6in; width:100%}
+</style>
+<script>
+cout = function(str) {
+    document.getElementById("myResults").value += str;
+}
+
+cls = function() {
+    document.getElementById("myResults").value = "";
+}
+
+myEval = function() {
+    var str;
+    var old = new Date().getTime();
+    cls();
+    try {
+        with (Math) {
+            str = eval(document.getElementById("myScript").value);
+        }
+    } catch(err) {
+        str = err.name+" : "+err.message;
+    }
+    if (str != undefined) {cout(str)};
+    document.getElementById("myTimer").innerHTML = "running time: "+(new Date().getTime()-old)+" ms";   
+}
+</script></head>
+
+<body onload="myEval()">
+<table><tr><td width=25%>
+<span style="cursor:pointer; font-size:x-large" onmousedown="myEval()">Javascript Evaluator (Alt+K)</span></td>
+<td width=75% align=right>
+<span style="font-size:small" id="myTimer"></span></td></tr></table>
+
+<table><tr><td width=25%>
+<textarea id="myResults"></textarea></td>
+<td width=75%>
+<textarea id="myScript" onkeyup="if (event.keyCode==75 && event.altKey) myEval()">
+function greatestBitPos(x){
+var highBit = 32;
+var mask = x;
+var reg = x;
+cout("GBP of "+x+" is 0x");
+for (var i=0; i< highBit; i++){reg = reg>>1;mask = mask | reg};
+return mask^mask>>>1;
+};
+
+cout(parseInt(greatestBitPos(16)).toString(16)+"\n");
+cout(parseInt(greatestBitPos(26)).toString(16)+"\n");
+cout(parseInt(greatestBitPos(36)).toString(16)+"\n");
+cout(parseInt(greatestBitPos(46)).toString(16)+"\n");
+cout(parseInt(greatestBitPos(56)).toString(16)+"\n");
+cout(parseInt(greatestBitPos(66)).toString(16)+"\n");
+cout(parseInt(greatestBitPos(76)).toString(16)+"\n");
+cout(parseInt(greatestBitPos(86)).toString(16)+"\n");
+cout(parseInt(greatestBitPos(96)).toString(16)+"\n");
+</textarea></td></tr>
+</table><span style="font-size:x-small">based on Peter Jipsen Online JavaScript Interpreter</span></body></html>
