@@ -1,0 +1,17 @@
+<html><head><title>Data Science</title><link href="datasci.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="ocsi.ico">
+<script src="myRAW.txt"></script>
+<script src="plotly-latest.min.js"></script>
+<script src="datasci.txt"></script>
+</head><body><table><tr><td><button onclick="myEval()">Run Data Experiments</button></td>
+<td align=right><b>95 Years of SP500 - Autoregression (logarithmic)</b></td></tr></table>
+<table><tr><td width=25%><textarea id="myResults"></textarea></td><td width=75%>
+<textarea id="myScript" spellcheck="false">
+mk_data(raw,spec,price);
+data0 = curves(price,ema(100,price));
+do_plot(data0);
+cout("Number of Entries = "+price.length+"\n");
+cout("CAGR = "+CAGR(price).toFixed(4)+"\n");
+</textarea></td></tr></table>
+<table border=4><tr><td><div id="myPlot"></div></td></tr></table>
+</body></html>
