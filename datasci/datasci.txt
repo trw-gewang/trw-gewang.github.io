@@ -1,0 +1,224 @@
+cout = function(str) {
+    document.getElementById("myResults").value += str;
+}
+
+cls = function() {
+    document.getElementById("myResults").value = "";
+}
+
+myEval = function() {
+    var str;
+    cls();
+    try {
+        with (Math) {
+            str = eval(document.getElementById("myScript").value);
+        }
+    } catch(err) {
+        str = err.name+" : "+err.message;
+    }
+    if (str != undefined) {cout(str)};   
+}
+
+var spec =[];
+var price =[];
+//mk_raw(raw,spec,price);
+layout = {showlegend: false, xaxis:{autorange:true,title:"Year"},yaxis:{autorange:true}};
+regression=base(spec,price);
+fprice = vec_sub(price,regression);
+waste=scale(1/slope,fprice);
+signal=signal(threshold,shift_diff(6,macd(9,26,fprice)));
+
+function do_plot(data){
+	Plotly.newPlot("myPlot", data, layout)
+}
+
+function curves(curve1, curve2){
+return [{x:spec,y:curve1,mode:'line',line:{color:'#2ca02c'}},{x:spec,y:curve2,mode:'line',line:{color:'#ff2c2c'}}]
+}
+
+function ema(period,price){
+	var ema_array=[];
+	alpha=2/(period+1);
+	ema_array[0]=price[0];
+	for (i = 1; i < price.length; i++) {
+		ema_array[i] = alpha*price[i]+(1-alpha)*ema_array[i-1]
+	}
+return ema_array   
+}
+
+function macd(n,m,price){
+return vec_sub(ema(n,price),ema(m,price));
+}
+
+function macd_indicator(macd){
+return vec_sub(macd,ema(9,macd))
+}
+
+function vec_sub(array1,array2){
+	var sub_array=[];
+	for (i = 0; i < array1.length; i++) {
+		sub_array[i] = array1[i]-array2[i]
+	}
+return sub_array
+}
+
+function factor_sub(factor,array1){
+	var sub_array=[];
+	for (i = 0; i < array1.length; i++) {
+		sub_array[i] = array1[i]-factor
+	}
+return sub_array
+}
+
+function signal(factor,array1){
+	var sub_array=[];
+	for (i = 0; i < array1.length; i++) {
+		sub_array[i] = 0.2;
+		if (array1[i]<factor){sub_array[i]=0};
+	}
+return sub_array
+}
+
+function step(gaurd,array1){
+	var sub_array=[];
+	sub_array[0]=0;
+	for (i = 1; i < array1.length; i++) {
+		sub_array[i] = sub_array[i-1];
+		if (Math.abs(array1[i])>gaurd){
+			if (array1[i]>0){sub_array[i]=0.2} else {sub_array[i]=0.0}
+			};
+	}
+return sub_array
+}
+
+function scale(factor,price){
+	var scale_array=[];
+	for (i = 0; i < price.length; i++) {
+		scale_array[i] = price[i]*factor
+	}
+return scale_array
+}
+
+function shift_diff(dist,price){
+	var diff_array=[];
+	for (i = 0; i < dist; i++) {
+	diff_array[i]=0;
+	}
+	for (i = dist; i < price.length; i++) {
+		diff_array[i] = price[i]-price[i-dist];
+	}
+return diff_array
+}
+
+function vec_shift(factor,price){
+	var scale_array=[];
+	for (i = 0; i < price.length; i++) {
+		scale_array[i] = price[i]+factor
+	}
+return scale_array
+}
+
+function trade(trigger,indicator,price){
+	var trade_array=[];
+	trade_array[0]=price[0];
+	for (i = 1; i < price.length; i++) {
+		delta=price[i]-price[i-1];
+		trade_array[i] = Number(trade_array[i-1])+delta;
+		if (indicator[i-1]<trigger){trade_array[i]=Number(trade_array[i])-delta*1}
+	}
+return trade_array
+}
+
+function action(step,price){
+	var action_array=[];
+	action_array[0]=price[0];
+	for (i = 1; i < price.length; i++) {
+		delta=price[i]-price[i-1];
+		action_array[i] = Number(action_array[i-1])+delta;
+		if (step[i-1]<0.1){action_array[i]=Number(action_array[i])-delta*1}
+	}
+return action_array
+}
+
+function action_plus(step,price){
+	var action_array=[];
+	action_array[0]=price[0];
+	for (i = 1; i < price.length; i++) {
+		delta=price[i]-price[i-1];
+		action_array[i] = Number(action_array[i-1])+delta;
+		if (step[i-1]<0.1){action_array[i]=Number(action_array[i])-delta*2}
+	}
+return action_array
+}
+
+function trade_plus(trigger,indicator,price){
+	var trade_array=[];
+	trade_array[0]=price[0];
+	for (i = 1; i < price.length; i++) {
+		delta=price[i]-price[i-1];
+		trade_array[i] = Number(trade_array[i-1])+delta;
+		if (indicator[i-1]<trigger){trade_array[i]=Number(trade_array[i])-delta*2}
+	}
+return trade_array
+}
+
+function CAGR_raw(price){
+return Math.pow(10,(Math.log10(price[price.length-1]/price[0]))/(spec[spec.length-1]-spec[0]))-1
+}
+
+function CAGR(price){
+return Math.pow(10,(price[price.length-1]-price[0])/(spec[spec.length-1]-spec[0]))-1
+}
+
+function sum1(price){
+	var sum=0.0;
+	for (i = 0; i < price.length; i++) {
+		sum+= Number(price[i])
+	}
+return sum
+}
+
+function sum2(price1, price2){
+	var sum=0.0;
+	for (i = 0; i < price1.length; i++) {
+		sum+= Number(price1[i])*Number(price2[i])
+	}
+return sum
+}
+
+function mean(price){
+return sum1(price)/price.length
+}
+
+function base(spec,price){
+	var baseline=[];
+	b=(sum2(spec,price)-sum1(spec)*sum1(price)/price.length)/(sum2(spec,spec)-sum1(spec)*sum1(spec)/price.length);
+	a=mean(price)-b*mean(spec);
+	slope=b;
+	for (i = 0; i < price.length; i++) {
+		baseline[i]= a+b*spec[i];
+	}
+return baseline
+}
+
+function mk_data(raw, raw_date,raw_asset){
+	var temp=[];
+	var temp_day=[];
+	for (i = 0; i < raw.length; i++) {
+		temp= raw[i].split("&");
+		temp_day=temp[0].split("-");
+		raw_date[i]=Number(temp_day[0])+Number(temp_day[1])/12+Number(temp_day[2])/365;
+		raw_asset[i]=Math.log10(temp[1]);
+	}
+}
+
+function mk_raw(raw, raw_date,raw_asset){
+	var temp=[];
+	var temp_day=[];
+	for (i = 0; i < raw.length; i++) {
+		temp= raw[i].split("&");
+		temp_day=temp[0].split("-");
+		raw_date[i]=Number(temp_day[0])+Number(temp_day[1])/12+Number(temp_day[2])/365;
+		raw_asset[i]=temp[1];
+	}
+}
