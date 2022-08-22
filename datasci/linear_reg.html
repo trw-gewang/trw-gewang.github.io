@@ -11,7 +11,7 @@ mk_data(raw,spec,price);
 reg=base(spec,price);
 data0 = curves(price,reg);
 do_plot(data0);
-cout("Number of Entries = "+price.length+"\n");
+cout("Number of Days = "+price.length+"\n");
 cout("CAGR = "+CAGR(price).toFixed(4)+"\n");
 </textarea></td></tr></table>
 <table border=4><tr><td><div id="myPlot"></div></td></tr></table>

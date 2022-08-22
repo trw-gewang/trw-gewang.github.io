@@ -4,13 +4,13 @@
 <script src="plotly-latest.min.js"></script>
 <script src="datasci.txt"></script>
 </head><body><table><tr><td><button onclick="myEval()">Run Data Experiments</button></td>
-<td align=right><b>95 Years of SP500 - Autoregression (logarithmic)</b></td></tr></table>
+<td align=right><b>95 Years of S&P500 - Autoregression</b></td></tr></table>
 <table><tr><td width=25%><textarea id="myResults"></textarea></td><td width=75%>
 <textarea id="myScript" spellcheck="false">
 mk_raw(raw,spec,price);
 data0 = curves(price,ema(100,price));
 do_plot(data0);
-cout("Number of Entries = "+price.length+"\n");
+cout("Number of Days = "+price.length+"\n");
 cout("CAGR = "+CAGR_raw(price).toFixed(4)+"\n");
 </textarea></td></tr></table>
 <table border=4><tr><td><div id="myPlot"></div></td></tr></table>
