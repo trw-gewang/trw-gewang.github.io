@@ -1,17 +1,19 @@
-<html><head><title>Data Science</title><link href="datasci.css" rel="stylesheet" type="text/css">
-<link rel="icon" href="ocsi.ico">
+<html><head><title>Data Science</title><style type="text/css">
+td {padding:0px}table {border-collapse:collapse; width:100%} body {background:lightblue; font-family:Arial}
+textarea {font-family:Courier New; font-size:small; color:lightgreen; background:black; height:2in; width:100%}
+</style><link rel="icon" href="ocsi.ico">
 <script src="myRAW.txt"></script>
 <script src="plotly-latest.min.js"></script>
 <script src="datasci.txt"></script>
 </head><body><table><tr><td><button onclick="myEval()">Run Data Experiments</button></td>
-<td align=right><b>95 Years of SP500 - Autoregression (logarithmic)</b></td></tr></table>
+<td align=right><b>90 Years of SP500 - Autoregression (logarithmic)</b></td></tr></table>
 <table><tr><td width=25%><textarea id="myResults"></textarea></td><td width=75%>
 <textarea id="myScript" spellcheck="false">
-mk_data(raw,spec,price);
-data0 = curves(price,ema(100,price));
-do_plot(data0);
-cout("Number of Days = "+price.length+"\n");
-cout("CAGR = "+CAGR(price).toFixed(4)+"\n");
+var [time, asset] = make_data(raw);
+var log_asset = vec_log(asset);
+make_plot(curves(time,log_asset,ema(9,log_asset)));
+cout("Number of Months = "+time.length+"\n");
+cout("CAGR = "+CAGR(log_asset, time).toFixed(4)+"\n");
 </textarea></td></tr></table>
 <table border=4><tr><td><div id="myPlot"></div></td></tr></table>
 </body></html>
