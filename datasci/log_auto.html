@@ -6,12 +6,14 @@ textarea {font-family:Courier New; font-size:small; color:lightgreen; background
 <script src="plotly-latest.min.js"></script>
 <script src="datasci.txt"></script>
 </head><body><table><tr><td><button onclick="myEval()">Run Data Experiments</button></td>
-<td align=right><b>90 Years of SP500 - Autoregression (logarithmic)</b></td></tr></table>
+<td align=right><b>Orange County Sicence Institute</b></td></tr></table>
 <table><tr><td width=25%><textarea id="myResults"></textarea></td><td width=75%>
 <textarea id="myScript" spellcheck="false">
-var [time, asset] = make_data(raw);
+var [time, asset] = make_data(SP500);
 var log_asset = vec_log(asset);
 make_plot(curves(time,log_asset,ema(9,log_asset)));
+cout("## Standard and Poor 500 ##\n");
+cout(SP500[0].replace(/&/," at ")+" to "+SP500[SP500.length-1].replace(/&/," at ")+"\n");
 cout("Number of Months = "+time.length+"\n");
 cout("CAGR = "+CAGR(log_asset, time).toFixed(4)+"\n");
 </textarea></td></tr></table>
