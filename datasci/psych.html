@@ -1,0 +1,25 @@
+<html><head><title>Psych</title><link href="datasci.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="ocsi.ico">
+<script src="plotly-latest.min.js"></script>
+<script src="Data.txt"></script>
+<script src="reflex.txt"></script>
+</head><body><table><tr><td><button onclick="myEval()">Psych</button></td></tr></table>
+<table><tr><td width=25%><textarea id="myResults"></textarea></td><td width=75%>
+<textarea id="myScript" spellcheck="false">
+num=1; yr=252/1; en0=fl_day.length; st0=en0-num*yr;
+t0=fl_day.slice(st0,en0);
+y00=QQQ_close.slice(st0,en0);
+y01=XLK_close.slice(st0,en0);
+y02=SOXX_close.slice(st0,en0); 
+f00 = psych(t0,y00);
+f01 = psych(t0,y01);
+f02 = psych(t0,y02);
+do_plot(curve4(t0,f00,f01,f02,wave(9,calm(18,f02))));
+cout("CAGR(QQQ, trace 0) = "+CAGR(t0, y00)+"\n");
+cout("CAGR(XLK, trace 1) = "+CAGR(t0, y01)+"\n");
+cout("CAGR(SOXX, trace 2) = "+CAGR(t0, y02)+"\n");
+cout("Start: "+date(t0[0])+"\n");
+cout("End: "+date(t0[t0.length-1])+"\n");
+</textarea></td></tr></table>
+<table border=4><tr><td><div id="myPlot" style="height: 450px;"></div></td></tr></table>
+</body></html>
