@@ -6,7 +6,7 @@
 </head><body><table><tr><td><button onclick="myEval()">Psych</button></td></tr></table>
 <table><tr><td width=25%><textarea id="myResults"></textarea></td><td width=75%>
 <textarea id="myScript" spellcheck="false">
-num=1; yr=252/1; en0=fl_day.length; st0=en0-num*yr;
+num=1; yr=252/2; en0=fl_day.length; st0=en0-num*yr;
 t0=fl_day.slice(st0,en0);
 y00=QQQ_close.slice(st0,en0);
 y01=XLK_close.slice(st0,en0);
@@ -21,5 +21,5 @@ cout("CAGR(SOXX, trace 2) = "+CAGR(t0, y02)+"\n");
 cout("Start: "+date(t0[0])+"\n");
 cout("End: "+date(t0[t0.length-1])+"\n");
 </textarea></td></tr></table>
-<table border=4><tr><td><div id="myPlot" style="height: 450px;"></div></td></tr></table>
+<table border=4><tr><td><div id="myPlot" style="height:58vh"></div></td></tr></table>
 </body></html>
