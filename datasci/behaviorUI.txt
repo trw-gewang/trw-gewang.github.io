@@ -1,0 +1,37 @@
+const wTitle = "Behavior Finance";
+let wStyle = "body {background:lightyellow; font-family:Courier}";
+wStyle += "table {border-collapse:collapse; width:100%}";
+wStyle += "textarea {color:lightgreen; background:black; height:20vh; width:100%}";
+//wStyle += "div {height:75vh}";
+myUI=()=>{
+	const layout = document.createElement("style");
+	const include = document.createElement("script");
+	document.title= wTitle;
+	document.head.appendChild(layout);
+	layout.innerHTML = wStyle;
+	w1.innerHTML = "<b>"+wTitle;
+	w2.innerHTML = "";
+	w3.innerHTML = "<button onclick='wEval(`w5`,`w6`)'>Show Behavior</button>";
+	w2.align="right";
+	w3.align="right";
+	w1.width="30%";
+	w2.width="35%";
+	w3.width="35%";
+};
+cout=(str)=>{document.getElementById("w4").value += str+"\n"};
+cls=()=>{document.getElementById("w4").value = ""};
+wEval=(w,z)=>{
+    let str="";
+    cls();
+    try {
+	(z===undefined) ? str = eval(document.getElementById(w).value) : str = eval(document.getElementById(w).value+document.getElementById(z).value);
+    } catch(err) {
+        str = err.name+" : "+err.message;
+    }
+    if (str != undefined) {cout(str)};   
+};
+use=(code)=>{
+	let include = document.createElement('script');
+	include.src = code;
+	document.head.appendChild(include);
+};

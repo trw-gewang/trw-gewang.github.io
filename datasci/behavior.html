@@ -1,0 +1,25 @@
+<html><body onload=myUI()><script src="behaviorUI.txt"></script>
+<script src="plotly-latest.min.js"></script>
+<script src="Data.txt"></script>
+<script src="behavior.txt"></script>
+<table><tr><td id=w1><td id=w2><td id=w3><tr><td><textarea id=w4></textarea><td><textarea id=w5 spellcheck=false>
+m6=252/2; en0=fl_day.length; st0=en0-m6*1;
+t0=fl_day.slice(st0,en0);
+y00=QQQ_close.slice(st0,en0);
+y01=XLK_close.slice(st0,en0);
+y02=SOXX_close.slice(st0,en0); 
+f00 = psych(t0,y00);
+f01 = psych(t0,y01);
+f02 = psych(t0,y02);
+</textarea><td><textarea id=w6 spellcheck=false>
+cout("Simulation");
+cout("----------");
+cout("CAGR(QQQ, trace 0) = "+CAGR(t0, y00));
+cout("CAGR(XLK, trace 1) = "+CAGR(t0, y01));
+cout("CAGR(SOXX, trace 2) = "+CAGR(t0, y02));
+cout("Start: "+date(t0[0]));
+cout("End: "+date(t0[t0.length-1]));
+do_plot(curve4(t0,f00,f01,f02,behavior(6,f02)));
+</textarea></table>
+<table border=4><tr><td><div id="myPlot" style="height:75vh"></div></td></tr></table>
+</body></html>
