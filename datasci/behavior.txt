@@ -1,4 +1,6 @@
-function do_plot(data){Plotly.newPlot("myPlot", data)}
+//function do_plot(data){Plotly.newPlot("myPlot", data)}
+
+function do_plot(data,mytitle){Plotly.newPlot("myPlot", data, {title:mytitle})}
 
 function curve4(t, curve1, curve2, curve3, curve4){
 	return [{x:t,y:curve1,line:{width:1}},
@@ -27,9 +29,14 @@ function base(t,y){
 	return t.map((val)=>{return a+b*val})
 }
 
+function LAGR(t,y){
+	return (Math.exp((sum2(t,y)*y.length-sum1(t)*sum1(y))/(sum2(t,t)*y.length-sum1(t)*sum1(t)))-1).toFixed(3)}
+
 function vec_sub(y1,y2){return y1.map((val, idx)=>{return val - y2[idx]})};
 
 function psych(t,y){return vec_sub(y,base(t,y))}
+
+function mode(a,y){return vec_sub(calm(a,y),calm(a*1.5,y)).map((val)=>{return a*val})}
 
 function wave(a,y){
 	var y0=[]; y0.fill(y[0],0,(a-1)); var slope=[]; var t=Array.from(Array(a).keys()); var y2=y0.concat(y);
