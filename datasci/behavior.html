@@ -1,10 +1,9 @@
-<html><body onload=myUI()><script src="behaviorUI.txt"></script>
+<html><body onload=myUI()><script src="waveUI.txt"></script>
 <script src="plotly-latest.min.js"></script>
-<script src="Data.txt"></script>
-<script src="behavior.txt"></script>
-<table><tr><td id=w1><td id=w2><td id=w3><tr><td><textarea id=w4></textarea><td><textarea id=w5 spellcheck=false>
-num=0; m6=252/2; 
-en0=_t.length-num*m6; st0=en0-m6*1;
+<table><tr><td id=w1><td id=w2><tr>
+<td><div id=myPlot style="height:95vh"></div></td>
+<td><textarea id=w5 spellcheck=false style="height:95vh">
+en0=_t.length; st0=en0-126;
 t0=_t.slice(st0,en0);
 y00=QQQ.slice(st0,en0);
 y01=XLK.slice(st0,en0);
@@ -12,16 +11,8 @@ y02=SOXX.slice(st0,en0);
 f00 = psych(t0,y00);
 f01 = psych(t0,y01);
 f02 = psych(t0,y02);
-</textarea><td><textarea id=w6 spellcheck=false>
-cout("Simulation");
-cout("----------");
-cout("LAGR(QQQ) = "+LAGR(t0, y00));
-cout("LAGR(XLK) = "+LAGR(t0, y01));
-cout("LAGR(SOXX) = "+LAGR(t0, y02));
-cout("Start: "+date(t0[0]));
-cout("End: "+date(t0[t0.length-1]));
-title="<b>"+Math.floor(t0[0])+"|"+LAGR(t0,y00)+"|"+LAGR(t0,y01)+"|"+LAGR(t0,y02);
+title="<b>"+date(t0[0])+" to "+date(t0[t0.length-1])+"|"+LAGR(t0,y00);
+title+="|"+LAGR(t0,y01)+"|"+LAGR(t0,y02);
 do_plot(curve4(t0,f00,f01,f02,mode(8,f02)),title);
 </textarea></table>
-<table border=4><tr><td><div id="myPlot" style="height:75vh"></div></td></tr></table>
 </body></html>
