@@ -7,12 +7,14 @@ en0=_t.length; st0=en0-126;
 t0=_t.slice(st0,en0);
 y00=QQQ.slice(st0,en0);
 y01=XLK.slice(st0,en0);
-y02=SOXX.slice(st0,en0); 
+y02=SOXX.slice(st0,en0);
+y03=FDN.slice(st0,en0); 
 f00 = psych(t0,y00);
 f01 = psych(t0,y01);
 f02 = psych(t0,y02);
+f03 = psych(t0,y03);
 title="<b>"+date(t0[0])+" to "+date(t0[t0.length-1])+"|"+LAGR(t0,y00);
-title+="|"+LAGR(t0,y01)+"|"+LAGR(t0,y02);
-do_plot(curve4(t0,f00,f01,f02,mode(8,f02)),title);
+title+="|"+LAGR(t0,y01)+"|"+LAGR(t0,y02)+"|"+LAGR(t0,y03);
+do_plot(curve4(t0,f00,f01,f02,f03),title);
 </textarea></table>
 </body></html>
