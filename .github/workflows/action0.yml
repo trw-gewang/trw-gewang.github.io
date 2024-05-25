@@ -1,0 +1,4 @@
+name: action0
+run-name: ${{github.actor}} makes action
+on: [push]
+jobs:
