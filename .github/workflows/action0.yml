@@ -4,5 +4,5 @@ jobs:
   job_1:
     runs-on: ubuntu-latest
     steps:
-        uses: actions/setup-node@v4
-        run: perl test.pl
+      - uses: actions/checkout@v4
+      - run: perl test.pl
