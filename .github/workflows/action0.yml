@@ -4,5 +4,5 @@ jobs:
   job_1:
     runs-on: ubuntu-latest
     steps:
-      - name: My first step
+        uses: actions/setup-node@v4
         run: perl test.pl
