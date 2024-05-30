@@ -1,4 +1,8 @@
 name: action0
-run-name: ${{github.actor}} makes action
 on: [push]
 jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: My first step
+        run: perl test.pl
