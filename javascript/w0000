@@ -1,0 +1,28 @@
+const wTitle = "Art of Plotting";
+let wStyle = "body {background:lightyellow; font-family:Courier}";
+wStyle += "table {border-collapse:collapse; width:100%}";
+wStyle += "textarea {color:lightgreen; background:black; height:95vh; width:100%;}";
+//wStyle += "canvas {background:white; height:95vh; width:100%;border:3px solid #00aaff}";
+wStyle += "canvas {height:95vh;width:100%;fillStyle;white}";
+w0=()=>{
+	const layout = document.createElement("style");
+	const include = document.createElement("script");
+	document.title= wTitle;
+	document.head.appendChild(layout);
+	layout.innerHTML = wStyle;
+	w1.innerHTML = "<b>"+wTitle;
+	w2.innerHTML = "<button onclick='wEval()'>Run Plot Experiment</button>";
+	w2.align="right";
+	w1.width="75%";
+	w2.width="25%";
+};
+
+wEval=()=>{
+    let str="";
+    try { 
+	str = eval(document.getElementById("w4").value);
+    } catch(err) {
+        str = err.name+" : "+err.message;
+    }
+    if (str != undefined) {cout(str)};   
+};

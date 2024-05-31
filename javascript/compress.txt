@@ -1,0 +1,36 @@
+const wTitle = "Art of Compression";
+let wStyle = "body {background:lightyellow; font-family:Courier}";
+wStyle += "table {border-collapse:collapse; width:100%}";
+wStyle += "textarea {color:lightgreen; background:black; height:95vh; width:100%;}";
+myUI=()=>{
+	const layout = document.createElement("style");
+	const include = document.createElement("script");
+	document.title= wTitle;
+	document.head.appendChild(layout);
+	layout.innerHTML = wStyle;
+	w1.innerHTML = "<b>"+wTitle;
+	w2.innerHTML = "<button onclick='wEval(`w5`)'>Load Libraries</button>";
+	w3.innerHTML = "<button onclick='wEval(`w5`,`w6`)'>Run Code Experiment</button>";
+	w2.align="right";
+	w3.align="right";
+	w1.width="30%";
+	w2.width="30%";
+	w3.width="40%";
+};
+cout=(str)=>{document.getElementById("w4").value += str+"\n"};
+cls=()=>{document.getElementById("w4").value = ""};
+wEval=(w,z)=>{
+    let str="";
+    cls();
+    try {
+	(z===undefined) ? str = eval(document.getElementById(w).value) : str = eval(document.getElementById(w).value+document.getElementById(z).value);
+    } catch(err) {
+        str = err.name+" : "+err.message;
+    }
+    if (str != undefined) {cout(str)};   
+};
+use=(code)=>{
+	let include = document.createElement('script');
+	include.src = code;
+	document.head.appendChild(include);
+};
