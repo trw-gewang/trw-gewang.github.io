@@ -1,0 +1,57 @@
+<html><body onload=myUI()><script src="compress.txt"></script><table><tr><td id=w1><td id=w2><td id=w3><tr><td><textarea id=w4></textarea><td><textarea id=w5 spellcheck=false>
+function miniFFT(re, im) {
+    var N = re.length;
+    for (var i = 0; i < N; i++) {
+        for(var j = 0, h = i, k = N; k >>= 1; h >>= 1)
+            j = (j << 1) | (h & 1);
+        if (j > i) {
+            re[j] = [re[i], re[i] = re[j]][0]
+            im[j] = [im[i], im[i] = im[j]][0]
+        }
+    }
+    for(var hN = 1; hN * 2 <= N; hN *= 2)
+        for (var i = 0; i < N; i += hN * 2)
+            for (var j = i; j < i + hN; j++) {
+                var cos = Math.cos(Math.PI * (j - i) / hN),
+                    sin = Math.sin(Math.PI * (j - i) / hN)
+                var tre =  re[j+hN] * cos + im[j+hN] * sin,
+                    tim = -re[j+hN] * sin + im[j+hN] * cos;
+                re[j + hN] = re[j] - tre; im[j + hN] = im[j] - tim;
+                re[j] += tre; im[j] += tim;
+            }
+}
+
+function miniIFFT(re, im){
+    miniFFT(im, re);
+    for(var i = 0, N = re.length; i < N; i++){
+        im[i] /= N;
+        re[i] /= N;
+    }
+}
+</textarea><td><textarea id=w6 spellcheck=false>
+// for data length < 2^n, the rest of data must be filled up to avoid NaN
+
+var raw = [1, 2, 3, 4, 5, 6];
+var fttLength = Math.pow(2,Math.ceil(Math.log(raw.length)/Math.log(2)));
+
+var _re = new Array(fttLength-raw.length).fill(0);
+var FTT_im = new Array(fttLength).fill(0);
+var FTT_re = raw.concat(_re);
+
+cout("\n\nraw data = "+raw+"\n\n")
+
+let re = FTT_re.slice();
+let im = FTT_im.slice();
+
+miniFFT(re, im);
+
+cout("FFT : "+re+"\n");
+//cout(im);
+
+cout("\n*** Decoded ****\n");
+miniIFFT(re, im);
+
+cout(re);
+//cout(im);
+
+</textarea></table></body></html>

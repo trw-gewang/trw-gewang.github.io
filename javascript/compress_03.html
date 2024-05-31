@@ -1,0 +1,85 @@
+<html><body onload=myUI()><script src="compress.txt"></script><table><tr><td id=w1><td id=w2><td id=w3><tr><td><textarea id=w4></textarea><td><textarea id=w5 spellcheck=false>
+//LZW Compression/Decompression for Strings
+var dict1=[], dict2=[];
+var LZW = {
+    compress: function (uncompressed) {
+        "use strict";
+        var i, dictionary = {}, c, wc, w = "", result = [], dictSize = 256;
+        for (i = 0; i < 256; i += 1) {
+            dictionary[String.fromCharCode(i)] = i;
+        }
+        for (i = 0; i < uncompressed.length; i += 1) {
+            c = uncompressed.charAt(i);
+            wc = w + c;
+            if (dictionary.hasOwnProperty(wc)) {
+                w = wc;
+            } else {
+                result.push(dictionary[w]);
+                 dictionary[wc] = dictSize++;
+                w = String(c);
+            }
+        }
+
+        if (w !== "") {
+            result.push(dictionary[w]);
+        }
+        dict1=Object.assign({},dictionary);
+        return result;
+    },
+
+
+    decompress: function (compressed) {
+        "use strict";
+        var i, dictionary = [], w, result, k, entry = "", dictSize = 256;
+        for (i = 0; i < 256; i += 1) {
+            dictionary[i] = String.fromCharCode(i);
+        }
+        w = String.fromCharCode(compressed[0]);
+        result = w;
+        for (i = 1; i < compressed.length; i += 1) {
+            k = compressed[i];
+            if (dictionary[k]) {
+                entry = dictionary[k];
+            } else {
+                if (k === dictSize) {
+                    entry = w + w.charAt(0);
+                } else {
+                    return null;
+                }
+            }
+            result += entry;
+             dictionary[dictSize++] = w + entry.charAt(0);
+            w = entry;
+        }
+        dict2=Object.assign({},dictionary);
+        return result;
+    }
+}
+</textarea><td><textarea id=w6 spellcheck=false>
+var text = "The scenario described by Welch's 1984 paper encodes sequences of 8-bit data as fixed-length 12-bitcodes. The codes from 0 to 255 represent 1-character sequences consisting of the corresponding 8-bitcharacter, and the codes 256 through 4095 are created in a dictionary for sequences encountered in the data as it is encoded. At each stage in compression, input bytes are gathered into a sequence until the next character would make a sequence with no code yet in the dictionary. The code for the sequence (without that character) is added to the output, and a new code (for the sequence with that character) is added to the dictionary.\nThe idea was quickly adapted to other situations. In an image based on a color table, for example, the natural character alphabet is the set of color table indexes, and in the 1980s, many images had small color tables (on the order of 16 colors). For such a reduced alphabet, the full 12-bit codes yielded poor compression unless the image was large, so the idea of a variable-width code was introduced: codes typically start one bit wider than the symbols being encoded, and as each code size is used up, the code width increases by 1 bit, up to some prescribed maximum (typically 12 bits). When the maximum code value is reached, encoding proceeds using the existing table, but new codes are not generated for addition to the table.\nFurther refinements include reserving a code to indicate that the code table should be cleared and restored to its initial state (a \"clear code\", typically the first value immediately after the values for the individual alphabet characters), and a code to indicate the end of data (a \"stop code\", typically one greater than the clear code). The clear code lets the table be reinitialized after it fills up, which lets the encoding adapt to changing patterns in the input data. Smart encoders can monitor the compression efficiency and clear the table whenever the existing table no longer matches the input well.\nSince codes are added in a manner determined by the data, the decoder mimics building the table as it sees the resulting codes. It is critical that the encoder and decoder agree on the variety of LZW used: the size of the alphabet, the maximum table size (and code width), whether variable-width encoding is used, initial code size, and whether to use the clear and stop codes (and what values they have). Most formats that employ LZW build this information into the format specification or provide explicit fields for them in a compression header for the data.";
+
+var compressed = LZW.compress(text);
+var decompressed = LZW.decompress(compressed);
+
+cout("original text length = "+text.length);
+cout("compressed text length = "+compressed.length);
+cout("compression ratio = "+(compressed.length/text.length).toPrecision(3));
+cout("decompressed text length = "+decompressed.length);
+cout("dictionary length = "+Object.keys(dict2).length);
+
+
+cout("\n\n*** compressed text:  ***");
+cout(compressed);
+cout("\n\n*** decompressed text:  ***");
+cout(decompressed);
+
+//cout("\n"+typeof(compressed));
+
+//var compressedText="";
+//for (i = 0; i < compressed.length; i += 1) {compressedText+=String.fromCharCode(compressed[i])}
+//cout(compressedText);
+
+cout("\n\n*** Encoding Dictionary:  ***\n"+Object.keys(dict1))
+cout("\n\n*** Decoding Dictionary:  ***\n"+Object.values(dict2))
+
+</textarea></table></body></html>

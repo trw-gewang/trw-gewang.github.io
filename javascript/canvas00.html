@@ -1,0 +1,40 @@
+<html><body onload=w0()><script src=w0000></script>
+<table><tr><td id=w1><td id=w2><tr><td><canvas id=w3></canvas>
+<td><textarea id=w4 spellcheck=false>
+const dpi=window.devicePixelRatio;
+const canvas = document.getElementById("w3");
+canvas.width=1920*dpi;
+canvas.height=1080*dpi;
+canvas.style.width=`{width}px`;
+canvas.style.height=`{height}px`;
+var context = canvas.getContext("2d");
+
+var lines = canvas.width*2,
+    frag = canvas.width / lines,
+    scale = canvas.height / 2;
+
+context.lineWidth = 2;
+context.strokeStyle = "red";
+context.strokeRect(0,0,canvas.width,canvas.height)
+
+context.moveTo(0, scale);
+for (var i = 0; i < lines; i++) {
+    var sine = Math.sin(i/scale*2)*scale*0.9;
+    context.lineTo(i*frag, -sine+scale);
+}
+context.stroke();
+
+context.strokeStyle = "blue";
+context.moveTo(0, 0);
+for (var i = 0; i < lines; i++) {
+    var cos = Math.cos(i/scale*2)*scale*0.9;
+    context.lineTo(i*frag, -cos+scale);
+}
+context.stroke();
+
+context.fillStyle = "blue";
+context.font = "bold 30px Arial";
+context.fillText("Hello World! DPI = "+dpi,400,100);
+
+w1.innerHTML = "<b>Cool Plot! DPI = "+dpi;
+</textarea></table></body></html>

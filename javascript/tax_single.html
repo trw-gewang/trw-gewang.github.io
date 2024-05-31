@@ -1,0 +1,106 @@
+<html><head><script language="javascript">;
+var f = [];
+var f21= [523600,209425,164925,86375,40525,9950,0];
+var t21= [157804.25,47843,33603,14751,4664,995];
+var f21j= [628300,418850,329850,172750,81050,19900,0];
+var t21j= [168993.5,95686,67206,29502,9328,1990];
+var f20= [518400,207350,163300,85525,40125,9875,0];
+var t20= [156235,47367.5,33271.5,14605.5,4617.5,987.5];
+var f20j= [622050,414700,326600,171050,80250,19750,0];
+var t20j= [167307.5,94735,66543,29211,9235,1975];
+
+var caj= [1198024,718814,599016,117268,92788,66842,42350,17864,0];
+var tcj= [116455.68,62304.95,49965.76,5163.2,3204.8,1648.04, 668.36, 178.64,0];
+var ca= [599012,359407,299508,58634,46394,33421,21175,8932,0];
+var tc= [58227.85,31152.48,24982.88,2581.6,1602.4,824.02, 334.18, 89.32,0];
+
+var ca_rate= [0.123,0.113,0.103,0.093,0.08,0.06,0.04,0.02,0.01];
+
+var rate= [0.37,0.35,0.32,0.24,0.22,0.12,0.1];
+var std21j=25100, std21=12550; 
+var std20j=24800, std20=12400; 
+var deduction = std21;
+
+function fed_tax(incj, fj, tj, rate){
+	if (incj>fj[0]){return tj[0]+(incj-fj[0])*rate[0]}
+	else if (incj>fj[1]){return tj[1]+(incj-fj[1])*rate[1]}
+	else if (incj>fj[2]){return tj[2]+(incj-fj[2])*rate[2]}
+	else if (incj>fj[3]){return tj[3]+(incj-fj[3])*rate[3]}
+	else if (incj>fj[4]){return tj[4]+(incj-fj[4])*rate[4]}
+	else if (incj>fj[5]){return tj[5]+(incj-fj[5])*rate[5]}
+	else {return tj[6]+(incj-fj[6])*rate[6]};
+}
+
+function ca_tax(incj, caj, tcj, ca_rate){
+	if (incj>caj[0]){return tcj[0]+(incj-caj[0])*ca_rate[0]}
+	else if (incj>caj[1]){return tcj[1]+(incj-caj[1])*ca_rate[1]}
+	else if (incj>caj[2]){return tcj[2]+(incj-caj[2])*ca_rate[2]}
+	else if (incj>caj[3]){return tcj[3]+(incj-caj[3])*ca_rate[3]}
+	else if (incj>caj[4]){return tcj[4]+(incj-caj[4])*ca_rate[4]}
+	else if (incj>caj[5]){return tcj[5]+(incj-caj[5])*ca_rate[5]}
+	else if (incj>caj[6]){return tcj[6]+(incj-caj[6])*ca_rate[6]}
+	else if (incj>caj[7]){return tcj[7]+(incj-caj[7])*ca_rate[7]}
+	else {return tcj[8]+(incj-caj[8])*ca_rate[8]};
+//return 1;
+}
+
+function do_change(){
+	var error=0, eff_rate1 =0, eff_ratej = 0;
+	var agi=0, fedj=0; catj=0;
+	f[1]=eval(document.solder.f1.value);
+	f[2]=eval(document.solder.f2.value);
+	f[3]=eval(document.solder.f3.value);
+	f[4]=eval(document.solder.f4.value);
+	f[5]=eval(document.solder.f5.value);
+	f[6]=eval(document.solder.f6.value);
+	f[7]=eval(document.solder.f7.value);
+	f[8]=eval(document.solder.f8.value);
+	
+	for (i=1; i<9; i++){
+	agi=agi+f[i];
+	};
+	incj = agi - deduction;
+	fedj=Math.round(fed_tax(incj, f21, t21, rate));
+	catj=Math.round(ca_tax(incj,ca,tc,ca_rate));
+	
+	eff_ratej= Math.round((fedj+catj)/agi*1000)/10;
+	
+	document.solder.result.value="Calculated AGI is "+agi+", taxable income "+incj+", federal tax "+fedj+", ca tax "+catj+" and effective tax rate (TOTAL TAX/AGI) "+eff_ratej+"%.";
+}
+</script></head>
+<body bgcolor="lightyellow"><div align=center>
+<table border=2 width=400><tr><td align=center>
+<font size=5 color=blue><b>2021 Tax Estimator (Single)</b></font><hr size=7>
+<form name=solder>
+<table border=0>
+	<tr>	<td width=50% align=right>W-2:</td>
+		<td width=50% align=left><input type=text OnBlur="do_change()" size=5 name="f1" value="30000"></td></tr> 
+
+	<tr>	<td width=50% align=right>INT:</td>
+		<td width=50% align=left><input type=text OnBlur="do_change()" size=5 name="f2" value="8"></td></tr> 
+
+	<tr>	<td width=50% align=right>DIV:</td>
+		<td width=50% align=left><input type=text OnBlur="do_change()" size=5 name="f3" value="541"></td></tr> 
+
+	<tr>	<td width=50% align=right>CAP GAIN:</td>
+		<td width=50% align=left><input type=text OnBlur="do_change()" size=5 name="f4" value="0"></td></tr> 
+
+	<tr>	<td width=50% align=right>RENTAL:</td>
+		<td width=50% align=left><input type=text OnBlur="do_change()" size=5 name="f5" value="25336"></td></tr> 
+
+	<tr>	<td width=50% align=right>IRA DIST:</td>
+		<td width=50% align=left><input type=text OnBlur="do_change()" size=5 name="f6" value="0"></td></tr> 
+
+	<tr>	<td width=50% align=right>REFUND:</td>
+		<td width=50% align=left><input type=text OnBlur="do_change()" size=5 name="f7" value="0"></td></tr> 
+
+	<tr>	<td width=50% align=right>BONUS:</td>
+		<td width=50% align=left><input type=text OnBlur="do_change()" size=5 name="f8" value="0"></td></tr> 
+
+</table>
+<table border=0><tr><td><textarea cols=45 rows=5 wrap=virtual name='result' readonly>Calculated Taxes will be shown here.</textarea></td></tr>
+<tr><td align=center><input type=button OnClick="do_change()" value="Calculate!"></td></tr></table>
+</form>
+<font size=1 color=gray><address></address></font>
+</td></tr></table>
+</div></body></html>

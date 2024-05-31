@@ -1,0 +1,50 @@
+<html><body onload=myUI()><script src="layout.txt"></script><table><tr><td id=w1><td id=w2><td id=w3><tr><td><textarea id=w4></textarea><td><textarea id=w5 spellcheck=false>
+function Stack() {
+  this.dataStore = [];
+  this.top = 0;
+  this.push = push;
+  this.pop = pop;
+  this.peek = peek;
+  this.clear = clear;
+  this.length = length;
+};
+function push(element) {
+  this.dataStore[this.top++] = element;
+  cout(element+" is added to the stack");
+};
+function peek() {
+  return this.dataStore[this.top-1];
+};
+function pop() {
+  return this.dataStore[--this.top];
+};
+function clear() {
+  this.top = 0;
+  cout("The stack is now empty");
+};
+function length() {
+  return this.top;
+};
+function isPalindrome(word) {
+  var s = new Stack();
+  for (var i = 0; i < word.length; ++i) {
+    s.push(word[i]);
+  }
+  var rword = "";
+  while (s.length() > 0) {
+    rword += s.pop();
+  }
+  if (word == rword) {
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+</textarea><td><textarea id=w6 spellcheck=false>
+var word = "hello";
+isPalindrome(word)?cout(word + " is a palindrome."):cout(word + " is not a palindrome.");
+
+word = "racecar"
+isPalindrome(word)?cout(word + " is a palindrome."):cout(word + " is not a palindrome.");
+</textarea></table></body></html>
