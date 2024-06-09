@@ -5,4 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: perl test.pl
+      - run: |
+          perl test.pl
+          git add my_test.txt
+          git commit -m "updating file"
+          git push
