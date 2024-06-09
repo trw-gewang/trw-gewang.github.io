@@ -6,6 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
+          git config --global user.email "resident.parkewood@gmail.com"
+          git config --global user.name "Ge Wang"
           perl test.pl
           git add my_test.txt
           git commit -m "updating file"
