@@ -1,14 +1,20 @@
-name: action0
-on: [push]
+on: push
+env:
+  SCI_DIR: datasci
 jobs:
-  job_1:
+  wave:
+    name: ripple
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: |
-          git config --global user.email "resident.parkewood@gmail.com"
-          git config --global user.name "Ge Wang"
-          perl test.pl
-          git add my_test.txt
-          git commit -m "updating file"
-          git push
+    - name: Check-out datasci repository
+      uses: actions/checkout@v2
+      with:
+        repository: master/datasci
+        path: ${{ env.SCI_DIR }}
+        run: |
+		      git config --global user.email "resident.parkewood@gmail.com"
+		      git config --global user.name "Ge Wang"
+		      perl ${{ env.SCI_DIR }}/mk_UIh.pl
+		      git add kelly.txt
+		      git commit -m "updating file"
+		      git push
