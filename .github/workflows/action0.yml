@@ -11,10 +11,4 @@ jobs:
       with:
         repository: master/datasci
         path: ${{ env.SCI_DIR }}
-        run:
-      git config --global user.email "resident.parkewood@gmail.com"
-      git config --global user.name "Ge Wang"
-      perl ${{ env.SCI_DIR }}/mk_UIb.pl
-      git add kelly.txt
-      git commit -m "updating file"
-      git push
+        run: perl ${{ env.SCI_DIR }}/mk_UIb.pl
