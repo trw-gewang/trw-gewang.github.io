@@ -11,7 +11,7 @@ jobs:
       with:
         repository: master/datasci
         path: ${{ env.SCI_DIR }}
-        run: |
+        run:
       git config --global user.email "resident.parkewood@gmail.com"
       git config --global user.name "Ge Wang"
       perl ${{ env.SCI_DIR }}/mk_UIh.pl
