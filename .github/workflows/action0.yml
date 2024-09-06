@@ -11,4 +11,4 @@ jobs:
       with:
         repository: master/datasci
         path: ${{ env.SCI_DIR }}
-        run: perl ${{ env.SCI_DIR }}/mk_UIb.pl
+        run: perl ${{ env.SCI_DIR }}/mk_yahoo.pl
