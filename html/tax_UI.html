@@ -1,0 +1,64 @@
+<html><head><script language="javascript">
+//fbrk_s = "23850,96950,206700,394600,501050,751600";
+//cbrk_s = "22158,52606,83058,115898,146348,742998";
+var fr_s = "0.1,0.12,0.22,0.24,0.32,0.35";
+var cr_s = "0.01,0.02,0.04,0.06,0.08,0.093";
+
+var fr=fr_s.split(',').map(Number);
+var cr=cr_s.split(',').map(Number);
+
+aux=(M)=>{for (let i = 1; i < M[0].length; i++) {M[2][i]=M[2][i-1]+M[0][i-1]*(M[1][i]-M[1][i-1])};return M};
+
+tax=(inc,M)=>{for (let i=1; i < M[0].length; i++) if (M[0][i]>=inc&&M[0][i-1]<inc) {return (M[1][i]*inc-M[2][i]);break}};
+
+function do_change(){
+	var	W2=eval(document.tax.W2.value);
+	var	INT=eval(document.tax.INT.value);
+	var	DIV=eval(document.tax.DIV.value);
+	var	CG=eval(document.tax.CG.value);
+	var	SSA=eval(document.tax.SSA.value);
+	var	PSN=eval(document.tax.PSN.value);
+	var	IRA=eval(document.tax.IRA.value);
+	var	RNT=eval(document.tax.RNT.value);
+	var	fbrk_s=(document.tax.fbrk_s.value);
+	var	cbrk_s=(document.tax.cbrk_s.value);
+	var	F_DDN=eval(document.tax.F_DDN.value);
+	var	CA_DDN=eval(document.tax.CA_DDN.value);
+
+	var	fbrk=fbrk_s.split(',').map(Number);
+	var	cbrk=cbrk_s.split(',').map(Number);
+
+	var	AGI=W2+INT+DIV+0.85*SSA+IRA+PSN+RNT+CG;
+	var	CA_DDN=CA_DDN+SSA*0.85;
+
+	var	F_INC=AGI-F_DDN;
+	var	CA_INC=AGI-CA_DDN;
+
+	var fed=aux([fbrk,fr,fr.slice()]);
+	var ca=aux([cbrk,cr,cr.slice()]);
+	var fed_tax=tax(F_INC,fed).toFixed(2);
+	var ca_tax=tax(CA_INC,ca).toFixed(2);
+
+	document.tax.result.value="Calculated AGI is "+AGI+"\n taxable income "+F_INC+"\n federal tax "+fed_tax+"\n ca tax "+ca_tax+".\n";
+}
+</script></head>
+<body bgcolor="lightyellow"><div align=center>
+<table border=2 width=500><tr><td align=center><font size=5 color=blue><b>Tax Estimator (Joint Couple)</b></font><hr size=7><form name=tax>
+<table border=0>
+	<tr><td width=50% align=right>W-2:</td><td width=50% align=left><input type=text OnBlur="do_change()" size=24 name="W2" value="400"></td></tr> 
+	<tr><td width=50% align=right>Inretests:</td><td width=50% align=left><input type=text OnBlur="do_change()" size=24 name="INT" value="500"></td></tr> 
+	<tr><td width=50% align=right>Dividends:</td><td width=50% align=left><input type=text OnBlur="do_change()" size=24 name="DIV" value="5000"></td></tr> 
+	<tr><td width=50% align=right>Total Capital Gain:</td><td width=50% align=left><input type=text OnBlur="do_change()" size=24 name="CG" value="5000+5000"></td></tr> 
+	<tr><td width=50% align=right>Social Security:</td><td width=50% align=left><input type=text OnBlur="do_change()" size=24 name="SSA" value="12*(3000+1500)"></td></tr> 
+	<tr><td width=50% align=right>Pension:</td><td width=50% align=left><input type=text OnBlur="do_change()" size=24 name="PSN" value="12*3000"></td></tr> 
+	<tr><td width=50% align=right>IRA Distribution:</td><td width=50% align=left><input type=text OnBlur="do_change()" size=24 name="IRA" value="0"></td></tr> 
+	<tr><td width=50% align=right>Other Income (e.g., rental):</td><td width=50% align=left><input type=text OnBlur="do_change()" size=24 name="RNT" value="0"></td></tr> 
+</table>
+<table border=0>
+<tr><td>FED Bracket: <input type=text size=39 name="fbrk_s" value="23850,96950,206700,394600,501050,751600"></td></tr>
+<tr><td>CAL Bracket: <input type=text size=39 name="cbrk_s" value="22158,52606,83058,115898,146348,742998"></td></tr>
+<tr><td>FED Standard Deduction: <input type=text size=28 name="F_DDN" value="31500+1600*2"></td></tr>
+<tr><td>CAL Standard Deduction: <input type=text size=28 name="CA_DDN" value="11080 "></td></tr>
+<tr><td><textarea cols=45 rows=5 wrap=virtual name='result' readonly>Calculated taxes will be shown here.</textarea></td></tr>
+<tr><td align=center><input type=button size=50 OnClick="do_change()" value="Calculate!"></td></tr></table></form></td></tr></table>
+</div></body></html>
