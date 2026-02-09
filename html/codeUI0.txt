@@ -1,0 +1,45 @@
+const code01 = `cnd=(x)=>{var y=x/1.414214, a0=0.278393, a1=0.230389, a2=0.000972, a3=0.078108; var z= 1+y*y*(a1+a3*y*y); return (x>=0) ? 1-0.5/Math.pow(z+y*(a0+a2*y*y),4) : 0.5/Math.pow(z-y*(a0+a2*y*y),4)}
+cs=(t,r,s,x)=>{var w1=(r*t-Math.log(1+x))/s/Math.sqrt(t), w2=s*Math.sqrt(t)/2; return cnd(w1+w2)-(1+x)*cnd(w1-w2)*Math.exp(-r*t) }
+gn=(m0,m)=>{return cs((m0-m)/12,r,s,x)*(x0+1)/cs(m0/12,r,s,x0)/(x+1)-1}
+dec=(x)=>{return (x*100).toFixed(2)+"%\\n"}
+
+var pm=117.65, p0=96.11, s=0.3566, tkr="TECL";
+//var pm=53.96, p0=47.64, s=0.4322, tkr="TQQQ";
+var m0=3, r=0.04, x0=-0.00, x=p0/pm*(1+x0)-1;
+
+cout("val: "+s+"  medium: "+pm+"  price: "+p0+"\\n");
+cout(tkr+" direct: "+dec(pm/p0-1));
+cout("one month: "+dec(gn(m0,1)));
+cout("two months: "+dec(gn(m0,2)))
+cout("three months: "+dec(gn(m0,3)))`;
+
+const wTitle = "Art of Coding";
+let wStyle = "body {background:lightyellow; font-family:Courier}";
+wStyle += "table {border-collapse:collapse; width:100%}";
+wStyle += "textarea {color:lightgreen; background:black; height:95vh; width:100%}";
+myUI=()=>{
+	const layout = document.createElement("style");
+	const include = document.createElement("script");
+	const board = document.createElement("div");
+	let table01 = "<table><tr><td><button onclick='wEval()'>Run Code Experiment</button></td><td align=right><b>"+wTitle+"</b></td></tr></table>";
+	table01 += "<table><tr><td width=35%><textarea id='wResults'></textarea></td><td width=65%><textarea id='wScript' spellcheck='false'>";
+	const table02 = "</textarea></td></tr></table>";
+	document.title= wTitle;
+	document.head.appendChild(layout);
+	document.head.appendChild(include);
+	document.body.appendChild(board);
+	layout.innerHTML = wStyle;
+	board.innerHTML = table01+code01+table02;
+};
+cout=(str)=>{document.getElementById("wResults").value += str};
+cls=()=>{document.getElementById("wResults").value = ""};
+wEval=()=>{
+    let str="";
+    cls();
+    try { 
+		str = eval(document.getElementById("wScript").value);
+    } catch(err) {
+        str = err.name+" : "+err.message;
+    }
+    if (str != undefined) {cout(str)};   
+};
