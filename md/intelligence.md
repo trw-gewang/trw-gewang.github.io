@@ -1,9 +1,8 @@
-# On the Proposition That Intelligence Is the Competency of Solving Never-Seen-Before Problems
+# Intelligence
 
 ## Proposition
 
-The proposition under examination — **intelligence is the competency of solving never-seen-before problems** 
----
+**intelligence is the competency of solving never-seen-before problems** 
 
 ## I. Prolegomena: Clarification of Terms
 
