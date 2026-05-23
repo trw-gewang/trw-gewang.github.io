@@ -1,15 +1,9 @@
-## Ge Wang
+## Orange County Scienec Institute
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The [Institute](https://sites.google.com/view/ocsi-site/) extends scientific researches in climate science, materials science, and computational algorithms.  The research results have been published in many important scientific journals and granted with international patents.
 
 ```markdown
 Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
 
 - Bulleted
 - List
