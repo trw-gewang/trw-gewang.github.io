@@ -1,18 +1,8 @@
 # On the Proposition That Intelligence Is the Competency of Solving Never-Seen-Before Problems
 
-**A Scholastic Critique with Counter-Propositions**
+## Proposition
 
----
-
-> *"The measure of intelligence is the ability to change."*
-> — Albert Einstein (attr.)
-
----
-
-## Abstract
-
-The proposition under examination — that **intelligence is the competency of solving never-seen-before problems** — offers a compelling and intuitively appealing definition by emphasizing novelty, adaptability, and transfer of knowledge. Nevertheless, it is philosophically incomplete, empirically contestable, and conceptually over-restrictive. This paper subjects the proposition to rigorous scholastic analysis: clarifying its terms, identifying its strengths, exposing its deficiencies, and advancing a set of alternative and counter-propositions that better account for the full complexity of intelligent behavior.
-
+The proposition under examination — **intelligence is the competency of solving never-seen-before problems** 
 ---
 
 ## I. Prolegomena: Clarification of Terms
@@ -23,10 +13,10 @@ Before evaluating the proposition, its constituent terms require rigorous disamb
 
 The word *intelligence* derives from the Latin *intelligentia*, meaning discernment or understanding. Across disciplines it has been operationalized in markedly different ways:
 
-- **Psychometric tradition** (Spearman, 1904): a general factor $g$ underlying performance across cognitive tasks.
-- **Developmental tradition** (Piaget, 1952): intelligence as adaptive equilibration between assimilation and accommodation.
-- **Computational tradition** (Turing, 1950): intelligence as the capacity to exhibit behavior indistinguishable from that of a human reasoner.
-- **Ecological tradition** (Gibson, 1979): intelligence as organism-environment coupling and affordance exploitation.
+- **Psychometric tradition**: a general factor $g$ underlying performance across cognitive tasks.
+- **Developmental tradition**: intelligence as adaptive equilibration between assimilation and accommodation.
+- **Computational tradition**: intelligence as the capacity to exhibit behavior indistinguishable from that of a human reasoner.
+- **Ecological tradition**: intelligence as organism-environment coupling and affordance exploitation.
 
 No consensus definition exists. Any proposition of the form *"intelligence is X"* should therefore be understood as a **theoretical commitment**, not a description of settled fact.
 
@@ -66,7 +56,7 @@ then $A$ demonstrates precisely what the proposition demands. This is a meaningf
 
 ### 2.3 Agreement with the Turing Tradition
 
-The proposition is broadly consistent with Turing's (1950) imitation game, which tests whether a machine can respond intelligently to *arbitrary* novel queries from a human interlocutor. Novel problem-solving is implicitly what the Turing Test probes.
+The proposition is broadly consistent with Turing's imitation game, which tests whether a machine can respond intelligently to *arbitrary* novel queries from a human interlocutor. Novel problem-solving is implicitly what the Turing Test probes.
 
 ---
 
@@ -94,7 +84,7 @@ By the proposition, $R$ possesses intelligence. This is a *reductio ad absurdum*
 
 ### Objection III — The Expertise Exclusion Problem
 
-Many of the most impressive demonstrations of human intelligence involve *deep expertise* — solving problems that have been seen before in highly elaborated form. A chess grandmaster, a seasoned surgeon, or a master poet operates largely within familiar territory, deploying finely tuned schemas. As Simon and Chase (1973) showed, chess mastery consists largely of recognizing approximately:
+Many of the most impressive demonstrations of human intelligence involve *deep expertise* — solving problems that have been seen before in highly elaborated form. A chess grandmaster, a seasoned surgeon, or a master poet operates largely within familiar territory, deploying finely tuned schemas. As Simon and Chase showed, chess mastery consists largely of recognizing approximately:
 
 $$N_{\text{chess patterns}} \approx 50{,}000\text{–}100{,}000 \text{ stored configurations}$$
 
@@ -104,7 +94,7 @@ If intelligence requires novelty, then expertise is *inversely correlated* with 
 
 ### Objection IV — The Social and Distributed Intelligence Problem
 
-The proposition is implicitly **individualist**: it imagines a single agent confronting a problem. But much intelligence is **socially distributed** (Hutchins, 1995). A team of scientists collectively solving a never-before-encountered disease does so through division of cognitive labor, institutional memory, peer review, and tool use. No individual member may solve a novel sub-problem alone. Does the group possess intelligence? The proposition provides no answer.
+The proposition is implicitly **individualist**: it imagines a single agent confronting a problem. But much intelligence is **socially distributed**. A team of scientists collectively solving a never-before-encountered disease does so through division of cognitive labor, institutional memory, peer review, and tool use. No individual member may solve a novel sub-problem alone. Does the group possess intelligence? The proposition provides no answer.
 
 Furthermore, intelligence is increasingly understood as **extended** (Clark & Chalmers, 1998): an agent plus notebook, calculator, or internet may collectively solve novel problems that the biological agent cannot. If the competency resides in the system, not the organism, the proposition must be reformulated at the level of cognitive systems, not individual minds.
 
@@ -167,7 +157,7 @@ where $\pi$ is an agent policy, $\mathcal{E}$ is the space of all computable rew
 
 $$\boxed{\text{Intelligence is the capacity to monitor, evaluate, and regulate one's own cognitive processes.}}$$
 
-This shifts emphasis from *output* (problem solutions) to *process* (cognitive self-governance). Flavell's (1979) concept of *metacognition* — thinking about one's own thinking — identifies a dimension of intelligence absent from the original proposition. An agent that knows what it does not know, and adjusts its strategies accordingly, is intelligent in a profound sense even if it regularly encounters familiar problems.
+This shifts emphasis from *output* (problem solutions) to *process* (cognitive self-governance). Flavell's concept of *metacognition* — thinking about one's own thinking — identifies a dimension of intelligence absent from the original proposition. An agent that knows what it does not know, and adjusts its strategies accordingly, is intelligent in a profound sense even if it regularly encounters familiar problems.
 
 Formally, let $\mathcal{K}(A)$ denote the agent's knowledge state and $\hat{\mathcal{K}}(A)$ its model of its own knowledge:
 
@@ -179,7 +169,7 @@ $$\text{Metacognitive Intelligence} \propto \text{Accuracy}(\hat{\mathcal{K}}(A)
 
 $$\boxed{\text{Intelligence is the ongoing construction of meaning through interaction with problems, tools, and other agents.}}$$
 
-Rooted in Vygotsky's (1978) zone of proximal development and Dewey's pragmatism, this proposition understands intelligence not as a fixed competency but as a **dynamic relational process**. The intelligent agent is not one who *has* a capacity but one who *enacts* understanding through inquiry. This dissolves the novelty/familiarity binary: what matters is the **quality of engagement**, not the prior exposure history.
+Rooted in Vygotsky's zone of proximal development and Dewey's pragmatism, this proposition understands intelligence not as a fixed competency but as a **dynamic relational process**. The intelligent agent is not one who *has* a capacity but one who *enacts* understanding through inquiry. This dissolves the novelty/familiarity binary: what matters is the **quality of engagement**, not the prior exposure history.
 
 ---
 
@@ -203,22 +193,3 @@ $$\text{Intelligence} \neq \text{Novelty-Solving} \quad \text{but} \quad \text{I
 
 Intelligence *contains* the competency of solving never-seen-before problems as a proper subset. To identify the container with the subset is the central error of the proposition.
 
----
-
-## References
-
-- Cattell, R. B. (1971). *Abilities: Their structure, growth, and action.* Houghton Mifflin.
-- Clark, A., & Chalmers, D. (1998). The extended mind. *Analysis*, 58(1), 7–19.
-- Flavell, J. H. (1979). Metacognition and cognitive monitoring. *American Psychologist*, 34(10), 906–911.
-- Gibson, J. J. (1979). *The ecological approach to visual perception.* Houghton Mifflin.
-- Hutchins, E. (1995). *Cognition in the wild.* MIT Press.
-- Legg, S., & Hutter, M. (2007). Universal intelligence: A definition of machine intelligence. *Minds and Machines*, 17(4), 391–444.
-- Piaget, J. (1952). *The origins of intelligence in children.* International Universities Press.
-- Simon, H. A., & Chase, W. G. (1973). Skill in chess. *American Scientist*, 61(4), 394–403.
-- Spearman, C. (1904). General intelligence, objectively determined and measured. *American Journal of Psychology*, 15(2), 201–292.
-- Turing, A. M. (1950). Computing machinery and intelligence. *Mind*, 59(236), 433–460.
-- Vygotsky, L. S. (1978). *Mind in society: The development of higher psychological processes.* Harvard University Press.
-
----
-
-*Submitted for scholastic review. All mathematical notation uses standard LaTeX conventions. This document is intended for academic discourse and invites rebuttal.*
