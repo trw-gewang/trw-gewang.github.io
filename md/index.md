@@ -1,1 +1,1 @@
-[intelligence](trw-gewang.githu.io/md/intelligence.md)
+[intelligence](trw-gewang.github.io/md/intelligence.md)
