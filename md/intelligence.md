@@ -1,3 +1,8 @@
+---
+layout: post
+title: Great Markdown
+---
+
 # Intelligence
 
 ## Proposition
