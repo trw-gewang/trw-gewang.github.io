@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>intelligence_critique</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1
+id="on-the-proposition-that-intelligence-is-the-competency-of-solving-never-seen-before-problems">On
+the Proposition That Intelligence Is the Competency of Solving
+Never-Seen-Before Problems</h1>
+<p><strong>A Scholastic Critique with Counter-Propositions</strong></p>
+<hr />
+<blockquote>
+<p><em>“The measure of intelligence is the ability to change.”</em> —
+Albert Einstein (attr.)</p>
+</blockquote>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>The proposition under examination — that <strong>intelligence is the
+competency of solving never-seen-before problems</strong> — offers a
+compelling and intuitively appealing definition by emphasizing novelty,
+adaptability, and transfer of knowledge. Nevertheless, it is
+philosophically incomplete, empirically contestable, and conceptually
+over-restrictive. This paper subjects the proposition to rigorous
+scholastic analysis: clarifying its terms, identifying its strengths,
+exposing its deficiencies, and advancing a set of alternative and
+counter-propositions that better account for the full complexity of
+intelligent behavior.</p>
+<hr />
+<h2 id="i.-prolegomena-clarification-of-terms">I. Prolegomena:
+Clarification of Terms</h2>
+<p>Before evaluating the proposition, its constituent terms require
+rigorous disambiguation.</p>
+<h3 id="intelligence">1.1 Intelligence</h3>
+<p>The word <em>intelligence</em> derives from the Latin
+<em>intelligentia</em>, meaning discernment or understanding. Across
+disciplines it has been operationalized in markedly different ways:</p>
+<ul>
+<li><strong>Psychometric tradition</strong> (Spearman, 1904): a general
+factor <span class="math inline">\(g\)</span> underlying performance
+across cognitive tasks.</li>
+<li><strong>Developmental tradition</strong> (Piaget, 1952):
+intelligence as adaptive equilibration between assimilation and
+accommodation.</li>
+<li><strong>Computational tradition</strong> (Turing, 1950):
+intelligence as the capacity to exhibit behavior indistinguishable from
+that of a human reasoner.</li>
+<li><strong>Ecological tradition</strong> (Gibson, 1979): intelligence
+as organism-environment coupling and affordance exploitation.</li>
+</ul>
+<p>No consensus definition exists. Any proposition of the form
+<em>“intelligence is X”</em> should therefore be understood as a
+<strong>theoretical commitment</strong>, not a description of settled
+fact.</p>
+<h3 id="competency">1.2 Competency</h3>
+<p><em>Competency</em> implies a reliable, exercisable capacity — not
+merely a one-off occurrence. It connotes <strong>skill</strong> rather
+than luck. This is important: the proposition requires that the agent
+<em>reliably</em> solve novel problems, not merely solve one by
+chance.</p>
+<h3 id="never-seen-before-problems">1.3 Never-Seen-Before Problems</h3>
+<p>This phrase is both the most distinctive and most problematic element
+of the proposition. It encompasses:</p>
+<ul>
+<li>Problems whose <strong>surface form</strong> is novel (new inputs to
+known problem-types).</li>
+<li>Problems whose <strong>structure</strong> is genuinely unprecedented
+(requiring new conceptual frameworks).</li>
+<li>Problems <strong>outside the agent’s training distribution</strong>
+(in the ML sense).</li>
+</ul>
+<p>These three interpretations differ substantially, and the
+proposition’s force depends heavily on which is intended.</p>
+<hr />
+<h2 id="ii.-the-steel-manned-proposition">II. The Steel-Manned
+Proposition</h2>
+<h3 id="novelty-as-the-mark-of-intelligence">2.1 Novelty as the Mark of
+Intelligence</h3>
+<p>The strongest argument for the proposition is its alignment with the
+intuition that <strong>rote execution is not intelligence</strong>. A
+calculator that computes <span class="math inline">\(2 + 2 = 4\)</span>
+does not seem intelligent, even if accurate. The proposition captures
+the insight that intelligence involves <strong>generalization beyond the
+familiar</strong> — what psychologists call <em>fluid intelligence</em>
+<span class="math inline">\(G_f\)</span>, formally distinguished from
+crystallized intelligence <span class="math inline">\(G_c\)</span>:</p>
+<p><span class="math display">\[G_f \neq G_c, \quad \text{where } G_f =
+f(\text{novel reasoning}), \quad G_c = f(\text{acquired
+knowledge})\]</span></p>
+<p>Cattell’s investment theory (1971) holds that <span
+class="math inline">\(G_f\)</span> is the primitive capacity that
+underwrites all further cognitive development, making novelty-response a
+plausible <em>root</em> of intelligence.</p>
+<h3 id="transfer-learning-as-a-criterion">2.2 Transfer Learning as a
+Criterion</h3>
+<p>The proposition also aligns with the concept of
+<strong>transfer</strong>: the ability to apply knowledge learned in one
+domain to solve problems in another. Formally, if an agent <span
+class="math inline">\(A\)</span> trained on distribution <span
+class="math inline">\(\mathcal{D}_{\text{train}}\)</span> achieves high
+performance on <span
+class="math inline">\(\mathcal{D}_{\text{test}}\)</span> where:</p>
+<p><span class="math display">\[\mathcal{D}_{\text{test}} \cap
+\mathcal{D}_{\text{train}} = \emptyset\]</span></p>
+<p>then <span class="math inline">\(A\)</span> demonstrates precisely
+what the proposition demands. This is a meaningful and testable
+criterion.</p>
+<h3 id="agreement-with-the-turing-tradition">2.3 Agreement with the
+Turing Tradition</h3>
+<p>The proposition is broadly consistent with Turing’s (1950) imitation
+game, which tests whether a machine can respond intelligently to
+<em>arbitrary</em> novel queries from a human interlocutor. Novel
+problem-solving is implicitly what the Turing Test probes.</p>
+<hr />
+<h2 id="iii.-critique-five-principal-objections">III. Critique: Five
+Principal Objections</h2>
+<h3 id="objection-i-the-novelty-regress-problem">Objection I — The
+Novelty Regress Problem</h3>
+<p>The proposition requires problems to be <em>never-seen-before</em>,
+but all problems encountered by any agent are, at some level of
+description, novel. Conversely, every seemingly novel problem can be
+re-described as a known type. This generates a <strong>novelty
+regress</strong>:</p>
+<p><span class="math display">\[\forall p \in \mathcal{P}: \exists d \in
+\mathcal{D}\ [p \text{ is familiar under description } d] \land \exists
+d&#39; \in \mathcal{D}\ [p \text{ is novel under description }
+d&#39;]\]</span></p>
+<p>The criterion of novelty is thus <strong>frame-relative</strong> and
+cannot serve as an objective, description-independent marker of
+intelligence.</p>
+<hr />
+<h3
+id="objection-ii-the-competence-without-intelligence-problem">Objection
+II — The Competence-Without-Intelligence Problem</h3>
+<p>Some systems solve never-seen-before problems via processes that
+appear non-intelligent. Consider <strong>random search</strong>: a
+sufficiently exhaustive stochastic algorithm will eventually solve any
+problem for which a solution verifier exists. More formally, for a
+problem space <span class="math inline">\(\mathcal{P}\)</span> with
+solution space <span class="math inline">\(\mathcal{S}\)</span>, a
+random agent <span class="math inline">\(R\)</span> satisfies:</p>
+<p><span class="math display">\[P(R \text{ solves } p) &gt; 0 \quad
+\forall p \in \mathcal{P}\]</span></p>
+<p>By the proposition, <span class="math inline">\(R\)</span> possesses
+intelligence. This is a <em>reductio ad absurdum</em>. The proposition
+fails to distinguish <strong>intelligent problem-solving</strong> from
+<strong>accidental or brute-force problem-solving</strong>.</p>
+<hr />
+<h3 id="objection-iii-the-expertise-exclusion-problem">Objection III —
+The Expertise Exclusion Problem</h3>
+<p>Many of the most impressive demonstrations of human intelligence
+involve <em>deep expertise</em> — solving problems that have been seen
+before in highly elaborated form. A chess grandmaster, a seasoned
+surgeon, or a master poet operates largely within familiar territory,
+deploying finely tuned schemas. As Simon and Chase (1973) showed, chess
+mastery consists largely of recognizing approximately:</p>
+<p><span class="math display">\[N_{\text{chess patterns}} \approx
+50{,}000\text{–}100{,}000 \text{ stored configurations}\]</span></p>
+<p>If intelligence requires novelty, then expertise is <em>inversely
+correlated</em> with intelligence — a conclusion that contradicts both
+intuition and empirical evidence.</p>
+<hr />
+<h3
+id="objection-iv-the-social-and-distributed-intelligence-problem">Objection
+IV — The Social and Distributed Intelligence Problem</h3>
+<p>The proposition is implicitly <strong>individualist</strong>: it
+imagines a single agent confronting a problem. But much intelligence is
+<strong>socially distributed</strong> (Hutchins, 1995). A team of
+scientists collectively solving a never-before-encountered disease does
+so through division of cognitive labor, institutional memory, peer
+review, and tool use. No individual member may solve a novel sub-problem
+alone. Does the group possess intelligence? The proposition provides no
+answer.</p>
+<p>Furthermore, intelligence is increasingly understood as
+<strong>extended</strong> (Clark &amp; Chalmers, 1998): an agent plus
+notebook, calculator, or internet may collectively solve novel problems
+that the biological agent cannot. If the competency resides in the
+system, not the organism, the proposition must be reformulated at the
+level of cognitive systems, not individual minds.</p>
+<hr />
+<h3 id="objection-v-the-evaluators-dilemma">Objection V — The
+Evaluator’s Dilemma</h3>
+<p>The proposition presupposes that we can determine whether a problem
+is <em>never-seen-before</em> for a given agent. But:</p>
+<ol type="1">
+<li>We have no reliable <strong>epistemic access</strong> to an agent’s
+prior problem-history.</li>
+<li>For biological agents, the relevant “training distribution” includes
+evolution, development, and culture — all opaque.</li>
+<li>For artificial agents, whether a test problem is out-of-distribution
+depends on the architecture, training data, and encoding — empirically
+difficult to verify.</li>
+</ol>
+<p>This renders the proposition <strong>operationally
+intractable</strong>. A criterion for intelligence that cannot be
+applied in practice is scientifically deficient.</p>
+<hr />
+<h2 id="iv.-structural-diagnosis">IV. Structural Diagnosis</h2>
+<p>The proposition can be represented as a biconditional definition:</p>
+<p><span class="math display">\[\text{Intelligent}(A) \iff
+\text{CanSolveNovelProblems}(A)\]</span></p>
+<p>The objections above establish:</p>
+<ul>
+<li><strong>Sufficiency fails</strong> (Objections I, II): solving novel
+problems does not <em>entail</em> intelligence.</li>
+<li><strong>Necessity fails</strong> (Objection III): intelligence does
+not <em>require</em> solving novel problems.</li>
+<li><strong>Scope is too narrow</strong> (Objection IV): intelligence
+extends beyond individual agents.</li>
+<li><strong>The criterion is unverifiable</strong> (Objection V): the
+definition cannot be applied reliably.</li>
+</ul>
+<p>The biconditional is therefore <strong>false in both
+directions</strong>.</p>
+<hr />
+<h2 id="v.-alternative-and-counter-propositions">V. Alternative and
+Counter-Propositions</h2>
+<h3
+id="counter-proposition-1-the-adaptive-efficiency-thesis">Counter-Proposition
+1 — The Adaptive Efficiency Thesis</h3>
+<p><span class="math display">\[\boxed{\text{Intelligence is the
+capacity to achieve goals with minimal resources across variable
+environments.}}\]</span></p>
+<p>This formulation retains the adaptive core of the original
+proposition but replaces <em>novelty</em> with <em>efficiency under
+variation</em>. It accommodates expert problem-solving (efficient
+deployment of schemas), novel problem-solving (adaptive generalization),
+and social cognition (coordinated efficient goal pursuit). Formally:</p>
+<p><span class="math display">\[I(A) \propto
+\frac{\mathbb{E}_{\mathcal{E}}[\text{GoalAchievement}(A,
+e)]}{\mathbb{E}_{\mathcal{E}}[\text{ResourceCost}(A, e)]}\]</span></p>
+<p>where <span class="math inline">\(\mathcal{E}\)</span> is a
+distribution of environments.</p>
+<hr />
+<h3
+id="counter-proposition-2-the-legg-hutter-universal-intelligence-thesis">Counter-Proposition
+2 — The Legg-Hutter Universal Intelligence Thesis</h3>
+<p>Drawing on Kolmogorov complexity and reinforcement learning, Legg and
+Hutter (2007) define intelligence as:</p>
+<p><span class="math display">\[\Upsilon(\pi) = \sum_{\mu \in
+\mathcal{E}} 2^{-K(\mu)} V_\mu^\pi\]</span></p>
+<p>where <span class="math inline">\(\pi\)</span> is an agent policy,
+<span class="math inline">\(\mathcal{E}\)</span> is the space of all
+computable reward environments, <span
+class="math inline">\(K(\mu)\)</span> is the Kolmogorov complexity of
+environment <span class="math inline">\(\mu\)</span>, and <span
+class="math inline">\(V_\mu^\pi\)</span> is the expected cumulative
+reward of <span class="math inline">\(\pi\)</span> in <span
+class="math inline">\(\mu\)</span>. This <strong>formalizes</strong> the
+adaptive thesis: intelligence is performance across all environments,
+weighted by their simplicity. Novel environments are just a subset.</p>
+<hr />
+<h3
+id="counter-proposition-3-the-metacognitive-thesis">Counter-Proposition
+3 — The Metacognitive Thesis</h3>
+<p><span class="math display">\[\boxed{\text{Intelligence is the
+capacity to monitor, evaluate, and regulate one&#39;s own cognitive
+processes.}}\]</span></p>
+<p>This shifts emphasis from <em>output</em> (problem solutions) to
+<em>process</em> (cognitive self-governance). Flavell’s (1979) concept
+of <em>metacognition</em> — thinking about one’s own thinking —
+identifies a dimension of intelligence absent from the original
+proposition. An agent that knows what it does not know, and adjusts its
+strategies accordingly, is intelligent in a profound sense even if it
+regularly encounters familiar problems.</p>
+<p>Formally, let <span class="math inline">\(\mathcal{K}(A)\)</span>
+denote the agent’s knowledge state and <span
+class="math inline">\(\hat{\mathcal{K}}(A)\)</span> its model of its own
+knowledge:</p>
+<p><span class="math display">\[\text{Metacognitive Intelligence}
+\propto \text{Accuracy}(\hat{\mathcal{K}}(A),
+\mathcal{K}(A))\]</span></p>
+<hr />
+<h3
+id="counter-proposition-4-the-relational-constructivist-thesis">Counter-Proposition
+4 — The Relational-Constructivist Thesis</h3>
+<p><span class="math display">\[\boxed{\text{Intelligence is the ongoing
+construction of meaning through interaction with problems, tools, and
+other agents.}}\]</span></p>
+<p>Rooted in Vygotsky’s (1978) zone of proximal development and Dewey’s
+pragmatism, this proposition understands intelligence not as a fixed
+competency but as a <strong>dynamic relational process</strong>. The
+intelligent agent is not one who <em>has</em> a capacity but one who
+<em>enacts</em> understanding through inquiry. This dissolves the
+novelty/familiarity binary: what matters is the <strong>quality of
+engagement</strong>, not the prior exposure history.</p>
+<hr />
+<h3
+id="counter-proposition-5-the-integrative-multi-factor-thesis">Counter-Proposition
+5 — The Integrative Multi-Factor Thesis</h3>
+<p>Acknowledging that intelligence is <strong>irreducibly
+multidimensional</strong>, we may define it as a weighted vector:</p>
+<p><span class="math display">\[\vec{I}(A) = \begin{pmatrix} w_1 \cdot
+G_f(A) \\ w_2 \cdot G_c(A) \\ w_3 \cdot \text{Meta}(A) \\ w_4 \cdot
+\text{Social}(A) \\ w_5 \cdot \text{Creative}(A)
+\end{pmatrix}\]</span></p>
+<p>where <span class="math inline">\(G_f\)</span> = fluid reasoning,
+<span class="math inline">\(G_c\)</span> = crystallized knowledge, <span
+class="math inline">\(\text{Meta}\)</span> = metacognitive accuracy,
+<span class="math inline">\(\text{Social}\)</span> = interpersonal and
+collective cognition, and <span
+class="math inline">\(\text{Creative}\)</span> = generative capacity.
+Weights <span class="math inline">\(w_i\)</span> are domain- and
+context-dependent. Novel problem-solving is captured primarily by <span
+class="math inline">\(G_f\)</span> and <span
+class="math inline">\(\text{Creative}\)</span>, but is neither necessary
+nor sufficient for the full vector to be impressive.</p>
+<hr />
+<h2 id="vi.-conclusion">VI. Conclusion</h2>
+<p>The proposition that <em>intelligence is the competency of solving
+never-seen-before problems</em> is a <strong>theoretically motivated but
+philosophically inadequate</strong> definition. Its virtues lie in
+centering adaptability, transfer, and generalization — genuine marks of
+sophisticated cognition. Its vices lie in its frame-relativity, its
+failure to exclude brute-force processes, its marginalization of
+expertise, its individualism, and its empirical unverifiability.</p>
+<p>The most defensible position treats intelligence as a <strong>family
+resemblance concept</strong> (in the Wittgensteinian sense): a cluster
+of overlapping cognitive capacities — fluid reasoning, metacognition,
+adaptive efficiency, social coordination, and creative construction — no
+single one of which is either necessary or sufficient. Novel
+problem-solving is a <em>particularly salient</em> expression of this
+cluster, but it is neither its essence nor its measure.</p>
+<p><span class="math display">\[\text{Intelligence} \neq
+\text{Novelty-Solving} \quad \text{but} \quad \text{Intelligence}
+\supset \text{Novelty-Solving}\]</span></p>
+<p>Intelligence <em>contains</em> the competency of solving
+never-seen-before problems as a proper subset. To identify the container
+with the subset is the central error of the proposition.</p>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li>Cattell, R. B. (1971). <em>Abilities: Their structure, growth, and
+action.</em> Houghton Mifflin.</li>
+<li>Clark, A., &amp; Chalmers, D. (1998). The extended mind.
+<em>Analysis</em>, 58(1), 7–19.</li>
+<li>Flavell, J. H. (1979). Metacognition and cognitive monitoring.
+<em>American Psychologist</em>, 34(10), 906–911.</li>
+<li>Gibson, J. J. (1979). <em>The ecological approach to visual
+perception.</em> Houghton Mifflin.</li>
+<li>Hutchins, E. (1995). <em>Cognition in the wild.</em> MIT Press.</li>
+<li>Legg, S., &amp; Hutter, M. (2007). Universal intelligence: A
+definition of machine intelligence. <em>Minds and Machines</em>, 17(4),
+391–444.</li>
+<li>Piaget, J. (1952). <em>The origins of intelligence in children.</em>
+International Universities Press.</li>
+<li>Simon, H. A., &amp; Chase, W. G. (1973). Skill in chess.
+<em>American Scientist</em>, 61(4), 394–403.</li>
+<li>Spearman, C. (1904). General intelligence, objectively determined
+and measured. <em>American Journal of Psychology</em>, 15(2),
+201–292.</li>
+<li>Turing, A. M. (1950). Computing machinery and intelligence.
+<em>Mind</em>, 59(236), 433–460.</li>
+<li>Vygotsky, L. S. (1978). <em>Mind in society: The development of
+higher psychological processes.</em> Harvard University Press.</li>
+</ul>
+<hr />
+<p><em>Submitted for scholastic review. All mathematical notation uses
+standard LaTeX conventions. This document is intended for academic
+discourse and invites rebuttal.</em></p>
+</body>
+</html>
