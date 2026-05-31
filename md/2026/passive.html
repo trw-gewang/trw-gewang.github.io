@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>passive</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 46em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="passive-investing-dilemma">Passive Investing Dilemma</h1>
+<p>Since the launch of the first retail index mutual fund by Vanguard in
+1976, the passive investment paradigm has expanded from a philosophical
+curiosity to a structural feature of global capital markets. By the
+mid-2020s, passive funds—including index mutual funds and
+exchange-traded funds (ETFs)—commanded assets under management in excess
+of $15 trillion in U.S. equity markets alone, eclipsing their active
+counterparts in aggregate flow dominance.</p>
+<p>In the canonical Grossman-Stiglitz framework, informed active traders
+perform the socially valuable function of incorporating dispersed
+private information into asset prices. Passive investors, by
+construction, abstain from this activity—they hold market-cap-weighted
+portfolios and trade only at the margin to track an index. If the share
+of passive capital becomes sufficiently large, the marginal incentive to
+gather and trade on information is diminished, raising the possibility
+of systematic deterioration in market quality.</p>
+<hr />
+<h2 id="price-discovery">Price Discovery</h2>
+<h3 id="the-grossman-stiglitz-framework">The Grossman-Stiglitz
+Framework</h3>
+<p>The foundational tension between passive investing and informational
+efficiency derives from Grossman and Stiglitz. Define the fraction of
+passive investors in the market as <span class="math inline">\(\lambda
+\in [0,1]\)</span>. Let <span class="math inline">\(p^*\)</span> denote
+the fundamental value of a risky asset and <span
+class="math inline">\(p\)</span> its observed market price. The
+<em>price efficiency</em> of the market can be characterized by the
+variance of the pricing error:</p>
+<p><span class="math display">\[\sigma_{\varepsilon}^2 = \text{Var}(p -
+p^*)\]</span></p>
+<p>In equilibrium, active informed traders invest in costly information
+acquisition up to the point where the marginal benefit—the expected
+profit from superior pricing—equals the marginal cost <span
+class="math inline">\(c\)</span> of information gathering. As <span
+class="math inline">\(\lambda\)</span> rises, the pool of active traders
+shrinks, reducing the aggregate information production:</p>
+<p><span class="math display">\[\frac{d\sigma_{\varepsilon}^2}{d\lambda}
+&gt; 0\]</span></p>
+<p>This result formalizes the intuition that passive investors are
+<em>free-riders</em> on the price discovery externality produced by
+active traders. At some critical threshold <span
+class="math inline">\(\lambda^*\)</span>, the active trading ecosystem
+may be insufficient to sustain informationally efficient prices.</p>
+<h3 id="the-feedback-loop">The Feedback Loop</h3>
+<p>A more dynamic version of this narrative considers how rising passive
+ownership affects the <em>incentive</em> to become informed. Let <span
+class="math inline">\(\Pi(\lambda)\)</span> denote the expected profit
+to an active trader as a function of the passive share:</p>
+<p><span class="math display">\[\Pi(\lambda) = \underbrace{\alpha \cdot
+(1 - \lambda)}_{\text{Trading opportunity}} \cdot
+\underbrace{\Delta(\lambda)}_{\text{Mispricing}} - c\]</span></p>
+<p>where <span class="math inline">\(\Delta(\lambda)\)</span> is the
+average magnitude of mispricing. The key insight is that <span
+class="math inline">\(\Delta(\lambda)\)</span> and <span
+class="math inline">\(\Pi(\lambda)\)</span> may be non-monotonic.
+Initially, as <span class="math inline">\(\lambda\)</span> rises,
+mispricings widen (increasing <span
+class="math inline">\(\Delta\)</span>), but the trading opportunity
+<span class="math inline">\(\alpha(1-\lambda)\)</span> shrinks. If the
+latter effect dominates, the equilibrium number of informed agents
+collapses, producing a discrete deterioration in price efficiency—a
+<em>tipping point</em> phenomenon.</p>
+<p>Empirically stocks with higher passive institutional ownership
+exhibit lower earnings response coefficients and greater
+post-announcement drift, consistent with degraded price discovery.</p>
+<hr />
+<h2 id="volatility-amplification">Volatility Amplification</h2>
+<h3 id="demand-side-pressure">Demand-Side Pressure</h3>
+<p>A second and perhaps more intuitive channel concerns the potential
+for passive fund flows to amplify asset price volatility. The mechanism
+operates through inelastic demand schedules induced by index inclusion
+and mechanical rebalancing.</p>
+<p>Let <span class="math inline">\(F_t\)</span> denote the aggregate net
+flow into passive funds at time <span class="math inline">\(t\)</span>.
+By construction, passive funds must translate flows into proportional
+purchases (or sales) across all index constituents. Define the
+<em>flow-induced price pressure</em> on stock <span
+class="math inline">\(i\)</span> as:</p>
+<p><span class="math display">\[\Delta p_{i,t}^{\text{flow}} =
+\frac{\omega_i \cdot F_t}{\text{Float}_i}\]</span></p>
+<p>where <span class="math inline">\(\omega_i\)</span> is the index
+weight of stock <span class="math inline">\(i\)</span> and <span
+class="math inline">\(\text{Float}_i\)</span> is its tradeable float.
+Critically, this pressure is <em>uninformed</em>—it bears no
+relationship to the fundamental value <span
+class="math inline">\(p_i^*\)</span>. Vayanos and Woolley (2013)
+construct a rational equilibrium model in which fund flows generate
+price momentum and subsequent reversals, both of which represent excess
+volatility relative to fundamentals.</p>
+<h3 id="the-inelastic-markets-hypothesis">The Inelastic Markets
+Hypothesis</h3>
+<p>Gabaix and Koijen develop the <em>Inelastic Markets Hypothesis</em>
+(IMH), which provides perhaps the most provocative formal treatment of
+this channel. Their central result, derived from a model with limited
+arbitrage and slow-moving capital, is that the aggregate market-level
+demand elasticity is far below unity:</p>
+<p><span class="math display">\[\varepsilon \equiv -\frac{d \ln Q}{d \ln
+P} \approx 0.1 - 0.3\]</span></p>
+<p>This implies that a <span class="math inline">\(\$1\)</span> trillion
+inflow into equity markets raises aggregate market capitalization by
+approximately <span class="math inline">\(\$5\)</span> trillion—a
+<em>multiplier</em> of five. The mechanism: with inelastic demand,
+price-taking behavior by passive funds means that flows must clear via
+large price movements. Formally, their price-impact equation is:</p>
+<p><span class="math display">\[\Delta \ln P_t = \frac{1}{\varepsilon}
+\cdot \frac{\Delta Q_t}{Q_t}\]</span></p>
+<p>where <span class="math inline">\(Q_t\)</span> is the quantity of
+shares demanded. This implies that the secular growth of passive AUM
+mechanically amplifies the sensitivity of market prices to macroeconomic
+sentiment shocks, redemption cycles, and risk-off episodes.</p>
+<h3 id="etf-specific-volatility-transmission">ETF-Specific Volatility
+Transmission</h3>
+<p>A distinct sub-narrative concerns exchange-traded funds specifically.
+Unlike mutual funds, ETFs trade continuously on secondary markets,
+creating a two-layer price system: the ETF’s market price <span
+class="math inline">\(p^{\text{ETF}}\)</span> and the intraday
+indicative NAV of its underlying basket. Arbitrage by authorized
+participants (APs) is supposed to keep these aligned. However,
+Ben-David, Franzoni, and Moussawi (2018) document that stocks with
+higher ETF ownership exhibit elevated <em>daily</em> and
+<em>intraday</em> return volatility, finding:</p>
+<p><span class="math display">\[\text{Volatility}_i \propto \text{ETF
+Ownership}_i\]</span></p>
+<p>The mechanism proposed is that ETF trading creates a <em>volatility
+conduit</em>: sentiment shocks, liquidity events, or margin calls in the
+ETF market are transmitted mechanically to all constituent securities,
+irrespective of their individual fundamentals. This was vividly
+illustrated during the Flash Crash of May 6, 2010, and the ETF
+dislocation events of August 24, 2015, when dozens of ETFs temporarily
+traded at discounts exceeding 30% to their underlying NAV.</p>
+<hr />
+<h2 id="liquidity-illusion">Liquidity Illusion</h2>
+<h3 id="the-layered-liquidity">The Layered Liquidity</h3>
+<p>A third narrative concerns the <em>liquidity illusion</em> engendered
+by the apparent ease of trading ETF shares. Superficially, ETFs offer
+high liquidity—they trade on exchanges with tight bid-ask spreads.
+However, critics argue that this surface liquidity is contingent on an
+underlying liquidity in the constituent assets that may be unavailable
+during stress conditions.</p>
+<p>Define two layers of liquidity:</p>
+<ul>
+<li><strong>Layer 1:</strong> ETF secondary market liquidity, measured
+by bid-ask spread <span class="math inline">\(s^{\text{ETF}}\)</span>
+and daily volume <span
+class="math inline">\(V^{\text{ETF}}\)</span>.</li>
+<li><strong>Layer 2:</strong> Constituent asset liquidity, measured by
+bid-ask spread <span class="math inline">\(s^{\text{basket}}\)</span>
+and depth <span class="math inline">\(D^{\text{basket}}\)</span>.</li>
+</ul>
+<p>Under normal conditions, AP arbitrage enforces:</p>
+<p><span class="math display">\[|p^{\text{ETF}} - \text{NAV}| \leq
+\frac{s^{\text{basket}}}{2} + \text{Transaction Costs}\]</span></p>
+<p>However, during liquidity crises, if the cost of transacting in the
+underlying basket rises sharply (i.e., <span
+class="math inline">\(s^{\text{basket}} \rightarrow \infty\)</span> for
+illiquid constituents), the arbitrage mechanism fails, and the ETF
+premium or discount can widen dramatically. This is not merely a pricing
+anomaly—it represents a withdrawal of effective liquidity precisely when
+investors most need it.</p>
+<h3 id="corporate-bond-etf">Corporate Bond ETF</h3>
+<p>The liquidity illusion hypothesis gained empirical urgency during the
+COVID-19 market stress of March 2020, when the largest investment-grade
+corporate bond ETF (LQD) traded at discounts of 3–5% to its NAV for
+multiple consecutive days—a historically extraordinary divergence.
+Falato, Hortaçsu, Li, and Shin (2021) document that bond mutual fund
+outflows during this period were amplified by ETF-induced selling, with
+a first-order fire-sale externality:</p>
+<p><span class="math display">\[\Delta \text{Yield}_{i,t} = \beta_1
+\cdot \text{Fund Outflow}_{i,t} + \beta_2 \cdot \text{ETF Ownership}_{i}
++ \epsilon_{i,t}\]</span></p>
+<p>Their estimates of <span class="math inline">\(\beta_2 &gt;
+0\)</span> and statistically significant imply that securities with
+higher ETF ownership experienced greater yield spikes during the stress
+episode, consistent with liquidity withdrawal rather than liquidity
+provision.</p>
+<h3 id="redemption">Redemption</h3>
+<p>A related formal mechanism is the <em>mutual fund fire sale</em>
+amplification model extended to the passive context. When passive funds
+face outflows <span class="math inline">\(R_t &gt; 0\)</span>, they are
+constrained to sell a proportional slice of their portfolio:</p>
+<p><span class="math display">\[\text{Sell}_{i,t} = \omega_i \cdot R_t
+\quad \forall i \in \mathcal{I}\]</span></p>
+<p>where <span class="math inline">\(\mathcal{I}\)</span> is the index
+constituent set. If <span class="math inline">\(R_t\)</span> is
+correlated across passive funds (as it tends to be during risk-off
+episodes), aggregate selling pressure concentrates mechanically across
+the same securities. The price impact per dollar sold is amplified by
+the shallow residual demand from a now-smaller active trading
+community:</p>
+<p><span class="math display">\[\Delta p_i = -\frac{\omega_i \cdot
+R_t}{\eta_i \cdot \text{Active AUM}_t}\]</span></p>
+<p>where <span class="math inline">\(\eta_i\)</span> is the price
+elasticity of active demand. As active AUM shrinks with rising <span
+class="math inline">\(\lambda\)</span>, this price impact grows without
+bound in the limit, implying that the same outflow shock produces
+increasingly severe price dislocations.</p>
+<hr />
+<h2 id="comovement">Comovement</h2>
+<h3 id="non-fundamental-return-comovement">Non-Fundamental Return
+Comovement</h3>
+<p>A fourth narrative concerns the distortion of the cross-sectional
+correlation structure of returns. Barberis, Shleifer, and Wurgler (2005)
+document a striking empirical regularity: upon addition to the S&amp;P
+500, a stock’s return correlation with existing index members increases
+discontinuously, while its correlation with non-index stocks decreases.
+This <em>index comovement</em> effect implies that passive investing
+induces a non-fundamental correlation structure across assets.</p>
+<p>The formal argument is as follows. Decompose the return <span
+class="math inline">\(r_{i,t}\)</span> of asset <span
+class="math inline">\(i\)</span> into:</p>
+<p><span class="math display">\[r_{i,t} = \underbrace{\beta_i^F \cdot
+F_t}_{\text{Fundamental factor}} + \underbrace{\beta_i^{\text{Index}}
+\cdot \tilde{F}_t^{\text{Index}}}_{\text{Non-fundamental index factor}}
++ \varepsilon_{i,t}\]</span></p>
+<p>where <span class="math inline">\(F_t\)</span> is a fundamental
+macroeconomic factor and <span
+class="math inline">\(\tilde{F}_t^{\text{Index}}\)</span> is a
+<em>non-fundamental</em> index flow factor driven by passive fund
+activity. As passive AUM grows, the loading <span
+class="math inline">\(\beta_i^{\text{Index}}\)</span> on the
+non-fundamental factor increases for all index constituents. The
+pairwise correlation between two index stocks <span
+class="math inline">\(i\)</span> and <span
+class="math inline">\(j\)</span> thus has a spurious component:</p>
+<p><span class="math display">\[\text{Corr}(r_i, r_j) = \frac{\beta_i^F
+\beta_j^F \sigma_F^2 + \beta_i^{\text{Index}} \beta_j^{\text{Index}}
+\sigma_{\tilde{F}}^2}{\sigma_i \sigma_j}\]</span></p>
+<p>The second term in the numerator grows with passive market share,
+inflating measured correlations beyond their fundamental level. This has
+direct implications for portfolio diversification—if correlations are
+artificially elevated, the risk-reduction benefits of diversification
+are overstated.</p>
+<h3 id="too-correlated-to-fail">“Too Correlated to Fail”</h3>
+<p>The comovement narrative connects to systemic risk through the
+concept of <em>endogenous correlation amplification</em>. In a stylized
+model, suppose the market consists of <span
+class="math inline">\(N\)</span> stocks, each with idiosyncratic
+variance <span class="math inline">\(\sigma_\varepsilon^2\)</span> and a
+common factor with variance <span
+class="math inline">\(\sigma_F^2\)</span>. In the absence of passive
+distortions, the portfolio variance of an equally weighted portfolio
+converges to <span class="math inline">\(\sigma_F^2\)</span> as <span
+class="math inline">\(N \rightarrow \infty\)</span>:</p>
+<p><span class="math display">\[\sigma_{\text{portfolio}}^2 = \sigma_F^2
++ \frac{\sigma_\varepsilon^2}{N} \xrightarrow{N \to \infty}
+\sigma_F^2\]</span></p>
+<p>Now introduce passive-driven non-fundamental covariance <span
+class="math inline">\(\Sigma^{\text{passive}}\)</span>. The portfolio
+variance becomes:</p>
+<p><span class="math display">\[\sigma_{\text{portfolio}}^2 = \sigma_F^2
++ \frac{\sigma_\varepsilon^2}{N} + \mathbf{w}^\top
+\Sigma^{\text{passive}} \mathbf{w}\]</span></p>
+<p>where <span class="math inline">\(\mathbf{w}\)</span> is the
+portfolio weight vector. Because <span
+class="math inline">\(\Sigma^{\text{passive}}\)</span> does not vanish
+with diversification (it is systematic, not idiosyncratic), it
+represents an irreducible floor on portfolio risk. This “phantom”
+systematic risk cannot be hedged through standard diversification and is
+invisible to models that rely on historical correlations without
+correcting for passive-induced comovement.</p>
+<hr />
+<h2 id="concluding-remarks">Concluding Remarks</h2>
+<p>The passive investment revolution, by removing informed discretionary
+traders from the price formation process and concentrating ownership in
+diversified hands, may compromise the self-correcting mechanisms that
+capital markets depend upon for stability.</p>
+<p>Each of the five channels—price discovery degradation, volatility
+amplification, liquidity illusion, non-fundamental comovement, and
+governance externalities (ownership of large institutions, not discussed
+here)—rests on well-specified theoretical foundations and is supported
+by at least partial empirical corroboration. At the same time, the
+countervailing arguments are far from negligible, and the macro-level
+verdict remains contested.</p>
+<p>The stakes are high. If the leading narratives are correct, the
+passive investment revolution—celebrated for delivering efficient,
+low-cost market exposure to ordinary investors—may undermine the very
+market qualities upon which its value proposition depends.</p>
+<hr />
+<p><span class="math inline">\(\textcopyright\)</span> <em>All rights
+reserved, Orange County Science Institute</em></p>
+</body>
+</html>

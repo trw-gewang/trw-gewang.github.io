@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>weather</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 46em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="global-extreme-weather-patterns">Global Extreme Weather
+Patterns</h1>
+<hr />
+<p>The study of extreme weather formation sits at the intersection of
+atmospheric dynamics, oceanography, radiation physics, and
+socio-environmental science. The World Climate Research Programme
+designates “understanding and predicting weather and climate extremes”
+as one of its “grand challenges,” reflecting the complexity of the
+underlying causal architecture.</p>
+<p>Extreme events are not uniformly the product of a single forcing
+mechanism. Most arise from the convergence of multiple drivers: a
+background warming trend that shifts probability distributions toward
+more severe outcomes, superimposed upon natural modes of variability —
+El Niño–Southern Oscillation (ENSO), the quasi-biennial oscillation
+(QBO), the polar vortex — and modulated by regional feedbacks such as
+sea-ice loss, soil moisture, and land use change.</p>
+<hr />
+<h2 id="climate-change-as-the-primary-driver">Climate Change as the
+Primary Driver</h2>
+<h3 id="greenhouse-gas-forcing-the-extreme-events">Greenhouse Gas
+Forcing the Extreme Events</h3>
+<p>The central consensus narrative of contemporary climate science holds
+that anthropogenic greenhouse gas (GHG) emissions — primarily CO₂, CH₄,
+and N₂O — have fundamentally altered the thermodynamic state of the
+atmosphere and oceans, systematically raising baseline temperatures and
+amplifying moisture availability, which in turn increases the potential
+severity of extremes across virtually all categories.</p>
+<p>The quantitative tools of “extreme event attribution” (EEA) have
+matured considerably. World Weather Attribution (WWA), the American
+Meteorological Society’s special collection <em>Explaining Extreme
+Events from a Climate Perspective</em>, and comparable frameworks now
+provide rapid post-event analyses. A synthesis of such studies found
+that, over the twelve-month period preceding May 2025, human-caused
+climate change added a worldwide average of 26 additional days of
+extreme heat annually.</p>
+<h3 id="clausius-clapeyron-constraint">Clausius-Clapeyron
+Constraint</h3>
+<p>A warmer atmosphere holds more water vapor — approximately 7% more
+per degree Celsius of warming according to the Clausius-Clapeyron
+relation. This thermodynamic amplifier intensifies precipitation
+extremes: the same atmospheric circulation that once produced moderate
+rainfall can now produce catastrophic inundation. Attribution studies
+examining Dubai’s April 2024 floods, among the most extreme rainfall
+episodes ever recorded in the Arabian Peninsula, concluded that similar
+synoptic situations in the current climate are associated with
+precipitation that is currently 10–40% more intense than it would have
+been in a pre-industrial climate.</p>
+<h3 id="cascading-extremes">Cascading Extremes</h3>
+<p>Human-induced warming does not increase all categories of extremes
+uniformly. Research shows that the hottest summer days have warmed at
+roughly the same pace as the global median temperature, while the
+coldest summer days have warmed more slowly, producing a stretching of
+the temperature distribution and greater variability in practice. Future
+projections under high-emission scenarios anticipate tropical hot day
+amplification emerging between 2024 and 2099. Compound events — where,
+for instance, drought preconditions a heatwave, or antecedent soil
+saturation compounds a flood — represent an emergent frontier, as
+warming alters not just event intensity but event co-occurrence
+probabilities across continental scales.</p>
+<hr />
+<h2 id="ocean-heat-content">Ocean Heat Content</h2>
+<p>Earth’s Energy Imbalance — the difference between incoming solar
+radiation absorbed by Earth and outgoing thermal radiation — is the
+fundamental measure of planetary heat accumulation. A persistently
+positive EEI means the planet is continuously storing energy, primarily
+in the oceans. Recent analyses confirm that the decadal trend in EEI has
+been increasing, amplifying the oceanic heat reservoir available to fuel
+weather systems.</p>
+<p>The 2023–2024 climate anomalies, described by UN Secretary-General
+António Guterres as a “master class in climate destruction,” were shaped
+substantially by this elevated baseline. Research found that when ENSO
+forcing is superimposed upon an already high positive EEI, the result is
+amplified, record-breaking impacts well beyond what ENSO phase alone
+would predict. If the positive EEI trend is sustained, natural
+variability cycles will increasingly drive climate extremes to
+unprecedented magnitudes.</p>
+<h3 id="storm-intensification">Storm Intensification</h3>
+<p>Elevated sea surface temperatures (SSTs) directly energize tropical
+cyclones by increasing available oceanic heat flux to the atmosphere.
+The relationship between warming SSTs and rapid intensification (RI)
+events — defined as a storm strengthening by 30 knots or more within 24
+hours — is now well-documented across multiple ocean basins. Translation
+speed changes further modulate this: as tropical cyclones slow, they
+spend more time over warm water and induce less cooling through ocean
+mixing, allowing greater intensity to develop.</p>
+<hr />
+<h2 id="ocean-atmosphere-teleconnections">Ocean-Atmosphere
+Teleconnections</h2>
+<h3 id="fundamental-modulator">Fundamental Modulator</h3>
+<p>The ENSO is the dominant mode of interannual climate variability and
+a primary large-scale driver of extreme weather globally. ENSO modulates
+atmospheric circulation through changes in the Walker Circulation, the
+Inter-Tropical Convergence Zone (ITCZ), and the subtropical jet streams,
+producing basin-wide patterns of altered precipitation, temperature, and
+tropical cyclone activity.</p>
+<p>Many of the extreme rainfall and drought events of 2024 were linked
+to atmospheric configurations associated with El Niño during winter
+2023–2024. ENSO does not, however, deterministically control individual
+events; stochastic weather-scale variability remains a key
+ingredient.</p>
+<h3 id="tropical-cyclone-intensification">Tropical Cyclone
+Intensification</h3>
+<p>Research provided a systematic global analysis of ENSO’s influence on
+tropical cyclone rapid intensification. During El Niño, RI events
+increase significantly in the eastern North Pacific, western North
+Pacific, and South Pacific, while the Atlantic experiences the opposite
+pattern due to enhanced vertical wind shear. During La Niña, these
+basin-level patterns approximately reverse.</p>
+<p>The teleconnection mechanisms identified include changes in
+large-scale vertical wind shear, relative humidity, and SST patterns —
+all of which modulate the thermodynamic favorability for genesis and
+intensification. ENSO’s interaction with the Indian Ocean Dipole (IOD)
+further shapes cyclone activity in the Arabian Sea and Bay of Bengal,
+with El Niño and a positive IOD creating favorable conditions for TC
+intensification through reduced wind shear and elevated SSTs.</p>
+<h3 id="enso-diversity">ENSO Diversity</h3>
+<p>Growing recognition of ENSO’s “flavors” — including the canonical
+Eastern Pacific El Niño, the Central Pacific or “Modoki” variant, and
+analogous La Niña subtypes — complicates both prediction and
+attribution. Each type produces distinct teleconnection patterns and
+regional impacts. Classification using Archetypal Analysis of sea-level
+anomalies has been shown to provide cleaner discrimination of ENSO
+phases when SST-based indices are ambiguous (arXiv, 2024). How
+anthropogenic warming will alter ENSO amplitude and teleconnection
+structure remains one of the most contested questions in climate
+science, with multi-model ensembles showing high inter-model
+uncertainty.</p>
+<hr />
+<h2
+id="arctic-amplification-jet-streams-and-atmospheric-blocking">Arctic
+Amplification, Jet Streams, and Atmospheric Blocking</h2>
+<h3 id="arctic-amplification">Arctic Amplification</h3>
+<p>One of the most consequential regional expressions of global warming
+is Arctic amplification (AA): the phenomenon whereby the Arctic is
+warming two to three times faster than the global average. This
+differential warming is driven by sea-ice loss (which reduces surface
+albedo and dramatically increases oceanic heat release to the
+atmosphere), lapse rate feedbacks, and atmospheric moisture
+transport.</p>
+<p>The Polar Amplification Model Intercomparison Project (PAMIP) has
+clarified that sea-ice loss is the critical driver of winter AA, while
+atmospheric heat convergence plays a larger role in summer. Robust
+consequences documented across models include local Arctic warming and
+moistening, equatorward shifts of the North Atlantic jet stream and
+storm track, and fewer severe cold extremes over North America.</p>
+<h3 id="jet-stream-perturbation">Jet Stream Perturbation</h3>
+<p>The strength of Earth’s jet streams is governed by the meridional
+(equator-to-pole) temperature gradient. As the Arctic warms
+disproportionately, this gradient weakens, reducing jet stream wind
+speeds, causing the jet to meander more in large-amplitude wave
+patterns, and promoting stalling behavior. A weakened, more sinuous jet
+stream produces two critically important consequences: (1) weather
+systems are steered along unusual paths, and (2) weather patterns become
+persistently locked in place rather than propagating normally.</p>
+<p>During the summer of 2025, the polar jet stream shifted anomalously
+far southward and weakened, steering larger storm systems into
+mid-latitude regions of the United States, contributing to intense
+flooding events. Combined with additional moisture supplied by warmer
+oceans and air masses, this configuration produced historically
+significant compound precipitation events.</p>
+<h3 id="quasi-resonant-amplification-and-blocking">Quasi-Resonant
+Amplification and Blocking</h3>
+<p>Large-scale undulations of the jet stream — Rossby waves — arise from
+the conservation of potential vorticity on a rotating planet. Variations
+in Rossby wave amplitude, phase, and propagation speed modulate
+temperature and precipitation across continental regions. When these
+waves slow or stagnate, particular weather regimes persist for weeks,
+producing prolonged heatwaves, cold spells, floods, and droughts.</p>
+<p>Research published in <em>Scientific Reports</em> and extended by
+subsequent work identified quasi-resonant amplification (QRA) as a key
+mechanism: waves with particular wavenumbers (zonal wavenumbers 6–8)
+become trapped within a mid-latitude atmospheric waveguide, their
+amplitude amplified by resonance, leading to persistent and extreme
+surface weather. Evidence suggests that QRA-favorable conditions have
+increased in recent decades, potentially linked to Arctic amplification
+narrowing the thermal gradient that defines the waveguide.</p>
+<p>A 2024 study in the <em>Quarterly Journal of the Royal Meteorological
+Society</em> found that Arctic amplification can directly enhance the
+modulational instability of planetary waves, resulting in amplified
+planetary wave activity and increased regional weather extremes.
+Separately, research published in <em>Communications Earth &amp;
+Environment</em> documented enhanced weather persistence under amplified
+Arctic conditions, providing observational evidence for the theorized
+stalling mechanism.</p>
+<p>However, a critical counterpoint exists: work by Ronalds et al. and
+others has confirmed the link between low Rossby wave phase speeds and
+extreme temperature events, while finding that observed decadal trends
+in phase speed did not unambiguously accompany the reduction in the
+low-level temperature gradient over the 1979–2018 period. This
+underscores ongoing scientific debate about the magnitude and
+consistency of the Arctic amplification → blocking pathway.</p>
+<hr />
+<h2 id="the-polar-vortex-and-stratospheric-dynamics">The Polar Vortex
+and Stratospheric Dynamics</h2>
+<h3 id="polar-vortex-structure">Polar Vortex Structure</h3>
+<p>The stratospheric polar vortex — a vast cyclonic circulation centered
+over the Arctic stratosphere — is a critical regulator of winter weather
+in the Northern Hemisphere. Its strength and stability determine whether
+cold Arctic air remains confined poleward or intrudes into lower
+latitudes. Sudden Stratospheric Warming (SSW) events can disrupt the
+vortex, triggering surface cold air outbreaks over North America and
+Europe weeks later.</p>
+<p>NOAA’s 2025 analysis documented the contrasting behavior of the polar
+vortex in successive winters: the 2023–2024 vortex was frequently
+weakened and displaced, allowing warmer air into the Arctic
+stratosphere, while the 2024–2025 season saw persistent intensification,
+with stratospheric winds at 60°N well above average — demonstrating that
+the vortex can modulate weather in both its disrupted and intensified
+states.</p>
+<h3 id="stratospherictropospheric-coupling">Stratospheric–Tropospheric
+Coupling</h3>
+<p>The polar vortex communicates its behavior downward through the
+troposphere via changes in the tropospheric jet stream and pressure
+patterns. A weakened vortex tends to favor a negative Arctic Oscillation
+(AO) state at the surface, associated with anomalous cold air outbreaks,
+while an intensified vortex promotes a positive AO, confining cold air
+to the Arctic. These couplings operate on timescales of 2–8 weeks,
+providing a source of extended-range predictability.</p>
+<p>Feedback mechanisms involving snow cover and sea-ice further modulate
+the vortex: reduced Arctic sea-ice in autumn has been linked to
+increased Eurasian snow cover anomalies, which through planetary wave
+forcing can weaken the vortex and predispose the following winter to
+cold extremes over parts of the Northern Hemisphere mid-latitudes.</p>
+<hr />
+<h2 id="concluding-remarks">Concluding Remarks</h2>
+<p>Global extreme weather formation is a multi-scale phenomenon shaped
+by a hierarchy of interacting forcing mechanisms. The scientific
+evidence is unambiguous that anthropogenic climate change, through
+greenhouse gas emissions, represents the dominant force systematically
+intensifying and redistributing extremes globally. Natural modes of
+variability — especially ENSO and the polar vortex cycle — act as
+important modulators of the timing and regional expression of events.
+Arctic amplification and the associated disruption of jet stream
+dynamics constitute an increasingly important secondary forcing pathway,
+particularly for mid-latitude extreme weather persistence.</p>
+<p>The events of 2023–2026 represent a convergence of these forcings at
+unusual magnitudes, offering both a warning of future extremes under
+continued warming and a living laboratory for refining multi-causal
+attribution methodologies. Improved observational coverage, coupled
+model intercomparison projects, and rapid attribution science will
+continue to sharpen the quantitative decomposition of these mechanisms
+and reduce uncertainties in projections of future extreme weather.</p>
+<hr />
+<p><span class="math inline">\(\textcopyright\)</span> <em>All rights
+reserved, Orange County Science Institute</em></p>
+</body>
+</html>

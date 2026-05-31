@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>energy_shock</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 46em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="global-energy-market-shocks">Global Energy Market Shocks</h1>
+<hr />
+<p>Since the oil embargo of 1973, economists, policy analysts, and
+development scholars have sought to understand why disruptions in energy
+markets propagate so rapidly and unevenly across the global economy. The
+question has never been more urgent. The period from 2021 to 2025
+witnessed a cascade of overlapping energy shocks — the post-pandemic
+demand surge, the Russia-Ukraine war’s weaponization of gas supplies,
+Middle Eastern geopolitical instability, and the Houthi disruption of
+Red Sea shipping routes — each triggering distinct and partially
+incompatible narratives about causes, transmission mechanisms, and
+appropriate policy responses.</p>
+<hr />
+<h2 id="neoclassical-supply-side-models">Neoclassical Supply-Side
+Models</h2>
+<p>The dominant paradigm in mainstream energy economics treats energy
+price shocks primarily as supply-side disturbances that raise input
+costs across the productive economy. In this tradition, energy —
+particularly oil — is modeled as an intermediate input whose price
+increases compress profit margins, reduce real wages, and depress
+aggregate output.</p>
+<p>This framework provided the analytical backbone for assessments of
+the 2022 shock. Computable General Equilibrium (CGE) models applied to
+the Russia-Ukraine conflict, such as those surveyed in IMF Working
+Paper, estimated GDP losses for Germany of between two and five percent
+of GDP in 2022–23 under realistic gas-substitution constraints, with the
+range highly sensitive to assumptions about short-term elasticities and
+the availability of liquefied natural gas (LNG) imports. The same
+literature found that higher European LNG demand raised international
+LNG prices, transmitting a secondary negative shock to Japan and South
+Korea — a “solidarity externality” rarely featured in bilateral trade
+analyses.</p>
+<p>The neoclassical framework’s strength lies in its tractability and
+its capacity to generate quantifiable welfare estimates. Its limitations
+are equally well-documented. The framework tends to assume rapid market
+clearing and smooth factor substitution, systematically underestimating
+adjustment costs for households that cannot substitute away from
+energy-intensive necessities and for firms in energy-intensive sectors
+with long capital cycles. It also abstracts from financial market
+amplification effects and from the political economy of price formation
+within producer cartels.</p>
+<h2 id="post-keynesian-and-structuralist-approaches">Post-Keynesian and
+Structuralist Approaches</h2>
+<p>Post-Keynesian economists, following in the tradition of Minsky and
+Kalecki, emphasize the demand-side amplification of energy shocks rather
+than the supply-side compression narrative. In this reading, energy
+price spikes primarily act as regressive redistributive shocks:
+purchasing power is transferred from energy-importing households to
+energy-exporting corporations and sovereigns, compressing aggregate
+demand. Where energy price increases feed into generalized inflation (as
+in 2022), central banks respond with interest rate increases that
+further suppress consumption and investment, constituting a secondary
+contractionary impulse layered atop the primary price shock.</p>
+<p>This narrative gained empirical support from the 2022–23 experience,
+during which the European Central Bank undertook a historic tightening
+cycle in response to energy-led inflation exceeding ten percent in the
+Eurozone — despite the fact that the underlying inflationary pressure
+was supply-side in origin and thus arguably beyond the reach of demand
+management.</p>
+<p>Structuralist economists add a further layer by emphasizing the
+inherited vulnerabilities that determine how differentially exposed
+economies absorb shocks. Economies with deep import dependence, narrow
+export bases, high energy intensity of industry, weak fiscal buffers,
+and limited access to international capital markets face compounded
+exposure: the initial shock is larger (as a share of import bills), the
+automatic stabilizers are weaker, and the adjustment financing is more
+expensive.</p>
+<h2 id="dependency-theory">Dependency Theory</h2>
+<p>A distinct scholarly strand approaches energy market shocks through
+the lens of structural dependency and unequal exchange. In this
+tradition, peripheral and semi-peripheral economies are locked into
+commodity export dependence that renders them chronically vulnerable to
+price volatility generated in core financial markets. High oil prices
+benefit some oil exporters in the short run while perpetuating the
+structural conditions — enclave extraction, limited value-added
+processing, weak domestic linkages — that sustain long-run
+underdevelopment.</p>
+<p>The World-Systems perspective has been productively applied to the
+2014–16 oil price collapse and its aftermath. IMF analysis of
+Sub-Saharan Africa found that the commodity “super-cycle” decline after
+2014 inflicted particularly severe and persistent damage on
+resource-intensive countries (RICs), with pre-existing structural
+vulnerabilities dramatically amplifying the transmission from
+terms-of-trade deterioration to output loss. The observation that
+oil-importing MENA economies failed to benefit from the 2014 oil price
+decline because lower remittances from oil-exporting neighbors offset
+any import cost savings constitutes a striking empirical illustration of
+how dependency networks transmit shocks in directions that aggregate
+models miss.</p>
+<p>The dependency framework’s empirical limitations include its relative
+difficulty in accommodating the heterogeneity of development paths
+within the Global South, the success cases of Norway’s sovereign wealth
+fund model, and the recent growth acceleration of some
+resource-dependent African economies. Its conceptual contribution
+nonetheless remains valuable precisely because mainstream models often
+treat the structure of global commodity markets as given rather than as
+itself a product of historically contingent power relations.</p>
+<h2 id="energy-justice">Energy Justice</h2>
+<p>A more recent and explicitly normative body of scholarship, drawing
+on political ecology, feminist economics, and social policy studies, has
+centered the concept of “energy justice” — the equitable distribution of
+energy access, costs, and benefits across social groups defined by
+class, race, gender, and geography. This literature emphasizes that
+energy price shocks are not uniformly experienced: they fall
+disproportionately on low-income households for whom energy is a
+non-discretionary expenditure constituting a high share of total
+consumption, on women who bear disproportionate household energy
+management burdens in low-income settings, and on indigenous communities
+whose livelihoods are most disrupted by both fossil fuel extraction and
+renewable energy infrastructure projects.</p>
+<p>IMF research on energy inflation and consumption inequality found
+that the distributional effects of energy inflation are substantially
+larger in developing economies than in advanced ones, and are magnified
+in contexts characterized by limited access to finance, weak monetary
+policy frameworks, and the absence of compensatory government transfers.
+The European Commission’s finding that approximately 10.6 percent of the
+EU population was unable to adequately heat their homes in 2023 — a
+figure expected to worsen — provides a concrete illustration of energy
+poverty as a developed-world phenomenon, not merely a characteristic of
+low-income countries.</p>
+<hr />
+<h2 id="assessment">Assessment</h2>
+<h3 id="the-limits-of-market-clearing-models">The Limits of Market
+Clearing Models</h3>
+<p>The neoclassical literature’s reliance on equilibrium frameworks and
+representative agent welfare calculations systematically understates the
+distributional severity of energy shocks. As the IMF’s own energy
+inflation and inequality research acknowledges, the “average response
+masks important heterogeneity”: distributional effects are substantially
+more severe in developing economies, in countries with limited financial
+access, and wherever government transfers do not compensate lower-income
+households during adverse income shocks. The welfare metric of aggregate
+GDP loss, while tractable, conceals the fact that identical GDP losses
+may correspond to catastrophically different living standard effects
+depending on how losses are distributed across the income spectrum.</p>
+<p>Furthermore, CGE and VAR models of energy shocks tend to treat
+institutional capacity — the ability to rapidly diversify supply,
+mobilize fiscal transfers, and manage distributional conflict — as
+exogenous. In practice, institutional capacity is itself a function of
+prior economic development, political stability, and governance quality.
+Models that treat Germany and Chad as differing only in structural
+parameters miss the qualitatively distinct political economy of
+adjustment in each context.</p>
+<h3 id="the-post-keynesian-dilemma">The Post-Keynesian Dilemma</h3>
+<p>The post-Keynesian emphasis on demand-side compression and the
+regressive redistribution implicit in energy price spikes generates
+important policy insights, particularly regarding the distributional
+consequences of monetarist responses to supply-side inflation. However,
+this framework faces its own analytical tensions. If energy price shocks
+are primarily regressive redistribution events, the policy prescription
+is fiscal compensation for affected households — but the fiscal space
+for such compensation is itself compressed precisely in the economies
+most exposed to the shock, creating a structural policy dilemma that the
+framework does not fully resolve.</p>
+<p>The 2022 experience revealed this tension acutely. European
+governments deployed unprecedented fiscal resources — the IMF estimated
+EU member states spent approximately two to three percent of GDP on
+energy support measures in 2022–23 — but the benefits of generalized
+price caps were widely criticized as poorly targeted, disproportionately
+benefiting higher-income households whose absolute energy expenditure is
+larger. The distributional criticism of blanket energy subsidy programs
+from within the post-Keynesian and energy justice literature is
+well-founded but leaves unresolved the political economy of targeted
+transfers, which require administrative capacity and political
+coalitions that are often absent in crisis conditions.</p>
+<h3 id="dependency-theory-limits">Dependency Theory Limits</h3>
+<p>The dependency and world-systems framework contributes essential
+structural context — particularly in explaining why oil-exporting
+countries in SSA have so consistently failed to convert commodity
+windfalls into broad-based development, and why “resource curse”
+dynamics persist across successive price cycles. However, the framework
+struggles to account for the heterogeneity of outcomes within the Global
+South, the successful cases of industrialization within
+commodity-exporting contexts (Malaysia, Botswana), and the degree to
+which poor governance outcomes reflect domestic political settlements
+rather than purely external structural constraints.</p>
+<p>The empirical claim that oil price shocks consistently benefit
+exporters while harming importers, while broadly valid as a first-order
+average effect, is substantially complicated by the MENA finding that
+oil importers failed to benefit from the 2014–16 price decline. This
+suggests that the dependency framework’s core bilateral logic (core
+extracts surplus from periphery via commodity terms of trade) needs to
+be embedded in a more complex network theory of regional interdependence
+to account for remittance linkages, regional trade patterns, and
+geopolitical alignment.</p>
+<h3 id="energy-justice-contested">Energy Justice Contested</h3>
+<p>The energy justice literature’s insistence on centering
+distributional outcomes, marginalized communities, and long-run
+structural equity is both intellectually indispensable and politically
+contested. The Oxfam (2025) critique of the green energy transition as
+“replicating the history of extractivism and exploitation” unless its
+logic is fundamentally restructured captures a genuine risk: that the
+geographic concentration of critical mineral extraction for renewable
+technologies, and the tendency of transition finance to flow toward
+investment-grade economies, risks creating new patterns of unequal
+exchange even as the carbon composition of global energy shifts.</p>
+<p>The critical limitations of the energy justice framework are
+methodological rather than normative. The framework is stronger in
+identifying who bears disproportionate costs than in specifying
+tractable policy mechanisms for redistribution, particularly at the
+international level where enforcement and coordination mechanisms are
+weakest. The UNFCCC’s Just Transition Work Programme, established at
+COP27 and refined subsequently, represents an institutional response to
+this gap — but its implementation has been subject to the same
+North-South distributional tensions it was designed to address.</p>
+<hr />
+<h2 id="points-of-convergence">Points of Convergence</h2>
+<p>Despite their methodological differences, the major scholarly
+narratives converge on several robust empirical claims:</p>
+<p>First, energy market shocks are distributionally regressive as a
+first-order effect in the vast majority of documented cases.
+Lower-income households devote higher shares of expenditure to energy
+and energy-intensive necessities; they have fewer options for
+substitution; and they are less well-protected by financial instruments
+(savings, hedging, diversified asset portfolios) against price
+volatility. This finding is robust across empirical methodologies and
+appears in CGE modeling, household survey analysis, and macroeconomic
+panel studies alike.</p>
+<p>Second, the distributional severity of any given shock is
+substantially mediated by institutional and policy capacity. Economies
+with functioning automatic stabilizers, targeted transfer mechanisms,
+competitive domestic energy markets, and diversified supply structures
+consistently suffer lower welfare losses from comparable external
+shocks. This institutional mediation is well-established empirically but
+tends to be treated as exogenous background rather than as itself an
+object of policy investment.</p>
+<p>Third, the Global South — and within it, low-income net energy
+importers — bears structurally disproportionate adjustment burdens. The
+combination of higher energy intensity of consumption, lower fiscal
+capacity, weaker monetary policy frameworks, and limited access to
+diversification options produces asymmetric vulnerability that is not
+merely a function of poverty (though poverty is central) but also of the
+structure of international commodity and financial markets.</p>
+<p>Fourth, energy supply shocks interact with food systems in ways that
+compound welfare effects, particularly in import-dependent low-income
+countries. The Russia-Ukraine war’s simultaneous disruption of energy
+and grain markets in 2022 illustrates how supply chain interdependencies
+can amplify the macroeconomic impact of energy shocks well beyond what
+energy-sector modeling alone would predict.</p>
+<hr />
+<h2 id="concluding-remarks">Concluding Remarks</h2>
+<p>Neoclassical supply-side models provide indispensable quantification
+tools but systematically understate distributional severity and abstract
+from institutional mediation. Post-Keynesian frameworks illuminate the
+demand-side compression and monetary policy dilemmas but leave
+unresolved the political economy of fiscal compensation. Dependency and
+world-systems perspectives provide essential structural context for
+understanding why the Global South bears disproportionate adjustment
+burdens but struggle with internal heterogeneity. Energy justice
+frameworks center equity and marginalization but require more tractable
+policy specification.</p>
+<p>The analysis suggests two overarching conclusions. First,
+institutional capacity — broadly understood as the state’s ability to
+govern energy markets, deploy targeted fiscal transfers, and manage
+distributional conflict — is the single most powerful mediator of the
+relationship between external energy shocks and domestic welfare
+outcomes. Building this capacity in low-income countries deserves far
+greater scholarly and policy attention than it currently receives.
+Second, the interaction between energy price shocks and pre-existing
+distributional structures means that standard macroeconomic impact
+assessments dramatically understate welfare losses in already-unequal
+societies; embedding distributional analysis in energy shock research is
+not a peripheral concern but a central empirical requirement.</p>
+<hr />
+<p><span class="math inline">\(\textcopyright\)</span> <em>All rights
+reserved, Orange County Science Institute</em></p>
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>fed_rate</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 46em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="federal-reserve-bond-yield">Federal Reserve Bond Yield</h1>
+<p>The yield on U.S. Treasury securities constitutes the backbone of
+global financial pricing. As the purportedly risk-free benchmark against
+which all risky assets are measured, fluctuations in Treasury yields
+propagate — instantaneously and with varying lags — through corporate
+debt, equities, and commodity-linked stores of value such as gold and
+silver. The Federal Reserve’s control over the short end of the yield
+curve via the federal funds rate target, and its influence over longer
+maturities through balance sheet policy and forward guidance, renders it
+the most consequential single institution in global capital markets.</p>
+<p>The period 2025–2026 has presented an especially instructive case
+study. Following a sequence of rate cuts in late 2024 and early 2025,
+the Federal Reserve found itself confronting a renewed surge in
+long-term yields driven by fiscal deficit expansion under the “One Big
+Beautiful Bill Act,” resurgent inflationary pressures, and a leadership
+transition at the Federal Open Market Committee (FOMC). As of May 2026,
+the 10-year Treasury yield has climbed toward 4.57% and the 30-year has
+breached 5%, while traders have repriced the probability of near-term
+rate cuts to near zero — and elevated the probability of rate hikes.</p>
+<hr />
+<h2 id="the-term-structure-of-interest-rates">The Term Structure of
+Interest Rates</h2>
+<h3 id="the-expectations-hypothesis">The Expectations Hypothesis</h3>
+<p>The simplest theoretical account of the yield curve is the <em>pure
+expectations hypothesis</em> (PEH), which holds that the <span
+class="math inline">\(n\)</span>-period yield <span
+class="math inline">\(y_t^{(n)}\)</span> equals the average of expected
+future short rates:</p>
+<p><span class="math display">\[y_t^{(n)} = \frac{1}{n} \sum_{k=0}^{n-1}
+\mathbb{E}_t[r_{t+k}] + \text{const.}\]</span></p>
+<p>where <span class="math inline">\(r_{t+k}\)</span> denotes the short
+rate prevailing at time <span class="math inline">\(t+k\)</span>. Under
+the PEH, the yield curve steepens when markets expect future rates to
+rise, and inverts when they anticipate cuts.</p>
+<h3 id="the-affine-term-structure-model">The Affine Term Structure
+Model</h3>
+<p>Empirically, a term premium <span
+class="math inline">\(\phi_t^{(n)}\)</span> is required to match
+observed data. The affine term structure model (ATM) decomposes nominal
+yields as:</p>
+<p><span class="math display">\[y_t^{(n)} = \frac{1}{n} \sum_{k=0}^{n-1}
+\mathbb{E}_t[r_{t+k}] + \phi_t^{(n)}\]</span></p>
+<p>The term premium compensates investors for uncertainty about the
+future path of short rates, duration risk, and liquidity. During periods
+of fiscal uncertainty — as observed in early 2026 — the term premium
+rises, pushing long-dated yields above what the pure rate-expectations
+path would imply, a phenomenon market participants have labeled “bond
+vigilantism.”</p>
+<h3 id="decomposition-of-nominal-yields">Decomposition of Nominal
+Yields</h3>
+<p>A crucial decomposition separates nominal yields into real components
+and inflation compensation:</p>
+<p><span class="math display">\[y_t^{(n)} = r_t^{(n)} + \pi_t^{e,(n)} +
+\text{TP}_t^{(n)}\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(r_t^{(n)}\)</span> = real yield, proxied
+by the TIPS yield at maturity <span
+class="math inline">\(n\)</span></li>
+<li><span class="math inline">\(\pi_t^{e,(n)}\)</span> = breakeven
+inflation rate over <span class="math inline">\(n\)</span> years</li>
+<li><span class="math inline">\(\text{TP}_t^{(n)}\)</span> = nominal
+term premium</li>
+</ul>
+<p>This decomposition is central to the analysis of precious metals,
+since gold pricing responds asymmetrically to real rates versus
+inflation expectations.</p>
+<h3 id="the-yield-curve">The Yield Curve</h3>
+<p>The slope of the yield curve — commonly measured as the 10-year minus
+2-year spread (<span class="math inline">\(\Delta_{10-2}\)</span>) — has
+served as a leading economic indicator:</p>
+<p><span class="math display">\[\Delta_{10-2,t} = y_t^{(10)} -
+y_t^{(2)}\]</span></p>
+<p>Sustained inversion (<span class="math inline">\(\Delta_{10-2} &lt;
+0\)</span>) preceded the recessions of 1990–91, 2000–01, and 2007–09.
+The spread turned positive at 0.49% in June 2025 following a prolonged
+inversion, signaling a re-steepening consistent with an easing cycle —
+though subsequently contested by renewed long-yield pressure.</p>
+<hr />
+<h2 id="the-policy-rate-transmission-mechanism">The Policy Rate
+Transmission Mechanism</h2>
+<h3 id="the-taylor-rule">The Taylor Rule</h3>
+<p>The Federal Reserve’s interest rate setting is often modeled through
+variants of the Taylor Rule:</p>
+<p><span class="math display">\[r_t^* = r_{\text{neutral}} + \alpha
+(\pi_t - \pi^*) + \beta (y_t^{\text{gap}})\]</span></p>
+<p>where <span class="math inline">\(r^*\)</span> is the nominal policy
+rate, <span class="math inline">\(r_{\text{neutral}}\)</span> is the
+neutral real rate, <span class="math inline">\(\pi_t\)</span> is
+realized inflation, <span class="math inline">\(\pi^*\)</span> is the 2%
+inflation target, and <span
+class="math inline">\(y_t^{\text{gap}}\)</span> is the output gap. With
+April 2026 CPI running at 3.8% year-over-year, well above target, the
+rule implies a significantly elevated policy rate, explaining the Fed’s
+pause.</p>
+<h3 id="transmission-channels">Transmission Channels</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Mechanism</th>
+<th>Primary Asset Affected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Expectations Channel</strong></td>
+<td>Shifts expected path of short rates</td>
+<td>All maturities</td>
+</tr>
+<tr>
+<td><strong>Portfolio Balance Channel</strong></td>
+<td>QE/QT alters supply of long bonds</td>
+<td>Long-dated Treasuries</td>
+</tr>
+<tr>
+<td><strong>Credit Channel</strong></td>
+<td>Changes in bank lending conditions</td>
+<td>Corporate bonds</td>
+</tr>
+<tr>
+<td><strong>Wealth Channel</strong></td>
+<td>Asset price changes alter consumption</td>
+<td>Equities</td>
+</tr>
+<tr>
+<td><strong>Exchange Rate Channel</strong></td>
+<td>Rate differentials shift currency</td>
+<td>Commodities (USD-denominated)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="corporate-bond-markets">Corporate Bond Markets</h2>
+<h3 id="the-credit-spread">The Credit Spread</h3>
+<p>The yield on a corporate bond of maturity <span
+class="math inline">\(n\)</span> and credit rating <span
+class="math inline">\(\rho\)</span> can be expressed as:</p>
+<p><span class="math display">\[y_t^{(\rho, n)} =
+y_t^{(n,\text{Treasury})} + s_t^{(\rho)}\]</span></p>
+<p>where <span class="math inline">\(s_t^{(\rho)}\)</span> is the
+option-adjusted spread (OAS). The OAS captures market perceptions of
+default probability <span class="math inline">\(p_t^{D}\)</span>,
+recovery rates <span class="math inline">\(\mathcal{R}\)</span>, and
+illiquidity premia <span class="math inline">\(\lambda_t\)</span>:</p>
+<p><span class="math display">\[s_t^{(\rho)} \approx \frac{p_t^{D} \cdot
+(1 - \mathcal{R})}{n} + \lambda_t\]</span></p>
+<p>Under the Merton structural model, default probability is an
+increasing function of financial leverage and asset volatility:</p>
+<p><span class="math display">\[p_t^{D} =
+\mathcal{N}\left(-\frac{\ln(V_t/D_t) + (\mu - \frac{1}{2}\sigma_V^2)
+T}{\sigma_V \sqrt{T}}\right)\]</span></p>
+<p>where <span class="math inline">\(V_t\)</span> is firm asset value,
+<span class="math inline">\(D_t\)</span> is debt face value, and <span
+class="math inline">\(\sigma_V\)</span> is asset volatility.</p>
+<h3 id="investment-grade-vs.-high-yield-spreads">Investment-Grade
+vs. High-Yield Spreads</h3>
+<p>As of late 2025, investment-grade and high-yield spreads remained
+well below historical averages:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Current Spread (bps)</th>
+<th>Historical Average (bps)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AAA Corporate / 10Y Treasury</td>
+<td>~109–112</td>
+<td>~122</td>
+</tr>
+<tr>
+<td>BAA Corporate / 10Y Treasury</td>
+<td>~172–174</td>
+<td>~228</td>
+</tr>
+<tr>
+<td>BB/B High Yield</td>
+<td>~299</td>
+<td>~418</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-interest-rate-spread-interaction">The Interest Rate-Spread
+Interaction</h3>
+<p>As Treasury yields rise, two competing forces act on corporate bond
+total yields:</p>
+<p><span class="math display">\[\frac{\partial y_t^{(\rho,n)}}{\partial
+y_t^{(n,\text{Treasury})}} = 1 + \frac{\partial s_t^{(\rho)}}{\partial
+y_t^{(n,\text{Treasury})}}\]</span></p>
+<p>Empirically, during moderate yield increases, spreads may remain
+stable or compress (risk-on regimes). However, when yield increases are
+driven by inflation fears or fiscal stress — as in 2026 — default risk
+rises, generating <em>spread widening</em>:</p>
+<p><span class="math display">\[\frac{\partial s_t^{(\rho)}}{\partial
+y_t^{(n,\text{Treasury})}} &gt; 0 \quad \text{(stagflationary
+regime)}\]</span></p>
+<p>This compounding effect means corporate bond holders suffer both
+through direct mark-to-market losses (as risk-free yields rise) and
+through OAS widening.</p>
+<h3 id="portfolio-strategy-implications">Portfolio Strategy
+Implications</h3>
+<p>From a portfolio construction standpoint, the Sharpe ratio of
+investment-grade bonds:</p>
+<p><span class="math display">\[\text{SR}^{\text{IG}} =
+\frac{\mathbb{E}[R^{\text{IG}}] - r_f}{\sigma^{\text{IG}}}\]</span></p>
+<p>has deteriorated as the risk-free rate <span
+class="math inline">\(r_f\)</span> has risen without commensurate
+increase in <span
+class="math inline">\(\mathbb{E}[R^{\text{IG}}]\)</span> (since spreads
+remain compressed). This supports a preference shift toward the
+short-to-intermediate segment of the investment-grade curve, as
+recommended by multiple strategists in 2026.</p>
+<hr />
+<h2 id="equity-markets">Equity Markets</h2>
+<h3 id="the-dividend-discount-model">The Dividend Discount Model</h3>
+<p>The intrinsic value of an equity index under the constant-growth
+Dividend Discount Model (Gordon Growth Model) is:</p>
+<p><span class="math display">\[P_t = \frac{D_{t+1}}{r - g}\]</span></p>
+<p>where <span class="math inline">\(D_{t+1}\)</span> is the next-period
+dividend, <span class="math inline">\(r\)</span> is the required return,
+and <span class="math inline">\(g\)</span> is the long-run earnings
+growth rate. The required return decomposes as:</p>
+<p><span class="math display">\[r = r_f + \text{ERP}\]</span></p>
+<p><span class="math display">\[r = y_t^{(10)} + \text{ERP}\]</span></p>
+<p>As <span class="math inline">\(y_t^{(10)}\)</span> rises, all else
+equal, <span class="math inline">\(P_t\)</span> falls, since the
+denominator <span class="math inline">\(r - g\)</span> increases.</p>
+<h3 id="the-equity-risk-premium-in-2026">The Equity Risk Premium in
+2026</h3>
+<p>The implied Equity Risk Premium (ERP) is computed as:</p>
+<p><span class="math display">\[\text{ERP}_t = \frac{E_t}{P_t} -
+y_t^{(10)}\]</span></p>
+<p>where <span class="math inline">\(E_t/P_t\)</span> is the forward
+earnings yield of the S&amp;P 500 (the inverse of the price-to-earnings
+ratio). As of April 2026, with the S&amp;P 500 trading at approximately
+21× forward earnings (earnings yield ≈ 4.76%) and the 10-year Treasury
+at ≈ 4.29%, the implied ERP has compressed to:</p>
+<p><span class="math display">\[\text{ERP}_{\text{April 2026}} \approx
+4.76\% - 4.29\% = 0.47\%\]</span></p>
+<p>This near-vanishing ERP represents a multi-decade low, a level not
+seen outside the 1999–2000 dot-com peak:</p>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Approximate ERP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Historical Average (65yr)</td>
+<td>300–500 bps</td>
+</tr>
+<tr>
+<td>Post-GFC Mean (2010–2020)</td>
+<td>~350 bps</td>
+</tr>
+<tr>
+<td>Late 2023</td>
+<td>~200 bps</td>
+</tr>
+<tr>
+<td>Early 2025</td>
+<td>~100 bps</td>
+</tr>
+<tr>
+<td>April 2026</td>
+<td>~35–47 bps</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-dcf-sensitivity-to-yield-changes">The DCF Sensitivity to
+Yield Changes</h3>
+<p>For a stylized equity with earnings growing at rate <span
+class="math inline">\(g\)</span> and valued on a perpetuity basis:</p>
+<p><span class="math display">\[P_t = \frac{E_1}{r_f + \text{ERP} -
+g}\]</span></p>
+<p>Taking the partial derivative with respect to <span
+class="math inline">\(r_f\)</span>:</p>
+<p><span class="math display">\[\frac{\partial P_t}{\partial r_f} =
+-\frac{E_1}{(r_f + \text{ERP} - g)^2} &lt; 0\]</span></p>
+<p>The <em>duration</em> of a growth stock (high <span
+class="math inline">\(g\)</span>, low dividend payout) is
+disproportionately sensitive to yield changes. For a technology stock
+with <span class="math inline">\(g = 12\%\)</span>, a 100 bps rise in
+<span class="math inline">\(r_f\)</span> may reduce intrinsic value by
+25–40%, compared to 10–15% for a utility company with <span
+class="math inline">\(g = 2\%\)</span>.</p>
+<h3 id="the-ai-earnings-narrative">The AI Earnings Narrative</h3>
+<p>Empirically, the S&amp;P 500 has demonstrated unusual resilience to
+rising discount rates in 2025–2026. This is explained by a positive
+revision to forward earnings <span class="math inline">\(E_1\)</span>,
+particularly in the technology and artificial intelligence sector, which
+has partially offset the denominator pressure:</p>
+<p><span class="math display">\[\Delta P_t = \underbrace{\frac{\Delta
+E_1}{r - g}}_{\text{Earnings uplift (AI)}} - \underbrace{\frac{E_1 \cdot
+\Delta r}{(r-g)^2}}_{\text{Discount rate drag}}\]</span></p>
+<p>In aggregate, the AI-driven semiconductor and hyperscaler earnings
+growth has kept equity multiples elevated, creating a situation where
+equities are <em>simultaneously expensive relative to history</em> and
+<em>expensive relative to bonds</em> — a historically unusual and
+cautionary combination.</p>
+<hr />
+<h2 id="precious-metals">Precious Metals</h2>
+<h3 id="the-real-yield-model-for-gold">The Real Yield Model for
+Gold</h3>
+<p>The theoretical pricing of gold is grounded in its role as a
+non-yielding asset. The opportunity cost of holding gold is the real
+yield:</p>
+<p><span class="math display">\[\text{Opportunity cost}_t =
+r_t^{\text{real}} = y_t^{(10)} - \pi_t^{e,(10)}\]</span></p>
+<p>The equilibrium gold price <span class="math inline">\(G_t\)</span>
+adjusts inversely to the real yield:</p>
+<p><span class="math display">\[G_t \propto \exp\left(-\delta \cdot
+r_t^{\text{real}}\right) \cdot \Phi_t\]</span></p>
+<p>where <span class="math inline">\(\delta\)</span> captures gold’s
+sensitivity to real rates and <span
+class="math inline">\(\Phi_t\)</span> represents a composite factor
+encompassing geopolitical risk, central bank demand, USD strength, and
+safe-haven flows. When real yields are negative (i.e., when <span
+class="math inline">\(\pi_t^{e,(10)} &gt; y_t^{(10)}\)</span>), gold
+tends to appreciate sharply, as the opportunity cost of non-yielding
+assets falls.</p>
+<h3 id="precious-metals-vs.-bonds">Precious Metals vs. Bonds</h3>
+<p>A central tension in current markets is captured by the following
+inequality:</p>
+<p><span class="math display">\[\text{Bond market view:} \quad \pi^{e}
+&lt; \pi^{\text{target}} \implies \text{yields fair} \implies
+\text{tighten}\]</span></p>
+<p><span class="math display">\[\text{Precious metals market view:}
+\quad \pi^{\text{realized}} &gt; \pi^{\text{target}} \implies
+\text{yields understated} \implies \text{buy gold}\]</span></p>
+<p>This divergence reflects fundamentally different priors about the
+duration and persistence of the inflationary shock. Gold reached
+historic highs near <strong>$5,589/oz</strong> in early 2026 (and has
+since retreated to approximately <strong>$4,700/oz</strong> as of
+mid-May 2026), while silver touched levels not seen since the 1980s
+before its largest single-day decline since that era — a near
+<strong>30% drawdown</strong> in late January 2026 — following the
+resolution of Fed Chair succession uncertainty.</p>
+<h3 id="central-bank-demand">Central Bank Demand</h3>
+<p>Separate from retail and institutional investment, central bank gold
+accumulation has operated at record pace throughout 2024–2026, providing
+a structural demand floor:</p>
+<p><span class="math display">\[G_t^{\text{CB}} = \int_0^T \dot{M}_t \,
+dt\]</span></p>
+<p>where <span class="math inline">\(\dot{M}_t\)</span> represents the
+rate of central bank purchases. This accumulation reflects portfolio
+diversification away from USD-denominated reserve assets amid
+geopolitical fragmentation — itself a function of the same forces that
+have elevated term premia in U.S. Treasuries.</p>
+<hr />
+<h2 id="cross-asset-interactions">Cross-Asset Interactions</h2>
+<h3 id="the-stock-bond-correlation">The Stock-Bond Correlation</h3>
+<p>A defining parameter for multi-asset portfolio construction is the
+correlation between equity and bond returns:</p>
+<p><span class="math display">\[\rho_{S,B} = \text{Corr}(\Delta
+P_t^{\text{equity}}, \Delta P_t^{\text{bond}})\]</span></p>
+<p>Historically, <span class="math inline">\(\rho_{S,B}\)</span> was
+positive before 2000 (both assets rallied in growth expansions) and
+turned negative post-2000 (bonds served as flight-to-quality hedges
+against equity drawdowns). However, in an inflationary, stagflationary,
+or fiscal-stress environment:</p>
+<p><span class="math display">\[\rho_{S,B} \to +1 \quad \text{as
+inflation dominates}\]</span></p>
+<p>This correlation regime shift has been observed in both 2022 and, to
+a lesser degree, 2025–2026, undermining the traditional 60/40 portfolio
+diversification benefit.</p>
+<h3 id="portfolio-duration-risk">Portfolio Duration Risk</h3>
+<p>The modified duration <span
+class="math inline">\(\mathcal{D}^*\)</span> of a bond measures price
+sensitivity to yield changes:</p>
+<p><span class="math display">\[\mathcal{D}^* = -\frac{1}{P}
+\frac{dP}{dy} = \frac{\sum_{t=1}^{T} t \cdot C_t (1+y)^{-t}}{P \cdot
+(1+y)}\]</span></p>
+<p>A rise from <span class="math inline">\(y = 4.0\%\)</span> to <span
+class="math inline">\(y = 4.6\%\)</span> (roughly the move from late
+2025 to May 2026) for a 10-year zero-coupon bond implies a price loss of
+approximately:</p>
+<p><span class="math display">\[\Delta P \approx -\mathcal{D}^* \cdot
+\Delta y \cdot P = -10 \times 0.006 \times P = -6\%\]</span></p>
+<p>For long-duration instruments (20–30 year Treasuries, growth
+equities), this loss is proportionally larger — explaining the elevated
+stress among pension funds and insurance companies in the current
+environment.</p>
+<hr />
+<h2 id="current-market-context-20252026">Current Market Context:
+2025–2026</h2>
+<h3 id="the-fiscal-monetary-nexus">The Fiscal-Monetary Nexus</h3>
+<p>The current yield environment is the product of an unusual <em>fiscal
+dominance</em> scenario. The “One Big Beautiful Bill Act” of 2025
+significantly widened the structural fiscal deficit, raising the supply
+of Treasury debt at precisely the moment that Federal Reserve
+quantitative tightening (QT) was reducing central bank demand for that
+debt. This supply-demand imbalance has contributed to the term premium
+rising to its highest levels since 2007, with the 30-year Treasury yield
+breaching the 5% threshold.</p>
+<p>The interaction can be expressed through the government budget
+constraint:</p>
+<p><span class="math display">\[\Delta B_t = G_t - T_t + r_t
+B_{t-1}\]</span></p>
+<p>where <span class="math inline">\(\Delta B_t\)</span> is the change
+in outstanding debt, <span class="math inline">\(G_t - T_t\)</span> is
+the primary deficit, and <span class="math inline">\(r_t
+B_{t-1}\)</span> is the interest burden. As <span
+class="math inline">\(r_t\)</span> rises and <span
+class="math inline">\(B_{t-1}\)</span> is already elevated, the debt
+servicing cost becomes self-reinforcing, raising long-run default and
+inflation concerns — and hence yields further.</p>
+<h3 id="the-geopolitical-premium">The Geopolitical Premium</h3>
+<p>Geopolitical shocks — including the Middle East oil supply disruption
+(driving the April 2026 CPI to 3.8% YoY), the Greenland Trade War tariff
+escalation against European NATO allies, and the Iran war — have
+simultaneously:</p>
+<ul>
+<li>Elevated oil prices, feeding into inflation expectations and nominal
+yields</li>
+<li>Increased safe-haven demand for gold and U.S. Treasuries
+(temporarily)</li>
+<li>Depressed corporate earnings outlooks through supply chain
+disruption and increased input costs</li>
+</ul>
+<p>This creates a non-standard monetary policy transmission environment
+where the <em>stagflation</em> scenario — rising prices alongside
+slowing growth — makes the Taylor Rule ambiguous in its
+prescriptions.</p>
+<h3 id="cross-asset-reality-may-2026">Cross-Asset Reality (May
+2026)</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Asset / Metric</th>
+<th>Current Level</th>
+<th>Direction</th>
+<th>Key Driver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fed Funds Rate Target</td>
+<td>~4.25–4.50%</td>
+<td>Pause/rising risk</td>
+<td>Inflation persistence</td>
+</tr>
+<tr>
+<td>10-Year Treasury Yield</td>
+<td>~4.57%</td>
+<td>Rising</td>
+<td>Fiscal deficit + inflation</td>
+</tr>
+<tr>
+<td>30-Year Treasury Yield</td>
+<td>&gt;5.00%</td>
+<td>Rising</td>
+<td>Term premium + bond vigilantes</td>
+</tr>
+<tr>
+<td>IG Corporate Spread</td>
+<td>~110–120 bps</td>
+<td>Stable/slight widening</td>
+<td>Credit resilience</td>
+</tr>
+<tr>
+<td>HY Corporate Spread</td>
+<td>~299 bps</td>
+<td>Potential widening</td>
+<td>Refinancing risk</td>
+</tr>
+<tr>
+<td>S&amp;P 500 Implied ERP</td>
+<td>~35–50 bps</td>
+<td>Near historic low</td>
+<td>AI earnings offset</td>
+</tr>
+<tr>
+<td>Gold Price</td>
+<td>~$4,700/oz</td>
+<td>Elevated, volatile</td>
+<td>Real yield + geopolitics</td>
+</tr>
+<tr>
+<td>Silver Price</td>
+<td>~$85/oz</td>
+<td>Elevated, volatile</td>
+<td>Industrial + monetary</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="concluding-remarks">Concluding Remarks</h2>
+<p>The Federal Reserve’s bond yield architecture — encompassing the
+policy rate, the yield curve shape, real versus nominal rate
+decomposition, and term premium dynamics — constitutes a
+multidimensional variable that simultaneously prices risk across all
+major asset classes. The 2025–2026 period has been particularly
+instructive in its revelation of the limits of the conventional post-GFC
+low-rate paradigm.</p>
+<p>In corporate bond markets, historically tight credit spreads persist
+despite elevated base rates, suggesting either remarkable confidence in
+corporate balance sheets or a structural mispricing that faces
+correction as refinancing walls approach. In equity markets, the
+near-disappearance of the equity risk premium (ERP ≈ 35–47 bps) places
+the S&amp;P 500 in historically rarefied, and cautionary, territory —
+where only sustained AI-driven earnings growth prevents a multiple
+compression episode. In precious metals, gold and silver have behaved as
+the marginal indicator of systemic distrust in the fiat monetary
+framework and the Federal Reserve’s capacity to restore price stability
+without inducing a severe recession.</p>
+<p>The fundamental theoretical lesson is that rising Treasury yields
+impose costs on risky assets through multiple channels simultaneously:
+discount rate elevation, reduced ERP competitiveness, higher corporate
+borrowing costs, and strengthened USD that weighs on commodity prices.
+When these channels align — as during the 2026 yield shock — the
+multi-asset portfolio stress is acute and non-diversifiable within the
+traditional equity-bond framework. Precious metals, particularly gold,
+represent one of the few remaining assets with low or negative
+correlation to both equities and nominal bonds in a stagflationary
+regime.</p>
+<p><span class="math display">\[\boxed{\text{ERP} \to 0 \implies
+\text{Equities and Bonds Equally Unattractive} \implies \text{Gold as
+Residual Store of Value}}\]</span></p>
+<hr />
+<p><span class="math inline">\(\textcopyright\)</span> <em>All rights
+reserved, Orange County Science Institute</em></p>
+</body>
+</html>

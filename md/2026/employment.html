@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>employment</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 46em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="knowledge-worker-displacement-by-generative-ai">Knowledge Worker
+Displacement by Generative AI</h1>
+<hr />
+<p>The transformer-based LLMs as commercial tools have broken sharply
+with prior waves of automation. Earlier automation—industrial robots,
+rule-based expert systems, narrow machine learning—substituted for
+routine, codifiable, and predominantly manual tasks, leaving non-routine
+cognitive work largely intact. LLMs generative, language-native
+capabilities expose precisely the cognitive and communicative tasks that
+traditionally characterized safe harbors in the knowledge economy:
+drafting, analysis, coding, legal reasoning, financial modeling, and
+complex correspondence. This change has animated one of the most
+consequential debates in contemporary labor economics. The debate is not
+simply academic: employers, policymakers, educators, and workers face
+decisions whose costs and benefits depend critically on whether LLMs
+primarily displace, augment, or simply redistribute the work of
+knowledge workers—and over what time horizon.</p>
+<hr />
+<h2 id="the-task-based-framework">The Task-Based Framework</h2>
+<p>All major empirical programs on AI and labor markets are organized
+around some version of the <em>task-based framework</em>. In this
+framework, production is decomposed into discrete tasks rather than
+aggregate labor inputs. Technologies either (a) substitute for tasks
+previously performed by workers—the <em>displacement effect</em>—or (b)
+create new tasks in which labor retains a comparative advantage—the
+<em>reinstatement effect</em>. The net employment and wage impact
+depends on the relative magnitudes of these two effects, mediated by
+productivity-driven demand expansion.</p>
+<p>Applied to LLMs, this framework generates a crucial analytical
+distinction. The task-level measure of “exposure” captures whether an
+LLM can perform a task faster or cheaper than a human worker; but
+exposure does not mechanically translate into displacement. A highly
+exposed task may remain human-performed if LLM output quality is
+insufficient, if regulatory or reputational constraints intervene, or if
+complementary human judgment is required. Conversely, even partial
+exposure can reduce the number of human hours required per unit of
+output—what economists call the “intensive margin”—shrinking demand for
+workers even without eliminating their roles.</p>
+<hr />
+<h2 id="displacement-risk-of-high-skill-work">Displacement Risk of
+High-Skill Work</h2>
+<p>The most influential exposure assessment in the literature is
+Eloundou, Manning, Mishkin, and Rock which introduces a tiered taxonomy
+of LLM task exposure applied to 19,265 tasks drawn from the U.S.
+Department of Labor’s O*NET database. Tasks are rated as <em>directly
+exposed</em> if LLM access can reduce completion time by at least 50%,
+and as <em>LLM-plus exposed</em> if software built on top of an LLM
+could achieve the same. Two findings are particularly striking.</p>
+<p>First, approximately 80% of the U.S. workforce could have at least
+10% of their work tasks affected by LLMs with simple interfaces and
+general training. Second, when accounting for current and likely future
+software developments that complement LLM capabilities, this share rises
+to just over 46% of jobs having more than half their tasks exposed.
+Critically, and contrary to all previous waves of automation,
+higher-income and higher-education occupations show <em>greater</em>
+exposure. This represents a fundamental reversal of the skill-biased
+technological change that characterized mechanization and early IT
+adoption.</p>
+<p>The Eloundou <em>et al.</em> methodology, though subject to critique
+regarding threshold sensitivity and the conflation of exposure with
+automation, has become the canonical measurement instrument in
+subsequent research. The St. Louis Federal Reserve applied both the
+theoretical exposure scores and real-world adoption data from the Real
+Population Survey (RPS) and found a striking correlation between AI
+prevalence and unemployment increases by occupation since late 2022,
+suggesting exposure is beginning to materialize as reduced demand.</p>
+<h3 id="occupational-polarization">Occupational Polarization</h3>
+<p>Prior automation research documented <em>job polarization</em>:
+technological change hollowing out middle-skill routine occupations
+while preserving both low-skill manual and high-skill cognitive work.
+LLMs threaten to terminate the high-skill exception. IMF analysis
+estimates that approximately 40% of global employment is potentially
+exposed to AI, rising to 60% in advanced economies where employment is
+concentrated in cognitive-intensive roles. The report identifies a
+polarized effect within advanced economies: workers in high-exposure,
+low-complementarity occupations face displacement risk, while workers in
+high-exposure but high-complementarity occupations may benefit from
+productivity gains.</p>
+<p>The IMF’s complementarity index is a significant methodological
+contribution. Rather than treating exposure as uniformly threatening, it
+distinguishes occupations where LLM assistance augments human judgment
+(law, medicine, management) from those where it substitutes wholesale
+(data entry, routine drafting, pattern-based analysis). This distinction
+maps imperfectly but usefully onto the dichotomy between
+<em>professional</em> and <em>para-professional</em> knowledge work.</p>
+<h3 id="agentic-ai-beyond-tasks">Agentic AI: Beyond Tasks</h3>
+<p>A newly emergent research strand extends the exposure framework to
+<em>agentic</em> AI systems—autonomous agents capable of executing
+entire occupational workflows rather than discrete tasks. Gupta and
+Kumar argue that prior task-level analyses substantially underestimate
+displacement risk because agentic systems exercise multi-step reasoning,
+tool invocation, and autonomous decision-making that spans entire job
+functions. Their analysis suggests that the San Francisco Bay Area’s
+adoption curve is approximately 6–12 months ahead of other Tier 2 hubs
+(Seattle, Austin, Boston) and 18 months ahead of major national metros,
+meaning observable disruption in leading technology markets previews
+broader labor market effects with a predictable lag.</p>
+<p>This agentic framing has practical valence: firms including Klarna,
+Salesforce, and several investment banks have publicly reported
+deploying agentic workflows in roles previously staffed by junior
+analysts, paralegals, and business process specialists. McKinsey
+eliminated approximately 200 technology and support staff in late 2025,
+targeting back-office functions—research, scheduling, compliance,
+reporting—where generative AI now accomplishes in minutes what analyst
+teams previously billed across weeks.</p>
+<hr />
+<h2 id="productivity-augmentation">Productivity Augmentation</h2>
+<p>A parallel and influential body of research emphasizes LLMs as
+productivity multipliers rather than substitutes—a narrative grounded in
+controlled field experiments that consistently document large output
+gains, particularly for lower-skill workers.</p>
+<p>College-educated professionals given access to ChatGPT completed
+mid-level professional writing tasks 40% faster than control
+participants, with output quality rising by approximately 0.4 standard
+deviations. Crucially, the productivity gains were concentrated among
+workers who performed worst before AI access, compressing the
+performance distribution—a “skill-leveling” effect. AI-assisted workers
+resolved 14% more issues per hour on average, with gains again
+disproportionately accruing to novice agents. Elite performers showed
+minimal benefit, and in some cases slight regression, as AI-generated
+suggestions occasionally displaced their superior tacit knowledge.</p>
+<p>In the software engineering domain, developers with access to GitHub
+Copilot completed coding tasks twice as quickly as controls. A
+subsequent multi-site field experiment studying nearly 5,000 developers
+across three large organizations found a 26% increase in weekly task
+completion, with the largest gains accruing to junior developers—again
+undermining the hypothesis that AI primarily benefits elite
+performers.</p>
+<h3 id="the-augmentation-limits">The Augmentation Limits</h3>
+<p>The augmentation narrative holds that productivity gains from LLMs
+expand the <em>quantity</em> of work performed by a given workforce,
+reducing per-unit labor cost while potentially growing total demand for
+knowledge work. Proponents draw analogies to the ATM-bank teller
+relationship: as ATMs automated cash dispensing, they reduced the cost
+of running a bank branch, enabling banks to open more branches and
+ultimately <em>increase</em> teller employment through channel
+expansion.</p>
+<p>However, this narrative faces significant theoretical and empirical
+constraints. First, the experimental settings studied—writing, customer
+service, coding—are task-constrained environments that may not
+generalize to complex, cross-functional professional work. Second, and
+more importantly, augmentation and displacement are not mutually
+exclusive: an LLM that makes each worker 40% more productive implies
+that the same output can be produced with 40% fewer workers, unless
+demand expands commensurately. Whether demand expansion offsets the
+labor-saving effect is an empirical question that short-run experiments
+cannot answer.</p>
+<p>Third, the skill-leveling effect, while beneficial for individual
+workers, has systemic implications for hiring. If junior workers’ output
+approaches senior workers’ output with AI assistance, firms have weaker
+incentives to hire and develop large junior cohorts. Several technology
+firms have reported declining entry-level hiring since 2023. Evidence
+from Workday, which cut 8.5% of its workforce in 2025 to reallocate
+resources toward AI investments, and Amazon, which eliminated 14,000
+corporate roles on similar grounds, suggests that augmentation does not
+automatically preclude displacement at the organizational level.</p>
+<hr />
+<h2 id="differential-displacement">Differential Displacement</h2>
+<p>Analyzing labor demand and skill requirements in job postings before
+and after the November 2022 ChatGPT release, researchers document a
+<em>heterogeneous treatment effect</em>. For jobs in the top quartile of
+automation exposure, they observe a 24% decrease in generative
+AI-exposed skills per firm per quarter—consistent with substitution. For
+jobs most susceptible to augmentation, they observe a 15%
+<em>increase</em> in generative AI-exposed skills—consistent with
+complementarity and new task creation.</p>
+<p>This finding operationalizes the Acemoglu-Restrepo reinstatement
+mechanism in the LLM context: the same technology simultaneously
+destroys demand for certain skills and creates demand for adjacent ones.
+The net effect depends on the occupational composition of a given
+workforce, firm, or regional economy.</p>
+<h3 id="demographic-and-gender-dimensions">Demographic and Gender
+Dimensions</h3>
+<p>The heterogeneous complementarity narrative has important demographic
+inflections. The IMF’s analysis finds that women are more likely to be
+employed in high AI-exposure occupations, but these occupations also
+tend to be more complementary to AI assistance—a double-edged pattern in
+which women face elevated exposure but may also capture elevated
+benefits. College-educated workers face greater raw exposure but are
+better positioned to adapt. Older workers face the sharpest adjustment
+costs due to lower digital fluency and shorter career horizons in which
+to amortize retraining investments.</p>
+<p>Freelancing and gig-economy platforms have experienced concentrated
+effects. Freelance job postings on Upwork significantly declined in
+posting categories directly exposed to generative AI—writing,
+translation, graphic design—following the ChatGPT release. This channel
+is analytically important: platform-mediated knowledge work is highly
+substitutable because it lacks the relational, reputational, and
+organizational embedding that protects in-firm knowledge workers.</p>
+<hr />
+<h2 id="the-agentic-disruption-horizon">The Agentic Disruption
+Horizon</h2>
+<p>Current LLM labor market findings are systematically misleading
+because they assess a technology still in its copilot phase. In this
+phase, LLMs assist human workers task by task; humans remain in the loop
+for sequencing, judgment, and quality control. The emergent agentic
+phase—in which AI systems plan, execute multi-step workflows, invoke
+external tools, and complete entire job functions without per-step human
+oversight—represents a qualitatively different threat surface.</p>
+<p>Gupta and Kumar argue that occupations involving structured,
+sequential, digitally mediated decision-making—financial analysis, legal
+document review, regulatory compliance, claims processing—face
+near-total workflow automation risk under agentic AI, not merely
+task-level productivity impacts.</p>
+<h3 id="the-junior-talent-crisis">The “Junior Talent Crisis”</h3>
+<p>An immediate manifestation of agentic displacement is the contraction
+of entry-level professional hiring. If agentic AI can perform the work
+of a junior analyst or associate—drafting memos, running models,
+synthesizing research—firms have reduced incentive to hire at the entry
+level as either a productive input or a human capital investment. This
+produces what industry analysts have labeled a “junior talent crisis”: a
+structural reduction in the pipeline through which professionals develop
+the tacit knowledge, judgment, and mentorship relationships that form
+the foundation of senior expertise.</p>
+<p>Looking toward 2026 and beyond, experts predict a shift from
+“human-in-the-loop” to “human-on-the-loop” management—a model in which
+senior professionals act as orchestrators of autonomous digital agents
+rather than supervisors of human junior staff. The near-term challenge
+is the upskilling required for this transition. Emerging roles like “AI
+Workflow Designer” and “Agent Ethics Auditor” require levels of
+technical and managerial sophistication that recent graduates trained
+under traditional curricula do not yet possess.</p>
+<h3 id="forecasts">Forecasts</h3>
+<p>Prominent practitioners have issued stark projections. Anthropic CEO
+Dario Amodei has publicly forecast that AI could eliminate up to half of
+entry-level white-collar roles by 2030. The World Economic Forum’s
+Future of Jobs 2025 report projects 92 million jobs displaced globally
+by 2030, offset by 170 million new roles—a net gain of 78 million.
+Critically, as commentators have noted, aggregate net job creation
+provides no security to <em>individual</em> workers displaced from
+specific roles. A 34-year-old financial analyst whose position is
+restructured around an AI copilot does not benefit from the net creation
+of 78 million jobs if the new roles require skills she does not possess
+and cannot acquire within an economically viable timeframe.</p>
+<p>Goldman Sachs estimates that AI could complement most knowledge
+workers’ jobs and potentially contribute a 7% rise in global GDP over a
+ten-year period. Acemoglu, applying a more conservative bottom-up
+framework, estimates cumulative TFP gains of less than 0.7% over 10
+years from near-term AI adoption—a figure reflecting his assessment that
+only a minority of exposed tasks will be rapidly and reliably automated
+to economic quality thresholds.</p>
+<hr />
+<h2 id="policy-implications">Policy Implications</h2>
+<p><strong>Reskilling and human capital reorientation.</strong>
+Virtually all narratives agree that the human capital complement to
+LLMs—judgment, multi-modal reasoning, client management, ethical
+oversight, creative direction—will grow in relative value. Educational
+institutions face pressure to reorient curricula toward these
+complements and away from the codifiable, retrievable cognitive tasks
+that LLMs perform cheaply.</p>
+<p><strong>Social safety net modernization.</strong> The distributional
+dynamics of LLM displacement—concentrated in structured cognitive work
+performed by college-educated workers who have historically been
+well-served by social insurance systems—may require adapting safety nets
+that were designed for manufacturing-sector job loss. Displaced
+financial analysts and junior consultants face different retraining
+needs and social protection gaps than displaced factory workers.</p>
+<p><strong>Disclosure and measurement standards.</strong> The systematic
+gap between employer-reported and modeled AI-related layoffs reflects
+inadequate disclosure norms. Regulatory frameworks requiring firms to
+document AI’s contribution to restructuring decisions would
+substantially improve researchers’ and policymakers’ ability to track
+the phenomenon.</p>
+<p><strong>Entry-level pipeline preservation.</strong> If agentic AI
+eliminates the junior cohorts through which professional expertise is
+developed, the long-run supply of senior knowledge workers will be
+impaired. This externality—falling on future workers and future
+organizations, not current decision-makers—provides a classical market
+failure rationale for policy attention.</p>
+<p><strong>Caution regarding restriction-based protection.</strong>
+Acemoglu and Restrepo’s theoretical framework suggests a
+counterintuitive policy implication: restrictions on AI deployment
+imposed to protect jobs may slow the creation of new tasks,
+inadvertently accelerating net displacement relative to augmentation.
+Policies should be designed to facilitate transitions, not forestall
+adoption.</p>
+<hr />
+<h2 id="concluding-remarks">Concluding Remarks</h2>
+<p>The displacement of knowledge workers by generative AI and LLMs is
+not a single, tractable phenomenon but a cluster of interacting
+mechanisms operating at different time horizons, occupational levels,
+and institutional contexts. The four narratives synthesized here—task
+exposure and displacement, productivity augmentation, heterogeneous
+complementarity, and agentic disruption—are not mutually exclusive. They
+describe different facets of a transformation that is simultaneously
+happening now, at the task level, in localized occupational segments,
+and accumulating toward a more structural transition whose contours
+remain genuinely uncertain.</p>
+<p>What the evidence supports with reasonable confidence is this: LLMs
+have materially changed the productivity function of knowledge work;
+their exposure is concentrated among higher-education, higher-wage
+occupations in an unprecedented reversal of automation’s historical
+skill bias; micro-level disruption is visible and accelerating in
+specific sectors; and no aggregate employment crisis has yet
+materialized, though the measurement tools to detect early-stage
+structural change are inadequate. The theoretical arguments for
+significant agentic-phase disruption are well-founded and should not be
+dismissed because short-run data remain reassuring.</p>
+<p>The appropriate scholarly stance is neither catastrophism nor
+complacency. It is rigorous, granular, ongoing measurement—combined with
+institutional preparedness for a transition whose pace may ultimately be
+determined less by technological capability than by firm strategy,
+regulatory choices, and the adaptability of human capital systems.</p>
+<hr />
+<p><span class="math inline">\(\textcopyright\)</span> <em>All rights
+reserved, Orange County Science Institute</em></p>
+</body>
+</html>
