@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>declarative</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 46em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="declarative-computing">Declarative Computing</h1>
+<hr />
+<p>The conceptual architecture of modern software engineering is
+increasingly defined by the transition from imperative sequences to
+declarative transformations. At the heart of this transition lies the
+higher-order function, a construct that treats computation as a
+first-class citizen. A higher-order function is formally defined as a
+function that satisfies at least one of two criteria: it accepts one or
+more functions as input parameters, or it returns a function as its
+output. This capability is not merely a syntactic convenience but a
+fundamental shift in how logic is modularized, reused, and reasoned
+about across disparate programming paradigms. By abstracting over
+behavior rather than just data, higher-order functions enable the
+construction of generic, reusable logic that can be tailored to specific
+contexts by passing specialized functional arguments.</p>
+<h2 id="the-genesis-of-higher-order-logic-the-lambda-calculus">The
+Genesis of Higher Order Logic: The Lambda Calculus</h2>
+<p>The formal lineage of higher-order functions traces back to the
+1930s, specifically to the work of the mathematician Alonzo Church and
+the development of the <span
+class="math inline">\(\lambda\)</span>-calculus. The <span
+class="math inline">\(\lambda\)</span>-calculus was introduced as a
+formal system for investigating the foundations of mathematics and the
+nature of effective computability, serving as a universal machine
+equivalent to Turing machines. Unlike the hardware-centric view of
+Turing machines, the <span
+class="math inline">\(\lambda\)</span>-calculus emphasizes
+transformation rules and variable substitution, providing the
+theoretical bedrock for all functional programming languages. The
+fundamental unit of the <span
+class="math inline">\(\lambda\)</span>-calculus is the “expression.” The
+syntax is remarkably minimalist, consisting of only three primary
+constructs: variables, abstractions, and applications. A variable <span
+class="math inline">\(x\)</span> serves as a name or placeholder. An
+abstraction, written as <span class="math inline">\(\lambda x.
+M\)</span>, denotes a function where <span
+class="math inline">\(x\)</span> is the parameter and <span
+class="math inline">\(M\)</span> is the body. Application, written as
+<span class="math inline">\((M N)\)</span>, represents the process of
+applying the function <span class="math inline">\(M\)</span> to the
+argument <span class="math inline">\(N\)</span>. This simplicity belies
+the system’s power; the <span
+class="math inline">\(\lambda\)</span>-calculus is universal in the
+sense that any computable function can be expressed and evaluated using
+these basic rules.</p>
+<h3 id="formal-syntax-and-lexical-scoping">Formal Syntax and Lexical
+Scoping</h3>
+<p>The recursive definition of <span
+class="math inline">\(\lambda\)</span>-terms establishes a strict
+hierarchy of binding and scoping. In an abstraction <span
+class="math inline">\(\lambda x. t\)</span>, the variable <span
+class="math inline">\(x\)</span> is said to be bound within the term
+<span class="math inline">\(t\)</span>. Any occurrence of a variable
+that is not bound by an enclosing <span
+class="math inline">\(\lambda\)</span> is considered free. This
+distinction is critical for the primary transformation rule of the <span
+class="math inline">\(\lambda\)</span>-calculus: <span
+class="math inline">\(\beta\)</span>-reduction. When an abstraction
+<span class="math inline">\(\lambda x. M\)</span> is applied to an
+argument <span class="math inline">\(N\)</span>, the result is the body
+<span class="math inline">\(M\)</span> where every free occurrence of
+<span class="math inline">\(x\)</span> is substituted with <span
+class="math inline">\(N\)</span>. To maintain the integrity of these
+substitutions, the system utilizes <span
+class="math inline">\(\alpha\)</span>-conversion, which allows for the
+consistent renaming of bound variables. Because the names of arguments
+are merely placeholders, <span class="math inline">\(\lambda x.
+x\)</span> is semantically identical to <span
+class="math inline">\(\lambda y. y\)</span> or <span
+class="math inline">\(\lambda z. z\)</span>. This ensures that when a
+function is applied, free variables in the argument are not accidentally
+“captured” by bound variables in the function body—a process known as
+capture-avoiding substitution.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Construct</th>
+<th>BNF Notation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variable</td>
+<td><expression>::=<name></td>
+<td>An identifier representing a value or placeholder.</td>
+</tr>
+<tr>
+<td>Abstraction</td>
+<td><function>::=λ<name>.<expression></td>
+<td>A function definition introducing a formal parameter.</td>
+</tr>
+<tr>
+<td>Application</td>
+<td><application>::=<expression><expression></td>
+<td>The act of invoking a function with an argument.</td>
+</tr>
+</tbody>
+</table>
+<p>The evolution of these concepts led to the development of the
+simply-typed <span class="math inline">\(\lambda\)</span>-calculus
+(STLC), introduced by Church in 1940, which added a layer of type safety
+by ensuring that functions could only be applied to arguments of
+compatible types. This paved the way for modern typed functional
+languages where higher-order functions are checked for correctness at
+compile-time.</p>
+<h2 id="reduction-strategies-and-operational-semantics">Reduction
+Strategies and Operational Semantics</h2>
+<p>The order in which transformations are applied to a <span
+class="math inline">\(\lambda\)</span>-expression determines its
+evaluation behavior and termination properties. A “redex” is a
+subexpression where a function can be applied to an argument. With
+multiple redexes, different evaluation orders emerge, primarily
+categorized as normal order and applicative order. Normal order
+evaluation, or “call by name,” always reduces the leftmost outermost
+redex first. This strategy is more likely to terminate because it avoids
+evaluating arguments that might not be needed in the function body. For
+example, if a function ignores its argument, and that argument is a
+non-terminating expression like <span class="math inline">\(\Omega =
+(\lambda x. x x)(\lambda x. x x)\)</span>, normal order will simply
+discard the argument and proceed to a result, whereas other strategies
+might loop indefinitely. Applicative order evaluation, or “call by
+value,” evaluates both the function and its arguments before performing
+the substitution. While generally more efficient because it avoids
+redundant evaluations, it cannot find a normal form for expressions
+where a discarded argument is divergent.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Evaluation Timing</th>
+<th>Primary Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal Order</td>
+<td>Arguments evaluated only when needed.</td>
+<td>Guaranteed to terminate if any order terminates.</td>
+</tr>
+<tr>
+<td>Applicative Order</td>
+<td>Arguments evaluated before substitution.</td>
+<td>More efficient for most terminating computations.</td>
+</tr>
+</tbody>
+</table>
+<p>These strategies underpin the behavior of higher-order functions in
+production environments. In a lazy language like Haskell, higher-order
+functions naturally inherit normal order semantics, enabling the
+creation of infinite data structures and deferred computations. In
+contrast, in eager languages, developers must use specific patterns,
+such as thunks or closures, to simulate such behavior when dealing with
+potentially non-terminating or expensive functional inputs.</p>
+<h2 id="theoretical-data-encoding-church-numerals-and-logic">Theoretical
+Data Encoding: Church Numerals and Logic</h2>
+<p>A profound implication of higher-order functions in the <span
+class="math inline">\(\lambda\)</span>-calculus is the ability to
+represent data purely through functional application. In this context,
+numbers and boolean values are not primitive types but higher-order
+functions themselves.</p>
+<h3 id="church-numerals">Church Numerals</h3>
+<p>Natural numbers are represented as Church numerals. The number <span
+class="math inline">\(n\)</span> is defined as a function that takes two
+arguments—a successor function <span class="math inline">\(s\)</span>
+and a zero value <span class="math inline">\(z\)</span>—and applies
+<span class="math inline">\(s\)</span> exactly <span
+class="math inline">\(n\)</span> times to <span
+class="math inline">\(z\)</span>.</p>
+<ul>
+<li><span class="math inline">\(0 \equiv \lambda s. \lambda z.
+z\)</span> (Zero is the function that returns <span
+class="math inline">\(z\)</span> unchanged).</li>
+<li><span class="math inline">\(1 \equiv \lambda s. \lambda z. s
+z\)</span> (One is the function that applies <span
+class="math inline">\(s\)</span> once to <span
+class="math inline">\(z\)</span>).</li>
+<li><span class="math inline">\(2 \equiv \lambda s. \lambda z. s (s
+z)\)</span> (Two applies <span class="math inline">\(s\)</span> twice).
+Arithmetic operations are then defined as higher-order functions that
+manipulate these application chains. Multiplication, for instance, is
+achieved by applying the <span class="math inline">\(m\)</span> function
+to the <span class="math inline">\(n\)</span> function, effectively
+composing the application chains.</li>
+</ul>
+<h3 id="boolean-logic-and-predicates">Boolean Logic and Predicates</h3>
+<p>Boolean logic follows a similar functional encoding. True and False
+are defined as functions of two arguments that return either the first
+or the second argument, respectively.</p>
+<ul>
+<li><span class="math inline">\(True \equiv \lambda x. \lambda y.
+x\)</span></li>
+<li><span class="math inline">\(False \equiv \lambda x. \lambda y.
+y\)</span> Logical operators like <span class="math inline">\(AND,
+OR,\)</span> and <span class="math inline">\(NOT\)</span> are
+constructed as higher-order functions that take these boolean functions
+as inputs. This functional representation of logic is the foundation for
+conditional branching in systems that lack native “if-else” structures,
+proving that higher-order functions are sufficient to express all of
+traditional programming logic.</li>
+</ul>
+<h2
+id="variable-free-computation-the-ski-combinator-calculus">Variable-Free
+Computation: The SKI Combinator Calculus</h2>
+<p>While the <span class="math inline">\(\lambda\)</span>-calculus
+relies on variable binding, combinatory logic—pioneered by Moses
+Schönfinkel and Haskell Curry—provides a model where computation is
+expressed entirely through combinators, which are higher-order functions
+without free variables. The SKI calculus demonstrates that variables and
+memory are not required for universal computation. The SKI system
+consists of three primitive combinators:</p>
+<ol type="1">
+<li><strong>I (Identity):</strong><span class="math inline">\(I x \to
+x\)</span>. It returns its argument unchanged.</li>
+<li><strong>K (Constant):</strong><span class="math inline">\(K x y \to
+x\)</span>. It takes two arguments and returns the first, effectively
+discarding the second.</li>
+<li><strong>S (Substitution):</strong><span class="math inline">\(S x y
+z \to (x z) (y z)\)</span>. It takes three arguments, applies the first
+to the third, and then applies that result to the second applied to the
+third. Despite its microscopic rule set, SKI is Turing-complete. For
+example, the identity function <span class="math inline">\(\lambda x.
+x\)</span> is simply <span class="math inline">\(I\)</span>, but it can
+also be represented as <span class="math inline">\((S K K)\)</span>
+because <span class="math inline">\(S K K x\)</span> reduces to <span
+class="math inline">\(K x (K x)\)</span>, which then reduces to <span
+class="math inline">\(x\)</span>.</li>
+</ol>
+<h2
+id="naming-the-nameless-fixed-point-combinators-and-recursion">Naming
+the Nameless: Fixed Point Combinators and Recursion</h2>
+<p>One of the most significant challenges in a system without names
+(like pure <span class="math inline">\(\lambda\)</span>-calculus) is
+recursion. A recursive function must reference itself, but if functions
+are anonymous, there is no name to call. Higher-order functions resolve
+this through “fixed-point combinators,” which are specialized functions
+that find the fixed point of an argument function. A value <span
+class="math inline">\(x\)</span> is a fixed point of a function <span
+class="math inline">\(f\)</span> if <span class="math inline">\(f(x) =
+x\)</span>. In the context of functions, a fixed-point combinator <span
+class="math inline">\(Y\)</span> has the property that for any function
+<span class="math inline">\(G\)</span>:</p>
+<p><span class="math display">\[
+Y G = G (Y G)
+\]</span> This identity allows a function to effectively call itself.
+The <span class="math inline">\(Y\)</span> combinator, discovered by
+Haskell Curry, is defined as:</p>
+<p><span class="math display">\[
+Y \equiv \lambda f. (\lambda x. f (x x)) (\lambda x. f (x x))
+\]</span></p>
+<p>When <span class="math inline">\(Y\)</span> is applied to a
+“functional generator” (a higher-order function that takes a function as
+an argument and returns a function), it “closes the loop” by passing the
+function itself into the generator’s recursion point.</p>
+<h2 id="standard-iterative-abstractions-map-filter-and-reduce">Standard
+Iterative Abstractions: Map, Filter, and Reduce</h2>
+<p>The most common encounter with higher-order functions is through
+collection processing. The <code>map</code>, <code>filter</code>, and
+<code>reduce</code> functions replace repetitive control flow with
+declarative transformations.</p>
+<ul>
+<li><strong>Map:</strong> A transformation primitive that applies a
+function to every element, returning a new collection of the same
+size.</li>
+<li><strong>Filter:</strong> A selection primitive that creates a new
+collection containing only the elements that pass a test implemented by
+a predicate function.</li>
+<li><strong>Reduce:</strong> An accumulation primitive that reduces an
+array to a single value by repeatedly applying a binary function to an
+accumulator.</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Method</th>
+<th>Role</th>
+<th>Callback Signature</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map</td>
+<td>Transformation</td>
+<td>(element) =&gt; newValue</td>
+<td>Same length array.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>Selection</td>
+<td>(element) =&gt; Boolean</td>
+<td>Subset array.</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>Aggregation</td>
+<td>(acc, element) =&gt; newAcc</td>
+<td>Single value (any type).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="concluding-remarks">Concluding Remarks</h2>
+<p>Higher-order functions represent more than a technical feature; they
+are a fundamental building block of elegant, efficient, and maintainable
+software systems. By abstracting over behavior, they empower developers
+to think in terms of transformations rather than instructions. From the
+mathematical rigor of the <span
+class="math inline">\(\lambda\)</span>-calculus to the distributed
+clusters of Apache Spark, the principles of functional abstraction
+remain a cornerstone of robust software architecture.</p>
+<hr />
+<p><span class="math inline">\(\textcopyright\)</span> <em>All rights
+reserved, Orange County Science Institute</em></p>
+</body>
+</html>
