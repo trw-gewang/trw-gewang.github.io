@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>el_nino</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      font-family: Palatino;
+      color: #6a6a6a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 46em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #6a6a6a;
+      border-bottom: 1px solid #6a6a6a;
+    }
+    th {
+      border-top: 1px solid #6a6a6a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="el-niño-and-global-extreme-weather">El Niño and Global Extreme
+Weather</h1>
+<hr />
+<p>El Niño–Southern Oscillation is an ocean–atmosphere coupled
+oscillation originating in the tropical Pacific, with an irregular
+recurrence interval of approximately 2–7 years. It manifests in three
+canonical phases: neutral, El Niño (warm phase, characterized by
+positive sea surface temperature anomalies [SSTAs] in the eastern
+equatorial Pacific), and La Niña (cool phase, negative SSTAs). The
+system is measured operationally via the Niño-3.4 index, the Southern
+Oscillation Index (SOI), and the Multivariate ENSO Index (MEI), each
+capturing different aspects of the coupled ocean–atmospheric state.</p>
+<p>The ENSO system exerts climatic influence over sizable portions of
+the globe, including regions far removed from the tropical Pacific,
+through a network of atmospheric and oceanic pathways collectively
+termed <em>teleconnections</em> (NOAA Climate.gov). These far-field
+signals arise from ENSO’s reorganization of the major atmospheric
+overturning circulations — principally the Walker and Hadley cells — and
+the associated modulation of Rossby wave propagation, jet stream
+positioning, and moisture flux patterns.</p>
+<p>ENSO’s societal relevance cannot be overstated. Historical analysis
+has linked major famines of the late nineteenth century in India, China,
+and Brazil to ENSO-driven disruptions of monsoon and rainfall patterns,
+with mortality estimates ranging from 30 to 60 million individuals (NASA
+Science). In the contemporary era, ENSO events routinely precipitate
+multibillion-dollar losses through agricultural failures, infrastructure
+damage, and vector-borne disease outbreaks across dozens of countries
+simultaneously.</p>
+<hr />
+<h2 id="physical-mechanisms">Physical Mechanisms</h2>
+<h3 id="the-bjerknes-feedback-loop">The Bjerknes Feedback Loop</h3>
+<p>The canonical dynamical framework for ENSO initiation and
+amplification is the <em>Bjerknes positive feedback</em> mechanism.
+Under normal (La Niña-like) conditions, easterly trade winds pile warm
+water in the western Pacific warm pool, suppressing thermocline depth in
+the east and maintaining strong zonal SST gradients. When an initial
+anomalous warming occurs in the central or eastern Pacific — through
+stochastic atmospheric forcing or resonance with subsurface heat
+recharge — it weakens the trade winds, reduces upwelling of cold water
+in the east, and further warms the surface. This self-reinforcing loop
+rapidly amplifies the initial perturbation into a fully developed El
+Niño event.</p>
+<p>The cycle is terminated by the recharge-discharge oscillator
+mechanism: the anomalous poleward Sverdrup transport during El Niño
+drains warm water from the equatorial band, eventually cooling the
+surface and restoring or overshooting toward La Niña.</p>
+<h3 id="walker-circulation-and-hadley-cell">Walker Circulation and
+Hadley Cell</h3>
+<p>During El Niño events, the Walker circulation — the zonal overturning
+cell with rising motion over the warm pool and sinking motion over the
+eastern Pacific — undergoes a marked weakening and eastward displacement
+of its ascending branch. Concurrently, the Hadley cell circulation,
+which moves air meridionally between the equator and subtropics,
+strengthens. A more vigorous Hadley cell overturning increases poleward
+heat transport, producing above-average temperatures and altered
+precipitation patterns across both hemispheres (EBSCO Research
+Starters).</p>
+<p>The Walker and Hadley cells do not respond to ENSO independently but
+instead exhibit <em>phase-synchronized spatial shifts</em>, particularly
+during strong El Niño winters. During peak El Niño conditions, the
+Walker cell weakens and its rising branch shifts eastward, accompanied
+by a strengthening and spatial reorganization of the Hadley cell,
+amplifying extratropical precipitation variability on interannual
+timescales. This coupling was especially pronounced during the canonical
+super-El Niño events of 1982–83 and 1997–98, with PSYN
+(phase-synchronized) periods exceeding one year.</p>
+<h3 id="kelvin-wave">Kelvin Wave</h3>
+<p>Subsurface ocean dynamics play an equally important role. Anomalous
+westerly wind bursts in the western Pacific generate downwelling oceanic
+Kelvin waves that propagate eastward along the equatorial waveguide at
+velocities of approximately 2–3 m/s, deepening the thermocline as they
+traverse the basin. Upon reaching the eastern boundary, reflected Rossby
+waves propagate westward, modulating the thermocline and sea surface
+temperatures across the basin. Importantly, tropical cyclone activity in
+the northwestern Pacific during boreal summer has been shown to feed
+back onto ENSO by weakening the Walker circulation and enhancing Kelvin
+wave generation, such that accumulated cyclone energy can predict
+Niño-3.4 anomalies several months in advance (Tropical cyclones act to
+intensify El Niño, PMC). This constitutes a bi-directional coupling
+between mesoscale weather phenomena and large-scale climate
+oscillations.</p>
+<hr />
+<h2 id="atmospheric-teleconnection-pathways">Atmospheric Teleconnection
+Pathways</h2>
+<h3 id="the-pacificnorth-american-pna-pattern">The Pacific–North
+American (PNA) Pattern</h3>
+<p>The primary extratropical teleconnection driven by ENSO is the
+Pacific–North American (PNA) teleconnection pattern, which manifests as
+alternating geopotential height anomalies spanning the subtropical North
+Pacific, the Gulf of Alaska region, and northeastern North America.
+During El Niño winters, an anomalous upper-level anticyclone forms over
+the subtropical Pacific while a downstream trough deepens over North
+America, displacing the jet stream and fundamentally altering storm
+track positions, precipitation regimes, and temperature distributions
+across the continent.</p>
+<p>The PNA pattern propagates through Rossby wave energy dispersion
+along stationary wave paths dictated by the background flow. The
+canonical 1982–83 and 1997–98 super El Niño events produced
+near-textbook PNA amplifications, delivering anomalous warmth across
+western Canada and the northern United States while driving persistent
+precipitation anomalies over the Gulf Coast and California.</p>
+<h3 id="indian-ocean-and-atlantic-sst-anomalies">Indian Ocean and
+Atlantic SST Anomalies</h3>
+<p>A critical and underappreciated dimension of ENSO teleconnection
+dynamics emerged from analysis of the 2023–24 event. Despite ranking as
+the fourth-strongest event since 1979 by eastern Pacific SST metrics,
+the 2023–24 El Niño exhibited unusually weak extratropical
+teleconnections. Research published in <em>Communications Earth &amp;
+Environment</em> identified the cause: extreme SST warming in the
+tropical Indian Ocean and Atlantic in 2023 suppressed the expected
+rainfall pattern associated with El Niño, thereby reducing both its
+tropical and extratropical atmospheric impacts. This finding underscores
+that the effective teleconnection strength of any given ENSO event is
+not determined solely by the Niño-3.4 index but by the broader
+configuration of tropical ocean temperatures — a configuration that
+anthropogenic warming is fundamentally reshaping.</p>
+<p>The Indian Ocean Dipole (IOD) exerts particularly important modifying
+influence in eastern Africa and the Asia-Pacific region. During El Niño
+years with a co-occurring positive IOD, Indian Ocean warming amplifies
+moisture convergence over East Africa while simultaneously suppressing
+the South Asian monsoon. In some subregions, IOD forcing can entirely
+dominate ENSO teleconnection signals.</p>
+<h3 id="rossby-wave-trains">Rossby Wave Trains</h3>
+<p>El Niño-induced tropical heating anomalies generate
+poleward-propagating Rossby wave trains that modulate midlatitude
+circulation. Persistent high-pressure systems arising from Rossby wave
+resonance can produce heat dome conditions over mid-latitudes, reducing
+cloud cover and precipitation while amplifying surface temperature
+extremes through positive land-surface feedback. Anthropogenic weakening
+of the Walker circulation exacerbates this mechanism by permitting more
+frequent quasi-stationary circulation states in the extratropics.</p>
+<hr />
+<h2 id="tropical-cyclogenesis">Tropical Cyclogenesis</h2>
+<p>One of the most operationally significant impacts of El Niño on
+extreme weather is its opposing effects on tropical cyclone activity
+across ocean basins — a dynamic that has been described as a “see-saw”
+between the Pacific and Atlantic. The mechanism is primarily one of
+vertical wind shear: El Niño induces anomalous upper-level westerly
+winds over the tropical Atlantic and Caribbean, substantially increasing
+vertical wind shear in that basin and suppressing tropical cyclone
+formation and intensification. An anomalous upper-level ridge-trough
+pattern simultaneously reduces shear over the central and eastern
+Pacific, enhancing tropical cyclogenesis in those basins.</p>
+<p>Accordingly, during El Niño years, Atlantic hurricane seasons tend to
+be below-normal in terms of named storms and major hurricane activity,
+while eastern Pacific hurricane seasons typically record elevated
+activity and rapid intensification events. Data through 2024 from the
+<em>Journal of Climate</em> confirm that Atlantic hurricane
+intensification rates and lifetime maximum intensity are significantly
+modulated by ENSO phase, with La Niña conditions producing higher
+intensification rates and stronger storms. The study found concurrent
+upward trends in intensity metrics over 1982–2024 that, when partitioned
+by ENSO state, provide a more nuanced picture than aggregate trend
+analyses.</p>
+<p>A bidirectional feedback adds further complexity: tropical cyclone
+activity in the western North Pacific during boreal summer can itself
+strengthen ENSO. Greater accumulated cyclone energy weakens the Walker
+circulation and forces eastward-propagating Kelvin waves, amplifying the
+El Niño event in its following months.</p>
+<hr />
+<h2 id="marine-ecosystem-disruption">Marine Ecosystem Disruption</h2>
+<p>Among the most ecologically consequential expressions of El Niño is
+the generation and intensification of marine heatwaves (MHWs) — periods
+of anomalously elevated sea surface temperatures persisting from weeks
+to months. Since 1955, the oceans have absorbed approximately 93% of
+excess heat generated by greenhouse gas emissions, rendering their upper
+layers increasingly vulnerable to ENSO-driven temperature spikes.</p>
+<p>The 2023–24 El Niño triggered the fourth global coral bleaching event
+on record, declared by NOAA Coral Reef Watch in April 2024. In the
+Western Indian Ocean, conditions were particularly severe: a positive
+IOD combined with El Niño and record global temperatures produced
+thermal stress that drove 73% of observed reef sites to
+moderate-to-severe bleaching, with high mortality at nearly 10% of
+sites. In Little Cayman, approximately 80% of surveyed corals were
+either bleached or showing active mortality signs during the peak of the
+heatwave. In the Florida Keys, summer 2023 was described as
+unprecedented in the entire observational record, with ocean
+temperatures breaking daily records on 31 of the 62 days in July and
+August.</p>
+<p>These findings illustrate the compounding dynamic between ENSO and
+long-term ocean warming. Each successive ENSO event initiates thermal
+stress from a higher baseline temperature, meaning that events of
+moderate physical intensity now produce biological impacts formerly
+associated only with super El Niño years. Ecological thresholds may
+already be shifting faster than evolutionary adaptation rates
+permit.</p>
+<hr />
+<h2 id="the-20232024-event">The 2023–2024 Event</h2>
+<p>The 2023–24 El Niño warrants focused scholarly attention because it
+represents a scientifically anomalous case that challenges classical
+frameworks. Measured by tropical eastern Pacific SSTs, the event was of
+moderate-to-strong intensity — less severe than the canonical 1982–83,
+1997–98, and 2015–16 events — yet the associated change in Global Mean
+Surface Temperature (ΔGMST) far exceeded that of any previous episode in
+the instrumental record.</p>
+<p>Research published in <em>Nature Communications Earth &amp;
+Environment</em> (2025) attributes the anomalous GMST departure to the
+compounding effect of three interacting factors: a positive decadal
+trend in Earth’s Energy Imbalance (EEI), accumulated heat during three
+preceding years of La Niña (2020–2022), and the abrupt switch to El Niño
+in mid-2023. Between 2022 and 2023, EEI-derived heating was over 75%
+larger than at the onset of comparable recent El Niño events. This
+pre-charged heat reservoir enabled the 2023–24 event to push global
+average temperatures to 1.48°C above the 20th-century mean — briefly
+touching and in some metrics exceeding the 1.5°C Paris Agreement
+threshold for the first time in recorded history.</p>
+<p>The spatial structure of the 2023 warming anomaly (July–December) was
+distinctive: unlike the spatially uniform pattern of long-term
+anthropogenic warming, it exhibited a spatially structured El Niño-like
+footprint in the tropics, superimposed on already-elevated background
+temperatures. Individual ocean basins showed different emergence timings
+of record-breaking conditions, reflecting the interaction of ENSO with
+regional SST trends in the Indian and Atlantic Oceans.</p>
+<p>The mechanisms behind the full magnitude of the 2023–24 ΔGMST anomaly
+remain incompletely resolved, with researchers identifying it as a
+phenomenon requiring further investigation beyond current generation
+model frameworks.</p>
+<hr />
+<h2 id="anthropogenic-warming">Anthropogenic Warming</h2>
+<h3 id="observed-amplification-of-enso-extremes">Observed Amplification
+of ENSO Extremes</h3>
+<p>Current warming has produced a statistically significant
+amplification of ENSO’s effects on both temperature and precipitation
+extremes across the globe. The study shows that the combined
+ENSO–anthropogenic forcing (TRF) interactions have substantially
+modified spatial patterns of risk, with temperature risk increases
+exceeding 20% over Brazil, Colombia, and South Africa during El Niño
+episodes relative to pre-industrial baselines. Critically, the analysis
+identifies considerable shares of the global population, GDP,
+agricultural land, and ecosystems as now facing elevated risk from
+extreme events precisely because of the synergy between background
+warming and ENSO.</p>
+<p>The operative mechanisms include: (1) elevated baseline temperatures
+meaning any given ENSO-induced warming increment is more likely to
+breach critical thresholds; (2) anthropogenic weakening of the Walker
+circulation reducing the buffering capacity of equatorial
+ocean-atmosphere coupling; (3) Rossby wave resonance under altered
+mean-state jet streams producing longer-lived heat dome events; and (4)
+soil moisture deficits from ongoing drying trends amplifying
+land-surface temperature feedbacks during ENSO-driven droughts.</p>
+<h3 id="the-1.5c-threshold">The 1.5°C Threshold</h3>
+<p>The 2023–24 event served as what one research team called “a glimpse
+of future climate extremes”. If the recent upward trend in Earth’s
+Energy Imbalance is maintained, natural ENSO cycles will increasingly
+generate record-breaking, amplified impacts even without extraordinary
+tropical Pacific SST anomalies. This narrative implies that the
+classical ENSO risk paradigm — in which super events like 1997–98 define
+the upper bound of expected impacts — may systematically underestimate
+future hazard.</p>
+<hr />
+<h2 id="concluding-remarks">Concluding Remarks</h2>
+<p>The 2023–24 El Niño event crystallized the central narrative emerging
+from contemporary ENSO research: that the interaction between background
+warming and natural climate variability is producing a qualitatively new
+risk landscape, in which moderate ENSO events can generate
+record-breaking global temperature excursions and compound ecological
+and humanitarian impacts previously associated only with super events.
+The Palmer Drought, the bleaching of the Florida Keys reefs, the
+southern African food insecurity, and the global temperature record all
+occurred within a single ENSO cycle — a coincidence that is, by the
+evidence reviewed here, increasingly less coincidental and increasingly
+more structural.</p>
+<p>As forecast systems extend their skill horizons toward 18 months and
+modeling frameworks better capture ENSO–warming interactions, the policy
+imperative shifts from reactive disaster response toward proactive
+anticipatory action based on probabilistic long-lead forecasts. The
+synthesis of narratives reviewed here converges on a single conclusion:
+ENSO risk is amplifying under global warming, its regional expressions
+are becoming harder to predict using classical frameworks calibrated on
+historical data, and the humanitarian and ecological stakes of accurate,
+timely, and actionable ENSO science have never been higher.</p>
+<hr />
+<p><span class="math inline">\(\textcopyright\)</span> <em>All rights
+reserved, Orange County Science Institute</em></p>
+</body>
+</html>
