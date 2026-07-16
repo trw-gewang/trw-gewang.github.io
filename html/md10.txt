@@ -1,0 +1,221 @@
+const wTitle = "Markdown & LaTeX Editor";
+let wStyle = "body {background:lightyellow; font-family:American Typewriter, serif;}";
+wStyle += "table {border-collapse:collapse; width:100%}";
+wStyle += "textarea {color:lightgreen; background:black; height:94vh; width:100%;}";
+myUI=()=>{
+	const layout = document.createElement("style");
+	const include = document.createElement("script");
+	document.title= wTitle;
+	document.head.appendChild(layout);
+	layout.innerHTML = wStyle;
+	w1.innerHTML = "<p style='font-size: 24px;'>"+wTitle;
+	w3.innerHTML = "<button onclick='render()'>Render Markdown & LaTeX</button>";
+	w3.align="right";
+	w1.width="50%";
+	w3.width="50%";
+};
+cout=(str)=>{document.getElementById("w4").innerHTML = str+"\n"};
+wEval=(w,z)=>{
+    let str="";
+    cls();
+    try {
+	(z===undefined) ? str = eval(document.getElementById(w).value) : str = eval(document.getElementById(w).value+document.getElementById(z).value);
+    } catch(err) {
+        str = err.name+" : "+err.message;
+    }
+    if (str != undefined) {cout(str)};   
+};
+use=(code)=>{
+	let include = document.createElement('script');
+	include.src = code;
+	document.head.appendChild(include);
+};
+function convertMarkdownToHTML(markdown) {
+    function escapeHtml(text) {
+        return text.replace(/&/g, '&amp;')
+                   .replace(/"/g, '&quot;')
+                   .replace(/'/g, '&#039;');
+    }
+
+    function escapeHtmlAttr(text) {
+        return text.replace(/&/g, '&amp;')
+                   .replace(/"/g, '&quot;')
+                   .replace(/'/g, '&#039;')
+    }
+
+    // --- Storage for protected content ---
+    const mathStore = [];
+    const codeStore = [];
+
+    let html = markdown;
+
+    // --- Step 1: Extract and protect LaTeX math ---
+    html = html.replace(/\$\$([\s\S]+?)\$\$/g, (match, p1) => {
+        mathStore.push({ type: 'block', content: match });
+        return `<!--MATH_BLOCK_${mathStore.length - 1}-->`;
+    });
+    html = html.replace(/\$([^\$\n]+?)\$/g, (match, p1) => {
+        mathStore.push({ type: 'inline', content: match });
+        return `<!--MATH_INLINE_${mathStore.length - 1}-->`;
+    });
+
+    // --- Step 2: Extract and protect fenced code blocks ---
+    html = html.replace(/```(\w*)\n?([\s\S]+?)\n?```/g, (match, lang, code) => {
+        codeStore.push({ lang: lang, content: code });
+        return `<!--CODE_${codeStore.length - 1}-->`;
+    });
+
+    // --- Step 3: Process block‑level elements ---
+    html = html.replace(/^###### (.*$)/gim, (m, c) => `<h6>${escapeHtml(c)}</h6>`);
+    html = html.replace(/^##### (.*$)/gim, (m, c) => `<h5>${escapeHtml(c)}</h5>`);
+    html = html.replace(/^#### (.*$)/gim, (m, c) => `<h4>${escapeHtml(c)}</h4>`);
+    html = html.replace(/^### (.*$)/gim, (m, c) => `<h3>${escapeHtml(c)}</h3>`);
+    html = html.replace(/^## (.*$)/gim, (m, c) => `<h2>${escapeHtml(c)}</h2>`);
+    html = html.replace(/^# (.*$)/gim, (m, c) => `<h1>${escapeHtml(c)}</h1>`);
+
+    html = html.replace(/^(---|\*\*\*|___)\s*$/gm, '<hr>');
+
+    html = html.replace(/(?:^>.*\n?)+/gm, (block) => {
+        const lines = block.split('\n').filter(line => line.trim() !== '');
+        const content = lines.map(line => line.replace(/^>\s?/, '')).join('\n');
+        return `<blockquote>\n${content}\n</blockquote>`;
+    });
+
+    // 3.4 Lists – unordered (*, -, +) and ordered (1., 2., …)
+    const listRegex = /^(\s*)([\*\-+]|\d+\.)\s+(.*)$/gm;
+    let lines = html.split('\n');
+    let newLines = [];
+    let i = 0;
+    while (i < lines.length) {
+        let line = lines[i];
+        const ulMatch = line.match(/^(\s*)([\*\-+])\s+(.*)/);
+        const olMatch = line.match(/^(\s*)(\d+)\.\s+(.*)/);
+        if (ulMatch || olMatch) {
+            const isOrdered = !!olMatch;
+            const marker = isOrdered ? olMatch[2] : ulMatch[2];
+            const indent = isOrdered ? olMatch[1] : ulMatch[1];
+            let items = [];
+            let currentType = isOrdered ? 'ol' : 'ul';
+            let currentIndent = indent;
+            let j = i;
+            while (j < lines.length) {
+                let l = lines[j];
+                const mUl = l.match(/^(\s*)([\*\-+])\s+(.*)/);
+                const mOl = l.match(/^(\s*)(\d+)\.\s+(.*)/);
+                if (mUl && !isOrdered) {
+                     items.push(mUl[3]);
+                    j++;
+                } else if (mOl && isOrdered) {
+                    items.push(mOl[3]);
+                    j++;
+                } else if (l.trim() === '') {
+                    if (j + 1 < lines.length) {
+                        const next = lines[j+1];
+                        const nUl = next.match(/^(\s*)([\*\-+])\s+(.*)/);
+                        const nOl = next.match(/^(\s*)(\d+)\.\s+(.*)/);
+                        if ((isOrdered && nOl) || (!isOrdered && nUl)) {
+                            break;
+                        } else {
+                            break;
+                        }
+                    } else {
+                        break;
+                    }
+                } else {
+                    break;
+                }
+            }
+            const tag = isOrdered ? 'ol' : 'ul';
+            let listHtml = `<${tag}>\n`;
+            items.forEach(item => {
+                listHtml += `<li>${item}</li>\n`;
+            });
+            listHtml += `</${tag}>`;
+            newLines.push(listHtml);
+            i = j;
+        } else {
+            newLines.push(line);
+            i++;
+        }
+    }
+    html = newLines.join('\n');
+
+    // 3.5 Tables (original implementation, with minor improvements)
+    html = html.replace(/(^\|.+\|\n\|[-: |]+\|\n(?:\|.+\|\n?)+)/gm, (tableBlock) => {
+        const lines = tableBlock.trim().split('\n');
+        if (lines.length < 3) return tableBlock; // not a valid table
+        const headerCells = lines[0].split('|').slice(1, -1);
+        const separators = lines[1].split('|').slice(1, -1);
+        const alignments = separators.map(sep => {
+            if (sep.includes(':') && sep.endsWith(':')) return 'center';
+            if (sep.endsWith(':')) return 'right';
+            return 'left';
+        });
+        let tableHTML = '<table>\n<thead>\n<tr>\n';
+        headerCells.forEach((cell, i) => {
+            tableHTML += `<th style="text-align: ${alignments[i] || 'left'}">${escapeHtml(cell.trim())}</th>\n`;
+        });
+        tableHTML += '</tr>\n</thead>\n<tbody>\n';
+        for (let i = 2; i < lines.length; i++) {
+            if (!lines[i].trim()) continue;
+            const bodyCells = lines[i].split('|').slice(1, -1);
+            tableHTML += '<tr>\n';
+            bodyCells.forEach((cell, j) => {
+                const align = alignments[j] || 'left';
+                tableHTML += `<td style="text-align: ${align}">${escapeHtml(cell.trim())}</td>\n`;
+            });
+            tableHTML += '</tr>\n';
+        }
+        tableHTML += '</tbody>\n</table>';
+        return tableHTML;
+    });
+
+    // --- Step 4: Inline formatting ---
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, url) => {
+        return `<img src="${escapeHtmlAttr(url)}" alt="${escapeHtmlAttr(alt)}">`;
+    });
+
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+        return `<a href="${escapeHtmlAttr(url)}">${escapeHtml(text)}</a>`;
+    });
+
+    html = html.replace(/\*\*(.*?)\*\*/g, (match, text) => `<strong>${escapeHtml(text)}</strong>`);
+
+    html = html.replace(/\*(.*?)\*/g, (match, text) => `<em>${escapeHtml(text)}</em>`);
+
+    html = html.replace(/`([^`]+)`/g, (match, code) => `<code>${escapeHtml(code)}</code>`);
+
+    // --- Step 5: Wrap loose text in <p> tags ---
+    html = html.split('\n\n').map(block => {
+        const trimmed = block.trim();
+        if (!trimmed) return '';
+        if (trimmed.match(/^<(h\d|table|ul|ol|blockquote|hr|div|pre)/i)) {
+            return trimmed;
+        }
+        return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
+    }).join('\n');
+
+    // --- Step 6: Re‑inject protected content ---
+    html = html.replace(/<!--MATH_BLOCK_(\d+)-->/g, (match, index) => {
+        const mathObj = mathStore[parseInt(index)];
+        return `<div class="math-block">${mathObj.content}</div>`;
+    });
+    html = html.replace(/<!--MATH_INLINE_(\d+)-->/g, (match, index) => {
+        const mathObj = mathStore[parseInt(index)];
+        return `<span class="math-inline">${mathObj.content}</span>`;
+    });
+
+    html = html.replace(/<!--CODE_(\d+)-->/g, (match, index) => {
+        const codeObj = codeStore[parseInt(index)];
+        const lang = codeObj.lang ? ` class="language-${escapeHtmlAttr(codeObj.lang)}"` : '';
+        const escapedCode = escapeHtml(codeObj.content);
+        return `<pre><code${lang}>${escapedCode}</code></pre>`;
+    });
+
+    return html;
+};
+function render() {
+cout(convertMarkdownToHTML(document.getElementById("w6").value));
+MathJax.typeset([document.getElementById("w4")]);
+};
+
